@@ -19,6 +19,6 @@ class DzwApplicationTests {
 	
 	@Test
 	public void ceshi() {
-		System.out.println(	biz.ceshi());
+		
 	}
 }
