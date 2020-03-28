@@ -12,7 +12,8 @@ import com.accp.dao.zyh.ceshi;
 @Transactional(propagation = Propagation.SUPPORTS,isolation = Isolation.READ_COMMITTED,readOnly = true)
 public class ceshibiz {
 	
-	  @Autowired private ceshi dao;
+	  @Autowired
+	  private ceshi dao;
 	 
 	
 	public String ceshi() {

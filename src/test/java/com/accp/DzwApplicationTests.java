@@ -9,6 +9,10 @@ import com.accp.biz.zyh.ceshibiz;
 @SpringBootTest
 class DzwApplicationTests {
 
+	/***环境测试成功
+	 * 
+	 */
+	
 	@Autowired 
 	private ceshibiz biz;
 
@@ -19,6 +23,6 @@ class DzwApplicationTests {
 	
 	@Test
 	public void ceshi() {
-		
+		System.out.println(biz.ceshi());
 	}
 }
