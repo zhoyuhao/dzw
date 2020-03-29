@@ -14,6 +14,7 @@ class DzwApplicationTests {
 	 */
 	
 	@Autowired 
+	
 	private ceshibiz biz;
 
 	@Test
