@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhAddressMapper">
-  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Address">
+ <!--  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Address">
     <id column="aId" jdbcType="INTEGER" property="aid" />
     <result column="ghsaddress" jdbcType="VARCHAR" property="ghsaddress" />
     <result column="afid" jdbcType="INTEGER" property="afid" />
@@ -134,5 +134,5 @@
     set ghsaddress = #{ghsaddress,jdbcType=VARCHAR},
       afid = #{afid,jdbcType=INTEGER}
     where aId = #{aid,jdbcType=INTEGER}
-  </update>
+  </update> -->
 </mapper>
