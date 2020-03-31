@@ -1,17 +1,19 @@
 package com.accp.dao.zyh;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.Service;
+import com.accp.vo.zyh.*;
 
 public interface zyhServiceMapper {
-    int deleteByPrimaryKey(String wid);
-
-    int insert(Service record);
-
-    int insertSelective(Service record);
-
-    Service selectByPrimaryKey(String wid);
-
-    int updateByPrimaryKeySelective(Service record);
-
-    int updateByPrimaryKey(Service record);
+   
+	
+	/**查看为维修单的状态
+	 * 
+	 * @return
+	 */
+	List<zyhService_vo> queryStatucBy1Or2(@Param("wcarid")String wcarid,@Param("statdate")String statdate,
+					@Param("enddate")String enddate,@Param("statuc")Integer statuc,@Param("statuc2")Integer statuc2);
 }

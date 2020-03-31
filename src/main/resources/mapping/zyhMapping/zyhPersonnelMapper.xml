@@ -23,7 +23,7 @@
 INNER JOIN `uersandrole` u ON(r.`cid`=u.`cid`)
 INNER JOIN `roleandfunction` ro ON(ro.`cid`=r.`cid`)
 INNER  JOIN `function` f ON (ro.`fid`=f.`fid`)
-WHERE u.`pId`=${0}
+WHERE u.`pId`=#{pId}
   </select>
  <select id="querylogin" resultMap="map1">
 SELECT p.*, ro.`cname`,po.`gwname`  FROM `personnel` p 
