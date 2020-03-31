@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.RoleandfunctionKey;
+import com.accp.pojo.RoleandfunctionKey;
 
 public interface zyhRoleandfunctionMapper {
     int deleteByPrimaryKey(RoleandfunctionKey key);

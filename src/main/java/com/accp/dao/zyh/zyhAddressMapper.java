@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Address;
+import com.accp.pojo.Address;
 
 public interface zyhAddressMapper {
     int deleteByPrimaryKey(Integer aid);

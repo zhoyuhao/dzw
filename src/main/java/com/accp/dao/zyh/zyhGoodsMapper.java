@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Goods;
+import com.accp.pojo.Goods;
 
 public interface zyhGoodsMapper {
     int deleteByPrimaryKey(Integer gid);

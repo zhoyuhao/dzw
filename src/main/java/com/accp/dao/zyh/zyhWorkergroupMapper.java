@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Workergroup;
+import com.accp.pojo.Workergroup;
 
 public interface zyhWorkergroupMapper {
     int deleteByPrimaryKey(Integer bzid);

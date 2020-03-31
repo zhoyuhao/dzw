@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Customer;
+import com.accp.pojo.Customer;
 
 public interface zyhCustomerMapper {
     int deleteByPrimaryKey(String cidk);

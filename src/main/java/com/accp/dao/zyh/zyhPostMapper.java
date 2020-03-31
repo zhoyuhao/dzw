@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Post;
+import com.accp.pojo.Post;
 
 public interface zyhPostMapper {
     int deleteByPrimaryKey(Integer gwid);

@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Eengine;
+import com.accp.pojo.Eengine;
 
 public interface zyhEengineMapper {
     int deleteByPrimaryKey(Integer eid);

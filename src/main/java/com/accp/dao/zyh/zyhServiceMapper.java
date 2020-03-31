@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Service;
+import com.accp.pojo.Service;
 
 public interface zyhServiceMapper {
     int deleteByPrimaryKey(String wid);

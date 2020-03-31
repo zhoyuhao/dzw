@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Supplier;
+import com.accp.pojo.Supplier;
 
 public interface zyhSupplierMapper {
     int deleteByPrimaryKey(Integer ghsid);

@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Function;
+import com.accp.pojo.Function;
 
 public interface zyhFunctionMapper {
     int deleteByPrimaryKey(Integer fid);

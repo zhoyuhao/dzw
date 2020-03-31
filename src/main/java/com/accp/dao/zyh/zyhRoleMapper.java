@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Role;
+import com.accp.pojo.Role;
 
 public interface zyhRoleMapper {
     int deleteByPrimaryKey(Integer cid);

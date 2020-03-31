@@ -1,17 +1,17 @@
 package com.accp.pojo;
 
 public class Post {
-    private Integer gwid;
+    private String gwid;
 
     private String pid;
 
     private String gwname;
 
-    public Integer getGwid() {
+    public String getGwid() {
         return gwid;
     }
 
-    public void setGwid(Integer gwid) {
+    public void setGwid(String gwid) {
         this.gwid = gwid;
     }
 

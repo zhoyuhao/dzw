@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Customercar;
+import com.accp.pojo.Customercar;
 
 public interface zyhCustomercarMapper {
     int deleteByPrimaryKey(Integer carid);

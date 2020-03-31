@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.Userphone;
+import com.accp.pojo.Userphone;
 
 public interface zyhUserphoneMapper {
     int deleteByPrimaryKey(Integer txlid);

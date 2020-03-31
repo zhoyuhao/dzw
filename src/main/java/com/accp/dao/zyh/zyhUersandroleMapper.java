@@ -1,6 +1,6 @@
 package com.accp.dao.zyh;
 
-import com.accp.demo.pojo.UersandroleKey;
+import com.accp.pojo.UersandroleKey;
 
 public interface zyhUersandroleMapper {
     int deleteByPrimaryKey(UersandroleKey key);
