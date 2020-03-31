@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhPersonnelMapper">
-  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Personnel">
+   <resultMap id="map1" type="com.accp.vo.zyh.zyhpersonnel_vo">
     <id column="pId" jdbcType="VARCHAR" property="pid" />
     <result column="bzId" jdbcType="INTEGER" property="bzid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
@@ -13,15 +13,23 @@
     <result column="pidcard" jdbcType="VARCHAR" property="pidcard" />
     <result column="pstatic" jdbcType="INTEGER" property="pstatic" />
     <result column="ppwd" jdbcType="VARCHAR" property="ppwd" />
-    <result column="ppost" jdbcType="VARCHAR" property="ppost" />
+    <result column="ppost"  property="ppost" />
+     <result column="gwname"  property="gangwei" />
+     <result column="cname"  property="juesename" />
+    <collection property="list" column="pId" select="queryByIdAndFuction"/>
   </resultMap>
- 
- <select id="querylogin">
-SELECT p.`pname`,uz.`cid`, ro.`cname`  FROM `personnel` p 
+  <select id="queryByIdAndFuction" resultType="com.accp.pojo.Function">
+ SELECT f.* FROM `role` r
+INNER JOIN `uersandrole` u ON(r.`cid`=u.`cid`)
+INNER JOIN `roleandfunction` ro ON(ro.`cid`=r.`cid`)
+INNER  JOIN `function` f ON (ro.`fid`=f.`fid`)
+WHERE u.`pId`=${0}
+  </select>
+ <select id="querylogin" resultMap="map1">
+SELECT p.*, ro.`cname`,po.`gwname`  FROM `personnel` p 
 INNER JOIN `uersandrole` uz ON (uz.`pId`=p.`pId`)
 INNER JOIN `role` ro ON (ro.`cid`=uz.`cid`)
-
-
-WHERE p.`pname`='admin' AND p.`ppwd`='admin'
+INNER JOIN `post` po ON (po.`gwid`=p.`ppost`)
+WHERE p.`pname`=#{name} AND p.`ppwd`=#{pwd}
  </select>
 </mapper>

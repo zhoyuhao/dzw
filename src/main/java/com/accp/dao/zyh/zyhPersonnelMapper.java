@@ -1,17 +1,17 @@
 package com.accp.dao.zyh;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.Personnel;
+import com.accp.vo.zyh.*;
 
 public interface zyhPersonnelMapper {
-    int deleteByPrimaryKey(String pid);
-
-    int insert(Personnel record);
-
-    int insertSelective(Personnel record);
-
-    Personnel selectByPrimaryKey(String pid);
-
-    int updateByPrimaryKeySelective(Personnel record);
-
-    int updateByPrimaryKey(Personnel record);
+   
+	/***登入
+	 * 
+	 * @param name
+	 * @param pwd
+	 * @return
+	 */
+	zyhpersonnel_vo querylogin(@Param("name")String name,@Param("pwd")String pwd);
 }

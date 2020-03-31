@@ -25,9 +25,10 @@ public class Personnel {
 
     private String ppwd;
 
-    private String ppost;
+    private Integer ppost;
 
-    public String getPid() {
+
+	public String getPid() {
         return pid;
     }
 
@@ -115,11 +116,11 @@ public class Personnel {
         this.ppwd = ppwd == null ? null : ppwd.trim();
     }
 
-    public String getPpost() {
+    public Integer getPpost() {
         return ppost;
     }
 
-    public void setPpost(String ppost) {
-        this.ppost = ppost == null ? null : ppost.trim();
+    public void setPpost(Integer ppost) {
+        this.ppost = ppost ;
     }
 }

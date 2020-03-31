@@ -1,68 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhUersandroleMapper">
-  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.UersandroleKey">
+  <resultMap id="BaseResultMap" type="com.accp.pojo.UersandroleKey">
     <id column="pId" jdbcType="VARCHAR" property="pid" />
     <id column="cid" jdbcType="INTEGER" property="cid" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="com.accp.demo.pojo.UersandroleKey">
-    delete from uersandrole
-    where pId = #{pid,jdbcType=VARCHAR}
-      and cid = #{cid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.accp.demo.pojo.UersandroleKey">
-    insert into uersandrole (pId, cid)
-    values (#{pid,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.demo.pojo.UersandroleKey">
-    insert into uersandrole
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        pId,
-      </if>
-      <if test="cid != null">
-        cid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        #{pid,jdbcType=VARCHAR},
-      </if>
-      <if test="cid != null">
-        #{cid,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="com.example.demo.pojo.UersandroleKey">
-    <id column="pId" jdbcType="VARCHAR" property="pid" />
-    <id column="cid" jdbcType="INTEGER" property="cid" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="com.example.demo.pojo.UersandroleKey">
-    delete from uersandrole
-    where pId = #{pid,jdbcType=VARCHAR}
-      and cid = #{cid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.example.demo.pojo.UersandroleKey">
-    insert into uersandrole (pId, cid)
-    values (#{pid,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.pojo.UersandroleKey">
-    insert into uersandrole
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        pId,
-      </if>
-      <if test="cid != null">
-        cid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        #{pid,jdbcType=VARCHAR},
-      </if>
-      <if test="cid != null">
-        #{cid,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
+ 
 </mapper>
