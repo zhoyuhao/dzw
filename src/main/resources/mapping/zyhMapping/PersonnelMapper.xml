@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zyh.PersonnelMapper">
+  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Personnel">
+    <id column="pId" jdbcType="VARCHAR" property="pid" />
+    <result column="bzId" jdbcType="INTEGER" property="bzid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="psex" jdbcType="CHAR" property="psex" />
+    <result column="peducational" jdbcType="VARCHAR" property="peducational" />
+    <result column="pentry" jdbcType="DATE" property="pentry" />
+    <result column="pphone" jdbcType="VARCHAR" property="pphone" />
+    <result column="paddress" jdbcType="VARCHAR" property="paddress" />
+    <result column="pidcard" jdbcType="VARCHAR" property="pidcard" />
+    <result column="pstatic" jdbcType="INTEGER" property="pstatic" />
+    <result column="ppwd" jdbcType="VARCHAR" property="ppwd" />
+    <result column="ppost" jdbcType="VARCHAR" property="ppost" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pId, bzId, pname, psex, peducational, pentry, pphone, paddress, pidcard, pstatic, 
+    ppwd, ppost
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from personnel
+    where pId = #{pid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from personnel
+    where pId = #{pid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.demo.pojo.Personnel">
+    insert into personnel (pId, bzId, pname, 
+      psex, peducational, pentry, 
+      pphone, paddress, pidcard, 
+      pstatic, ppwd, ppost
+      )
+    values (#{pid,jdbcType=VARCHAR}, #{bzid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, 
+      #{psex,jdbcType=CHAR}, #{peducational,jdbcType=VARCHAR}, #{pentry,jdbcType=DATE}, 
+      #{pphone,jdbcType=VARCHAR}, #{paddress,jdbcType=VARCHAR}, #{pidcard,jdbcType=VARCHAR}, 
+      #{pstatic,jdbcType=INTEGER}, #{ppwd,jdbcType=VARCHAR}, #{ppost,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.demo.pojo.Personnel">
+    insert into personnel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pId,
+      </if>
+      <if test="bzid != null">
+        bzId,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="psex != null">
+        psex,
+      </if>
+      <if test="peducational != null">
+        peducational,
+      </if>
+      <if test="pentry != null">
+        pentry,
+      </if>
+      <if test="pphone != null">
+        pphone,
+      </if>
+      <if test="paddress != null">
+        paddress,
+      </if>
+      <if test="pidcard != null">
+        pidcard,
+      </if>
+      <if test="pstatic != null">
+        pstatic,
+      </if>
+      <if test="ppwd != null">
+        ppwd,
+      </if>
+      <if test="ppost != null">
+        ppost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="bzid != null">
+        #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null">
+        #{psex,jdbcType=CHAR},
+      </if>
+      <if test="peducational != null">
+        #{peducational,jdbcType=VARCHAR},
+      </if>
+      <if test="pentry != null">
+        #{pentry,jdbcType=DATE},
+      </if>
+      <if test="pphone != null">
+        #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="paddress != null">
+        #{paddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pidcard != null">
+        #{pidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="pstatic != null">
+        #{pstatic,jdbcType=INTEGER},
+      </if>
+      <if test="ppwd != null">
+        #{ppwd,jdbcType=VARCHAR},
+      </if>
+      <if test="ppost != null">
+        #{ppost,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.demo.pojo.Personnel">
+    update personnel
+    <set>
+      <if test="bzid != null">
+        bzId = #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null">
+        psex = #{psex,jdbcType=CHAR},
+      </if>
+      <if test="peducational != null">
+        peducational = #{peducational,jdbcType=VARCHAR},
+      </if>
+      <if test="pentry != null">
+        pentry = #{pentry,jdbcType=DATE},
+      </if>
+      <if test="pphone != null">
+        pphone = #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="paddress != null">
+        paddress = #{paddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pidcard != null">
+        pidcard = #{pidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="pstatic != null">
+        pstatic = #{pstatic,jdbcType=INTEGER},
+      </if>
+      <if test="ppwd != null">
+        ppwd = #{ppwd,jdbcType=VARCHAR},
+      </if>
+      <if test="ppost != null">
+        ppost = #{ppost,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pId = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.demo.pojo.Personnel">
+    update personnel
+    set bzId = #{bzid,jdbcType=INTEGER},
+      pname = #{pname,jdbcType=VARCHAR},
+      psex = #{psex,jdbcType=CHAR},
+      peducational = #{peducational,jdbcType=VARCHAR},
+      pentry = #{pentry,jdbcType=DATE},
+      pphone = #{pphone,jdbcType=VARCHAR},
+      paddress = #{paddress,jdbcType=VARCHAR},
+      pidcard = #{pidcard,jdbcType=VARCHAR},
+      pstatic = #{pstatic,jdbcType=INTEGER},
+      ppwd = #{ppwd,jdbcType=VARCHAR},
+      ppost = #{ppost,jdbcType=VARCHAR}
+    where pId = #{pid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Personnel">
+    <id column="pId" jdbcType="VARCHAR" property="pid" />
+    <result column="bzId" jdbcType="INTEGER" property="bzid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="psex" jdbcType="CHAR" property="psex" />
+    <result column="peducational" jdbcType="VARCHAR" property="peducational" />
+    <result column="pentry" jdbcType="DATE" property="pentry" />
+    <result column="pphone" jdbcType="VARCHAR" property="pphone" />
+    <result column="paddress" jdbcType="VARCHAR" property="paddress" />
+    <result column="pidcard" jdbcType="VARCHAR" property="pidcard" />
+    <result column="pstatic" jdbcType="INTEGER" property="pstatic" />
+    <result column="ppwd" jdbcType="VARCHAR" property="ppwd" />
+    <result column="ppost" jdbcType="VARCHAR" property="ppost" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pId, bzId, pname, psex, peducational, pentry, pphone, paddress, pidcard, pstatic, 
+    ppwd, ppost
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from personnel
+    where pId = #{pid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from personnel
+    where pId = #{pid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Personnel">
+    insert into personnel (pId, bzId, pname, 
+      psex, peducational, pentry, 
+      pphone, paddress, pidcard, 
+      pstatic, ppwd, ppost
+      )
+    values (#{pid,jdbcType=VARCHAR}, #{bzid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, 
+      #{psex,jdbcType=CHAR}, #{peducational,jdbcType=VARCHAR}, #{pentry,jdbcType=DATE}, 
+      #{pphone,jdbcType=VARCHAR}, #{paddress,jdbcType=VARCHAR}, #{pidcard,jdbcType=VARCHAR}, 
+      #{pstatic,jdbcType=INTEGER}, #{ppwd,jdbcType=VARCHAR}, #{ppost,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Personnel">
+    insert into personnel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pId,
+      </if>
+      <if test="bzid != null">
+        bzId,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="psex != null">
+        psex,
+      </if>
+      <if test="peducational != null">
+        peducational,
+      </if>
+      <if test="pentry != null">
+        pentry,
+      </if>
+      <if test="pphone != null">
+        pphone,
+      </if>
+      <if test="paddress != null">
+        paddress,
+      </if>
+      <if test="pidcard != null">
+        pidcard,
+      </if>
+      <if test="pstatic != null">
+        pstatic,
+      </if>
+      <if test="ppwd != null">
+        ppwd,
+      </if>
+      <if test="ppost != null">
+        ppost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="bzid != null">
+        #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null">
+        #{psex,jdbcType=CHAR},
+      </if>
+      <if test="peducational != null">
+        #{peducational,jdbcType=VARCHAR},
+      </if>
+      <if test="pentry != null">
+        #{pentry,jdbcType=DATE},
+      </if>
+      <if test="pphone != null">
+        #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="paddress != null">
+        #{paddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pidcard != null">
+        #{pidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="pstatic != null">
+        #{pstatic,jdbcType=INTEGER},
+      </if>
+      <if test="ppwd != null">
+        #{ppwd,jdbcType=VARCHAR},
+      </if>
+      <if test="ppost != null">
+        #{ppost,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Personnel">
+    update personnel
+    <set>
+      <if test="bzid != null">
+        bzId = #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null">
+        psex = #{psex,jdbcType=CHAR},
+      </if>
+      <if test="peducational != null">
+        peducational = #{peducational,jdbcType=VARCHAR},
+      </if>
+      <if test="pentry != null">
+        pentry = #{pentry,jdbcType=DATE},
+      </if>
+      <if test="pphone != null">
+        pphone = #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="paddress != null">
+        paddress = #{paddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pidcard != null">
+        pidcard = #{pidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="pstatic != null">
+        pstatic = #{pstatic,jdbcType=INTEGER},
+      </if>
+      <if test="ppwd != null">
+        ppwd = #{ppwd,jdbcType=VARCHAR},
+      </if>
+      <if test="ppost != null">
+        ppost = #{ppost,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pId = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Personnel">
+    update personnel
+    set bzId = #{bzid,jdbcType=INTEGER},
+      pname = #{pname,jdbcType=VARCHAR},
+      psex = #{psex,jdbcType=CHAR},
+      peducational = #{peducational,jdbcType=VARCHAR},
+      pentry = #{pentry,jdbcType=DATE},
+      pphone = #{pphone,jdbcType=VARCHAR},
+      paddress = #{paddress,jdbcType=VARCHAR},
+      pidcard = #{pidcard,jdbcType=VARCHAR},
+      pstatic = #{pstatic,jdbcType=INTEGER},
+      ppwd = #{ppwd,jdbcType=VARCHAR},
+      ppost = #{ppost,jdbcType=VARCHAR}
+    where pId = #{pid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="mySqlTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库链接URL，用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/dzw" userId="root"
+			password="123456">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--pojo生成位置 -->
+		<javaModelGenerator
+			targetPackage="com.accp.demo.pojo"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--映射文件生成位置 -->
+		<sqlMapGenerator targetPackage="zyhMapping"
+			targetProject="src/main/resources/mapping">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--dao生成位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.accp.dao.zyh"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
+			<table tableName="address" domainObjectName="Address" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			<table tableName="customer" domainObjectName="Customer" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+				<table tableName="customer" domainObjectName="Customer" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			
+				<table tableName="customercar" domainObjectName="Customercar" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			<table tableName="engine" domainObjectName="Eengine" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+				<table tableName="function" domainObjectName="Function" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			
+			
+				<table tableName="goods" domainObjectName="Goods" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			<table tableName="personnel" domainObjectName="Personnel" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+				<table tableName="post" domainObjectName="Post" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			
+				
+				<table tableName="role" domainObjectName="Role" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			<table tableName="roleandfunction" domainObjectName="Roleandfunction" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+				<table tableName="service" domainObjectName="Service" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			
+					<table tableName="servicedetailed" domainObjectName="Servicedetailed" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			<table tableName="serviceitem" domainObjectName="Serviceitem" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+				<table tableName="supplier" domainObjectName="Supplier" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			
+					<table tableName="uersandrole" domainObjectName="Uersandrole" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+			<table tableName="userphone" domainObjectName="Userphone" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+				<table tableName="workergroup" domainObjectName="Workergroup" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"></table>
+	</context>
+</generatorConfiguration>  

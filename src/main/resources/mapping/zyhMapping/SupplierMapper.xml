@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zyh.SupplierMapper">
+  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Supplier">
+    <id column="ghsId" jdbcType="INTEGER" property="ghsid" />
+    <result column="ghsname" jdbcType="VARCHAR" property="ghsname" />
+    <result column="ghsaddress" jdbcType="VARCHAR" property="ghsaddress" />
+    <result column="ghsphone" jdbcType="VARCHAR" property="ghsphone" />
+    <result column="ghsuser" jdbcType="VARCHAR" property="ghsuser" />
+    <result column="ghsaccount" jdbcType="VARCHAR" property="ghsaccount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ghsId, ghsname, ghsaddress, ghsphone, ghsuser, ghsaccount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supplier
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.demo.pojo.Supplier">
+    insert into supplier (ghsId, ghsname, ghsaddress, 
+      ghsphone, ghsuser, ghsaccount
+      )
+    values (#{ghsid,jdbcType=INTEGER}, #{ghsname,jdbcType=VARCHAR}, #{ghsaddress,jdbcType=VARCHAR}, 
+      #{ghsphone,jdbcType=VARCHAR}, #{ghsuser,jdbcType=VARCHAR}, #{ghsaccount,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.demo.pojo.Supplier">
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ghsid != null">
+        ghsId,
+      </if>
+      <if test="ghsname != null">
+        ghsname,
+      </if>
+      <if test="ghsaddress != null">
+        ghsaddress,
+      </if>
+      <if test="ghsphone != null">
+        ghsphone,
+      </if>
+      <if test="ghsuser != null">
+        ghsuser,
+      </if>
+      <if test="ghsaccount != null">
+        ghsaccount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ghsid != null">
+        #{ghsid,jdbcType=INTEGER},
+      </if>
+      <if test="ghsname != null">
+        #{ghsname,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaddress != null">
+        #{ghsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsphone != null">
+        #{ghsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsuser != null">
+        #{ghsuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaccount != null">
+        #{ghsaccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.demo.pojo.Supplier">
+    update supplier
+    <set>
+      <if test="ghsname != null">
+        ghsname = #{ghsname,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaddress != null">
+        ghsaddress = #{ghsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsphone != null">
+        ghsphone = #{ghsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsuser != null">
+        ghsuser = #{ghsuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaccount != null">
+        ghsaccount = #{ghsaccount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.demo.pojo.Supplier">
+    update supplier
+    set ghsname = #{ghsname,jdbcType=VARCHAR},
+      ghsaddress = #{ghsaddress,jdbcType=VARCHAR},
+      ghsphone = #{ghsphone,jdbcType=VARCHAR},
+      ghsuser = #{ghsuser,jdbcType=VARCHAR},
+      ghsaccount = #{ghsaccount,jdbcType=VARCHAR}
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Supplier">
+    <id column="ghsId" jdbcType="INTEGER" property="ghsid" />
+    <result column="ghsname" jdbcType="VARCHAR" property="ghsname" />
+    <result column="ghsaddress" jdbcType="VARCHAR" property="ghsaddress" />
+    <result column="ghsphone" jdbcType="VARCHAR" property="ghsphone" />
+    <result column="ghsuser" jdbcType="VARCHAR" property="ghsuser" />
+    <result column="ghsaccount" jdbcType="VARCHAR" property="ghsaccount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ghsId, ghsname, ghsaddress, ghsphone, ghsuser, ghsaccount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supplier
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Supplier">
+    insert into supplier (ghsId, ghsname, ghsaddress, 
+      ghsphone, ghsuser, ghsaccount
+      )
+    values (#{ghsid,jdbcType=INTEGER}, #{ghsname,jdbcType=VARCHAR}, #{ghsaddress,jdbcType=VARCHAR}, 
+      #{ghsphone,jdbcType=VARCHAR}, #{ghsuser,jdbcType=VARCHAR}, #{ghsaccount,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Supplier">
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ghsid != null">
+        ghsId,
+      </if>
+      <if test="ghsname != null">
+        ghsname,
+      </if>
+      <if test="ghsaddress != null">
+        ghsaddress,
+      </if>
+      <if test="ghsphone != null">
+        ghsphone,
+      </if>
+      <if test="ghsuser != null">
+        ghsuser,
+      </if>
+      <if test="ghsaccount != null">
+        ghsaccount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ghsid != null">
+        #{ghsid,jdbcType=INTEGER},
+      </if>
+      <if test="ghsname != null">
+        #{ghsname,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaddress != null">
+        #{ghsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsphone != null">
+        #{ghsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsuser != null">
+        #{ghsuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaccount != null">
+        #{ghsaccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Supplier">
+    update supplier
+    <set>
+      <if test="ghsname != null">
+        ghsname = #{ghsname,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaddress != null">
+        ghsaddress = #{ghsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsphone != null">
+        ghsphone = #{ghsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsuser != null">
+        ghsuser = #{ghsuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsaccount != null">
+        ghsaccount = #{ghsaccount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Supplier">
+    update supplier
+    set ghsname = #{ghsname,jdbcType=VARCHAR},
+      ghsaddress = #{ghsaddress,jdbcType=VARCHAR},
+      ghsphone = #{ghsphone,jdbcType=VARCHAR},
+      ghsuser = #{ghsuser,jdbcType=VARCHAR},
+      ghsaccount = #{ghsaccount,jdbcType=VARCHAR}
+    where ghsId = #{ghsid,jdbcType=INTEGER}
+  </update>
+</mapper>

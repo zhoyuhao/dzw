@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zyh.CustomercarMapper">
+  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Customercar">
+    <id column="carid" jdbcType="INTEGER" property="carid" />
+    <result column="cidk" jdbcType="VARCHAR" property="cidk" />
+    <result column="carlicenceplate" jdbcType="VARCHAR" property="carlicenceplate" />
+    <result column="carbrand" jdbcType="VARCHAR" property="carbrand" />
+    <result column="carcolor" jdbcType="VARCHAR" property="carcolor" />
+    <result column="carconfigure" jdbcType="VARCHAR" property="carconfigure" />
+    <result column="carlocality" jdbcType="VARCHAR" property="carlocality" />
+    <result column="carmodel" jdbcType="VARCHAR" property="carmodel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    carid, cidk, carlicenceplate, carbrand, carcolor, carconfigure, carlocality, carmodel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customercar
+    where carid = #{carid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customercar
+    where carid = #{carid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.demo.pojo.Customercar">
+    insert into customercar (carid, cidk, carlicenceplate, 
+      carbrand, carcolor, carconfigure, 
+      carlocality, carmodel)
+    values (#{carid,jdbcType=INTEGER}, #{cidk,jdbcType=VARCHAR}, #{carlicenceplate,jdbcType=VARCHAR}, 
+      #{carbrand,jdbcType=VARCHAR}, #{carcolor,jdbcType=VARCHAR}, #{carconfigure,jdbcType=VARCHAR}, 
+      #{carlocality,jdbcType=VARCHAR}, #{carmodel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.demo.pojo.Customercar">
+    insert into customercar
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carid != null">
+        carid,
+      </if>
+      <if test="cidk != null">
+        cidk,
+      </if>
+      <if test="carlicenceplate != null">
+        carlicenceplate,
+      </if>
+      <if test="carbrand != null">
+        carbrand,
+      </if>
+      <if test="carcolor != null">
+        carcolor,
+      </if>
+      <if test="carconfigure != null">
+        carconfigure,
+      </if>
+      <if test="carlocality != null">
+        carlocality,
+      </if>
+      <if test="carmodel != null">
+        carmodel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carid != null">
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="cidk != null">
+        #{cidk,jdbcType=VARCHAR},
+      </if>
+      <if test="carlicenceplate != null">
+        #{carlicenceplate,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null">
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="carcolor != null">
+        #{carcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="carconfigure != null">
+        #{carconfigure,jdbcType=VARCHAR},
+      </if>
+      <if test="carlocality != null">
+        #{carlocality,jdbcType=VARCHAR},
+      </if>
+      <if test="carmodel != null">
+        #{carmodel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.demo.pojo.Customercar">
+    update customercar
+    <set>
+      <if test="cidk != null">
+        cidk = #{cidk,jdbcType=VARCHAR},
+      </if>
+      <if test="carlicenceplate != null">
+        carlicenceplate = #{carlicenceplate,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null">
+        carbrand = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="carcolor != null">
+        carcolor = #{carcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="carconfigure != null">
+        carconfigure = #{carconfigure,jdbcType=VARCHAR},
+      </if>
+      <if test="carlocality != null">
+        carlocality = #{carlocality,jdbcType=VARCHAR},
+      </if>
+      <if test="carmodel != null">
+        carmodel = #{carmodel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.demo.pojo.Customercar">
+    update customercar
+    set cidk = #{cidk,jdbcType=VARCHAR},
+      carlicenceplate = #{carlicenceplate,jdbcType=VARCHAR},
+      carbrand = #{carbrand,jdbcType=VARCHAR},
+      carcolor = #{carcolor,jdbcType=VARCHAR},
+      carconfigure = #{carconfigure,jdbcType=VARCHAR},
+      carlocality = #{carlocality,jdbcType=VARCHAR},
+      carmodel = #{carmodel,jdbcType=VARCHAR}
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Customercar">
+    <id column="carid" jdbcType="INTEGER" property="carid" />
+    <result column="cidk" jdbcType="VARCHAR" property="cidk" />
+    <result column="carlicenceplate" jdbcType="VARCHAR" property="carlicenceplate" />
+    <result column="carbrand" jdbcType="VARCHAR" property="carbrand" />
+    <result column="carcolor" jdbcType="VARCHAR" property="carcolor" />
+    <result column="carconfigure" jdbcType="VARCHAR" property="carconfigure" />
+    <result column="carlocality" jdbcType="VARCHAR" property="carlocality" />
+    <result column="carmodel" jdbcType="VARCHAR" property="carmodel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    carid, cidk, carlicenceplate, carbrand, carcolor, carconfigure, carlocality, carmodel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customercar
+    where carid = #{carid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customercar
+    where carid = #{carid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Customercar">
+    insert into customercar (carid, cidk, carlicenceplate, 
+      carbrand, carcolor, carconfigure, 
+      carlocality, carmodel)
+    values (#{carid,jdbcType=INTEGER}, #{cidk,jdbcType=VARCHAR}, #{carlicenceplate,jdbcType=VARCHAR}, 
+      #{carbrand,jdbcType=VARCHAR}, #{carcolor,jdbcType=VARCHAR}, #{carconfigure,jdbcType=VARCHAR}, 
+      #{carlocality,jdbcType=VARCHAR}, #{carmodel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Customercar">
+    insert into customercar
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carid != null">
+        carid,
+      </if>
+      <if test="cidk != null">
+        cidk,
+      </if>
+      <if test="carlicenceplate != null">
+        carlicenceplate,
+      </if>
+      <if test="carbrand != null">
+        carbrand,
+      </if>
+      <if test="carcolor != null">
+        carcolor,
+      </if>
+      <if test="carconfigure != null">
+        carconfigure,
+      </if>
+      <if test="carlocality != null">
+        carlocality,
+      </if>
+      <if test="carmodel != null">
+        carmodel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carid != null">
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="cidk != null">
+        #{cidk,jdbcType=VARCHAR},
+      </if>
+      <if test="carlicenceplate != null">
+        #{carlicenceplate,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null">
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="carcolor != null">
+        #{carcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="carconfigure != null">
+        #{carconfigure,jdbcType=VARCHAR},
+      </if>
+      <if test="carlocality != null">
+        #{carlocality,jdbcType=VARCHAR},
+      </if>
+      <if test="carmodel != null">
+        #{carmodel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Customercar">
+    update customercar
+    <set>
+      <if test="cidk != null">
+        cidk = #{cidk,jdbcType=VARCHAR},
+      </if>
+      <if test="carlicenceplate != null">
+        carlicenceplate = #{carlicenceplate,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null">
+        carbrand = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="carcolor != null">
+        carcolor = #{carcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="carconfigure != null">
+        carconfigure = #{carconfigure,jdbcType=VARCHAR},
+      </if>
+      <if test="carlocality != null">
+        carlocality = #{carlocality,jdbcType=VARCHAR},
+      </if>
+      <if test="carmodel != null">
+        carmodel = #{carmodel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Customercar">
+    update customercar
+    set cidk = #{cidk,jdbcType=VARCHAR},
+      carlicenceplate = #{carlicenceplate,jdbcType=VARCHAR},
+      carbrand = #{carbrand,jdbcType=VARCHAR},
+      carcolor = #{carcolor,jdbcType=VARCHAR},
+      carconfigure = #{carconfigure,jdbcType=VARCHAR},
+      carlocality = #{carlocality,jdbcType=VARCHAR},
+      carmodel = #{carmodel,jdbcType=VARCHAR}
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+</mapper>
