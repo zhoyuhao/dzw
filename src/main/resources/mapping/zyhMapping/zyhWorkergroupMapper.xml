@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zyh.zyhWorkergroupMapper">
+  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Workergroup">
+    <id column="bzId" jdbcType="INTEGER" property="bzid" />
+    <result column="bzname" jdbcType="VARCHAR" property="bzname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bzId, bzname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workergroup
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from workergroup
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.demo.pojo.Workergroup">
+    insert into workergroup (bzId, bzname)
+    values (#{bzid,jdbcType=INTEGER}, #{bzname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.demo.pojo.Workergroup">
+    insert into workergroup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bzid != null">
+        bzId,
+      </if>
+      <if test="bzname != null">
+        bzname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bzid != null">
+        #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="bzname != null">
+        #{bzname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.demo.pojo.Workergroup">
+    update workergroup
+    <set>
+      <if test="bzname != null">
+        bzname = #{bzname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.demo.pojo.Workergroup">
+    update workergroup
+    set bzname = #{bzname,jdbcType=VARCHAR}
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Workergroup">
+    <id column="bzId" jdbcType="INTEGER" property="bzid" />
+    <result column="bzname" jdbcType="VARCHAR" property="bzname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bzId, bzname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workergroup
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from workergroup
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Workergroup">
+    insert into workergroup (bzId, bzname)
+    values (#{bzid,jdbcType=INTEGER}, #{bzname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Workergroup">
+    insert into workergroup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bzid != null">
+        bzId,
+      </if>
+      <if test="bzname != null">
+        bzname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bzid != null">
+        #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="bzname != null">
+        #{bzname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Workergroup">
+    update workergroup
+    <set>
+      <if test="bzname != null">
+        bzname = #{bzname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Workergroup">
+    update workergroup
+    set bzname = #{bzname,jdbcType=VARCHAR}
+    where bzId = #{bzid,jdbcType=INTEGER}
+  </update>
+</mapper>

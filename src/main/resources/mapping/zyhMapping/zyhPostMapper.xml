@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zyh.zyhPostMapper">
+  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Post">
+    <id column="gwid" jdbcType="INTEGER" property="gwid" />
+    <result column="pId" jdbcType="VARCHAR" property="pid" />
+    <result column="gwname" jdbcType="VARCHAR" property="gwname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    gwid, pId, gwname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from post
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from post
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.demo.pojo.Post">
+    insert into post (gwid, pId, gwname
+      )
+    values (#{gwid,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{gwname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.demo.pojo.Post">
+    insert into post
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gwid != null">
+        gwid,
+      </if>
+      <if test="pid != null">
+        pId,
+      </if>
+      <if test="gwname != null">
+        gwname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gwid != null">
+        #{gwid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="gwname != null">
+        #{gwname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.demo.pojo.Post">
+    update post
+    <set>
+      <if test="pid != null">
+        pId = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="gwname != null">
+        gwname = #{gwname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.demo.pojo.Post">
+    update post
+    set pId = #{pid,jdbcType=VARCHAR},
+      gwname = #{gwname,jdbcType=VARCHAR}
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Post">
+    <id column="gwid" jdbcType="INTEGER" property="gwid" />
+    <result column="pId" jdbcType="VARCHAR" property="pid" />
+    <result column="gwname" jdbcType="VARCHAR" property="gwname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    gwid, pId, gwname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from post
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from post
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Post">
+    insert into post (gwid, pId, gwname
+      )
+    values (#{gwid,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{gwname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Post">
+    insert into post
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gwid != null">
+        gwid,
+      </if>
+      <if test="pid != null">
+        pId,
+      </if>
+      <if test="gwname != null">
+        gwname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gwid != null">
+        #{gwid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="gwname != null">
+        #{gwname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Post">
+    update post
+    <set>
+      <if test="pid != null">
+        pId = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="gwname != null">
+        gwname = #{gwname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Post">
+    update post
+    set pId = #{pid,jdbcType=VARCHAR},
+      gwname = #{gwname,jdbcType=VARCHAR}
+    where gwid = #{gwid,jdbcType=INTEGER}
+  </update>
+</mapper>

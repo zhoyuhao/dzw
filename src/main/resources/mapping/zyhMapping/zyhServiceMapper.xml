@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zyh.zyhServiceMapper">
+  <resultMap id="BaseResultMap" type="com.accp.demo.pojo.Service">
+    <id column="wId" jdbcType="VARCHAR" property="wid" />
+    <result column="wname" jdbcType="VARCHAR" property="wname" />
+    <result column="wtype" jdbcType="VARCHAR" property="wtype" />
+    <result column="wjname" jdbcType="VARCHAR" property="wjname" />
+    <result column="wcarid" jdbcType="VARCHAR" property="wcarid" />
+    <result column="wphone" jdbcType="VARCHAR" property="wphone" />
+    <result column="wvipid" jdbcType="VARCHAR" property="wvipid" />
+    <result column="wstatic" jdbcType="INTEGER" property="wstatic" />
+    <result column="wsumprice" jdbcType="INTEGER" property="wsumprice" />
+    <result column="wleixi" jdbcType="INTEGER" property="wleixi" />
+    <result column="wstatdate" jdbcType="DATE" property="wstatdate" />
+    <result column="wenddate" jdbcType="DATE" property="wenddate" />
+    <result column="wpayment" jdbcType="INTEGER" property="wpayment" />
+    <result column="paymenttirm" jdbcType="DATE" property="paymenttirm" />
+    <result column="decide" jdbcType="REAL" property="decide" />
+    <result column="deductionmoney" jdbcType="REAL" property="deductionmoney" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    wId, wname, wtype, wjname, wcarid, wphone, wvipid, wstatic, wsumprice, wleixi, wstatdate, 
+    wenddate, wpayment, paymenttirm, decide, deductionmoney
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from service
+    where wId = #{wid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from service
+    where wId = #{wid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.demo.pojo.Service">
+    insert into service (wId, wname, wtype, 
+      wjname, wcarid, wphone, 
+      wvipid, wstatic, wsumprice, 
+      wleixi, wstatdate, wenddate, 
+      wpayment, paymenttirm, decide, 
+      deductionmoney)
+    values (#{wid,jdbcType=VARCHAR}, #{wname,jdbcType=VARCHAR}, #{wtype,jdbcType=VARCHAR}, 
+      #{wjname,jdbcType=VARCHAR}, #{wcarid,jdbcType=VARCHAR}, #{wphone,jdbcType=VARCHAR}, 
+      #{wvipid,jdbcType=VARCHAR}, #{wstatic,jdbcType=INTEGER}, #{wsumprice,jdbcType=INTEGER}, 
+      #{wleixi,jdbcType=INTEGER}, #{wstatdate,jdbcType=DATE}, #{wenddate,jdbcType=DATE}, 
+      #{wpayment,jdbcType=INTEGER}, #{paymenttirm,jdbcType=DATE}, #{decide,jdbcType=REAL}, 
+      #{deductionmoney,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.demo.pojo.Service">
+    insert into service
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        wId,
+      </if>
+      <if test="wname != null">
+        wname,
+      </if>
+      <if test="wtype != null">
+        wtype,
+      </if>
+      <if test="wjname != null">
+        wjname,
+      </if>
+      <if test="wcarid != null">
+        wcarid,
+      </if>
+      <if test="wphone != null">
+        wphone,
+      </if>
+      <if test="wvipid != null">
+        wvipid,
+      </if>
+      <if test="wstatic != null">
+        wstatic,
+      </if>
+      <if test="wsumprice != null">
+        wsumprice,
+      </if>
+      <if test="wleixi != null">
+        wleixi,
+      </if>
+      <if test="wstatdate != null">
+        wstatdate,
+      </if>
+      <if test="wenddate != null">
+        wenddate,
+      </if>
+      <if test="wpayment != null">
+        wpayment,
+      </if>
+      <if test="paymenttirm != null">
+        paymenttirm,
+      </if>
+      <if test="decide != null">
+        decide,
+      </if>
+      <if test="deductionmoney != null">
+        deductionmoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        #{wid,jdbcType=VARCHAR},
+      </if>
+      <if test="wname != null">
+        #{wname,jdbcType=VARCHAR},
+      </if>
+      <if test="wtype != null">
+        #{wtype,jdbcType=VARCHAR},
+      </if>
+      <if test="wjname != null">
+        #{wjname,jdbcType=VARCHAR},
+      </if>
+      <if test="wcarid != null">
+        #{wcarid,jdbcType=VARCHAR},
+      </if>
+      <if test="wphone != null">
+        #{wphone,jdbcType=VARCHAR},
+      </if>
+      <if test="wvipid != null">
+        #{wvipid,jdbcType=VARCHAR},
+      </if>
+      <if test="wstatic != null">
+        #{wstatic,jdbcType=INTEGER},
+      </if>
+      <if test="wsumprice != null">
+        #{wsumprice,jdbcType=INTEGER},
+      </if>
+      <if test="wleixi != null">
+        #{wleixi,jdbcType=INTEGER},
+      </if>
+      <if test="wstatdate != null">
+        #{wstatdate,jdbcType=DATE},
+      </if>
+      <if test="wenddate != null">
+        #{wenddate,jdbcType=DATE},
+      </if>
+      <if test="wpayment != null">
+        #{wpayment,jdbcType=INTEGER},
+      </if>
+      <if test="paymenttirm != null">
+        #{paymenttirm,jdbcType=DATE},
+      </if>
+      <if test="decide != null">
+        #{decide,jdbcType=REAL},
+      </if>
+      <if test="deductionmoney != null">
+        #{deductionmoney,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.demo.pojo.Service">
+    update service
+    <set>
+      <if test="wname != null">
+        wname = #{wname,jdbcType=VARCHAR},
+      </if>
+      <if test="wtype != null">
+        wtype = #{wtype,jdbcType=VARCHAR},
+      </if>
+      <if test="wjname != null">
+        wjname = #{wjname,jdbcType=VARCHAR},
+      </if>
+      <if test="wcarid != null">
+        wcarid = #{wcarid,jdbcType=VARCHAR},
+      </if>
+      <if test="wphone != null">
+        wphone = #{wphone,jdbcType=VARCHAR},
+      </if>
+      <if test="wvipid != null">
+        wvipid = #{wvipid,jdbcType=VARCHAR},
+      </if>
+      <if test="wstatic != null">
+        wstatic = #{wstatic,jdbcType=INTEGER},
+      </if>
+      <if test="wsumprice != null">
+        wsumprice = #{wsumprice,jdbcType=INTEGER},
+      </if>
+      <if test="wleixi != null">
+        wleixi = #{wleixi,jdbcType=INTEGER},
+      </if>
+      <if test="wstatdate != null">
+        wstatdate = #{wstatdate,jdbcType=DATE},
+      </if>
+      <if test="wenddate != null">
+        wenddate = #{wenddate,jdbcType=DATE},
+      </if>
+      <if test="wpayment != null">
+        wpayment = #{wpayment,jdbcType=INTEGER},
+      </if>
+      <if test="paymenttirm != null">
+        paymenttirm = #{paymenttirm,jdbcType=DATE},
+      </if>
+      <if test="decide != null">
+        decide = #{decide,jdbcType=REAL},
+      </if>
+      <if test="deductionmoney != null">
+        deductionmoney = #{deductionmoney,jdbcType=REAL},
+      </if>
+    </set>
+    where wId = #{wid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.demo.pojo.Service">
+    update service
+    set wname = #{wname,jdbcType=VARCHAR},
+      wtype = #{wtype,jdbcType=VARCHAR},
+      wjname = #{wjname,jdbcType=VARCHAR},
+      wcarid = #{wcarid,jdbcType=VARCHAR},
+      wphone = #{wphone,jdbcType=VARCHAR},
+      wvipid = #{wvipid,jdbcType=VARCHAR},
+      wstatic = #{wstatic,jdbcType=INTEGER},
+      wsumprice = #{wsumprice,jdbcType=INTEGER},
+      wleixi = #{wleixi,jdbcType=INTEGER},
+      wstatdate = #{wstatdate,jdbcType=DATE},
+      wenddate = #{wenddate,jdbcType=DATE},
+      wpayment = #{wpayment,jdbcType=INTEGER},
+      paymenttirm = #{paymenttirm,jdbcType=DATE},
+      decide = #{decide,jdbcType=REAL},
+      deductionmoney = #{deductionmoney,jdbcType=REAL}
+    where wId = #{wid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Service">
+    <id column="wId" jdbcType="VARCHAR" property="wid" />
+    <result column="wname" jdbcType="VARCHAR" property="wname" />
+    <result column="wtype" jdbcType="VARCHAR" property="wtype" />
+    <result column="wjname" jdbcType="VARCHAR" property="wjname" />
+    <result column="wcarid" jdbcType="VARCHAR" property="wcarid" />
+    <result column="wphone" jdbcType="VARCHAR" property="wphone" />
+    <result column="wvipid" jdbcType="VARCHAR" property="wvipid" />
+    <result column="wstatic" jdbcType="INTEGER" property="wstatic" />
+    <result column="wsumprice" jdbcType="INTEGER" property="wsumprice" />
+    <result column="wleixi" jdbcType="INTEGER" property="wleixi" />
+    <result column="wstatdate" jdbcType="DATE" property="wstatdate" />
+    <result column="wenddate" jdbcType="DATE" property="wenddate" />
+    <result column="wpayment" jdbcType="INTEGER" property="wpayment" />
+    <result column="paymenttirm" jdbcType="DATE" property="paymenttirm" />
+    <result column="decide" jdbcType="REAL" property="decide" />
+    <result column="deductionmoney" jdbcType="REAL" property="deductionmoney" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    wId, wname, wtype, wjname, wcarid, wphone, wvipid, wstatic, wsumprice, wleixi, wstatdate, 
+    wenddate, wpayment, paymenttirm, decide, deductionmoney
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from service
+    where wId = #{wid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from service
+    where wId = #{wid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Service">
+    insert into service (wId, wname, wtype, 
+      wjname, wcarid, wphone, 
+      wvipid, wstatic, wsumprice, 
+      wleixi, wstatdate, wenddate, 
+      wpayment, paymenttirm, decide, 
+      deductionmoney)
+    values (#{wid,jdbcType=VARCHAR}, #{wname,jdbcType=VARCHAR}, #{wtype,jdbcType=VARCHAR}, 
+      #{wjname,jdbcType=VARCHAR}, #{wcarid,jdbcType=VARCHAR}, #{wphone,jdbcType=VARCHAR}, 
+      #{wvipid,jdbcType=VARCHAR}, #{wstatic,jdbcType=INTEGER}, #{wsumprice,jdbcType=INTEGER}, 
+      #{wleixi,jdbcType=INTEGER}, #{wstatdate,jdbcType=DATE}, #{wenddate,jdbcType=DATE}, 
+      #{wpayment,jdbcType=INTEGER}, #{paymenttirm,jdbcType=DATE}, #{decide,jdbcType=REAL}, 
+      #{deductionmoney,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Service">
+    insert into service
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        wId,
+      </if>
+      <if test="wname != null">
+        wname,
+      </if>
+      <if test="wtype != null">
+        wtype,
+      </if>
+      <if test="wjname != null">
+        wjname,
+      </if>
+      <if test="wcarid != null">
+        wcarid,
+      </if>
+      <if test="wphone != null">
+        wphone,
+      </if>
+      <if test="wvipid != null">
+        wvipid,
+      </if>
+      <if test="wstatic != null">
+        wstatic,
+      </if>
+      <if test="wsumprice != null">
+        wsumprice,
+      </if>
+      <if test="wleixi != null">
+        wleixi,
+      </if>
+      <if test="wstatdate != null">
+        wstatdate,
+      </if>
+      <if test="wenddate != null">
+        wenddate,
+      </if>
+      <if test="wpayment != null">
+        wpayment,
+      </if>
+      <if test="paymenttirm != null">
+        paymenttirm,
+      </if>
+      <if test="decide != null">
+        decide,
+      </if>
+      <if test="deductionmoney != null">
+        deductionmoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        #{wid,jdbcType=VARCHAR},
+      </if>
+      <if test="wname != null">
+        #{wname,jdbcType=VARCHAR},
+      </if>
+      <if test="wtype != null">
+        #{wtype,jdbcType=VARCHAR},
+      </if>
+      <if test="wjname != null">
+        #{wjname,jdbcType=VARCHAR},
+      </if>
+      <if test="wcarid != null">
+        #{wcarid,jdbcType=VARCHAR},
+      </if>
+      <if test="wphone != null">
+        #{wphone,jdbcType=VARCHAR},
+      </if>
+      <if test="wvipid != null">
+        #{wvipid,jdbcType=VARCHAR},
+      </if>
+      <if test="wstatic != null">
+        #{wstatic,jdbcType=INTEGER},
+      </if>
+      <if test="wsumprice != null">
+        #{wsumprice,jdbcType=INTEGER},
+      </if>
+      <if test="wleixi != null">
+        #{wleixi,jdbcType=INTEGER},
+      </if>
+      <if test="wstatdate != null">
+        #{wstatdate,jdbcType=DATE},
+      </if>
+      <if test="wenddate != null">
+        #{wenddate,jdbcType=DATE},
+      </if>
+      <if test="wpayment != null">
+        #{wpayment,jdbcType=INTEGER},
+      </if>
+      <if test="paymenttirm != null">
+        #{paymenttirm,jdbcType=DATE},
+      </if>
+      <if test="decide != null">
+        #{decide,jdbcType=REAL},
+      </if>
+      <if test="deductionmoney != null">
+        #{deductionmoney,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Service">
+    update service
+    <set>
+      <if test="wname != null">
+        wname = #{wname,jdbcType=VARCHAR},
+      </if>
+      <if test="wtype != null">
+        wtype = #{wtype,jdbcType=VARCHAR},
+      </if>
+      <if test="wjname != null">
+        wjname = #{wjname,jdbcType=VARCHAR},
+      </if>
+      <if test="wcarid != null">
+        wcarid = #{wcarid,jdbcType=VARCHAR},
+      </if>
+      <if test="wphone != null">
+        wphone = #{wphone,jdbcType=VARCHAR},
+      </if>
+      <if test="wvipid != null">
+        wvipid = #{wvipid,jdbcType=VARCHAR},
+      </if>
+      <if test="wstatic != null">
+        wstatic = #{wstatic,jdbcType=INTEGER},
+      </if>
+      <if test="wsumprice != null">
+        wsumprice = #{wsumprice,jdbcType=INTEGER},
+      </if>
+      <if test="wleixi != null">
+        wleixi = #{wleixi,jdbcType=INTEGER},
+      </if>
+      <if test="wstatdate != null">
+        wstatdate = #{wstatdate,jdbcType=DATE},
+      </if>
+      <if test="wenddate != null">
+        wenddate = #{wenddate,jdbcType=DATE},
+      </if>
+      <if test="wpayment != null">
+        wpayment = #{wpayment,jdbcType=INTEGER},
+      </if>
+      <if test="paymenttirm != null">
+        paymenttirm = #{paymenttirm,jdbcType=DATE},
+      </if>
+      <if test="decide != null">
+        decide = #{decide,jdbcType=REAL},
+      </if>
+      <if test="deductionmoney != null">
+        deductionmoney = #{deductionmoney,jdbcType=REAL},
+      </if>
+    </set>
+    where wId = #{wid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Service">
+    update service
+    set wname = #{wname,jdbcType=VARCHAR},
+      wtype = #{wtype,jdbcType=VARCHAR},
+      wjname = #{wjname,jdbcType=VARCHAR},
+      wcarid = #{wcarid,jdbcType=VARCHAR},
+      wphone = #{wphone,jdbcType=VARCHAR},
+      wvipid = #{wvipid,jdbcType=VARCHAR},
+      wstatic = #{wstatic,jdbcType=INTEGER},
+      wsumprice = #{wsumprice,jdbcType=INTEGER},
+      wleixi = #{wleixi,jdbcType=INTEGER},
+      wstatdate = #{wstatdate,jdbcType=DATE},
+      wenddate = #{wenddate,jdbcType=DATE},
+      wpayment = #{wpayment,jdbcType=INTEGER},
+      paymenttirm = #{paymenttirm,jdbcType=DATE},
+      decide = #{decide,jdbcType=REAL},
+      deductionmoney = #{deductionmoney,jdbcType=REAL}
+    where wId = #{wid,jdbcType=VARCHAR}
+  </update>
+</mapper>
