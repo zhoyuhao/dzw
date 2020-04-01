@@ -21,7 +21,7 @@
      <result column="statucname"  property="statucname" />
      <collection property="list" column="wId" select="queryxiangxi"/>
   </resultMap>
-  <select id="queryxiangxi" resultType="com.accp.pojo.Servicedetailed">
+  <select id="queryxiangxi" resultType="com.accp.vo.zyh.zyhServicedetailed_vo">
   SELECT * FROM `servicedetailed` WHERE `wId`=#{wId}
   </select>
   <select id="queryStatucBy1Or2" resultMap="map1">
@@ -31,9 +31,36 @@ INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`)
 <if test="wcarid!=null">and se.`wcarid`=#{wcarid}</if>
 <if test="statdate!=null">and se.`wstatdate`&gt;=#{statdate} AND se.`wenddate` &lt;=#{enddate}</if>
 
-<if test="statuc!=null and statuc2!=null">and (se.`wstatic`=#{statuc} OR se.`wstatic`=#{statuc2}) </if>
-<if test="statuc!=null and statuc2==null">and se.`wstatic`=#{statuc} </if>
+<if test="statuc!=null and statuc2!=0">and (se.`wstatic`=#{statuc} OR se.`wstatic`=#{statuc2} or se.`wstatic`=11 or se.`wstatic`=10) </if>
+<if test="statuc!=null and statuc2==0">and se.`wstatic`=#{statuc} </if>
 </where>
 
   </select>
+  
+  
+  <update id="updateByWidToStatuc">
+  UPDATE `service` SET`wstatic`=#{statuc}
+  <if test="statuc==3">
+  ,wenddate=now() 
+  </if>
+   WHERE `wId`=#{wid}
+  </update>
+  
+  <!-- 客户返工添加维修单 -->
+  <insert id="serivceDetailedAdd">
+  INSERT INTO `dzw`.`servicedetailed` (
+  `sdid`,
+  `wId`,
+  `sdname`,
+  `sdprice`,
+  `sdnumber`,
+  `dprice`
+) 
+VALUE
+<foreach collection="list" separator="," item="temp">
+(0, #{temp.wid},#{temp.sdname}, #{temp.sdprice},#{temp.sdnumber}, #{temp.dprice}) 
+</foreach>
+  
+  </insert>
+   
 </mapper>

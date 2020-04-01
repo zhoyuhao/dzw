@@ -9,8 +9,12 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.accp.dao.zyh.*;
 import com.accp.dao.zyh.zyhServiceMapper;
+import com.accp.pojo.Goods;
+import com.accp.pojo.Servicedetailed;
 import com.accp.vo.zyh.zyhService_vo;
+import com.accp.vo.zyh.zyhServicedetailed_vo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -20,15 +24,46 @@ public class zyhServiceBiz {
 		@Autowired
 		private zyhServiceMapper dao;
 		
+		@Autowired
+		private zyhGoodsBiz zyhGoodsBiz;
 
+		/**查看有几种车型的商品
+		 * 
+		 * @return
+		 */
+		public List<Goods> queryByCarType(){
+			return zyhGoodsBiz.queryByCarType();
+		}
+		
+
+		/**客户返工添加项目
+		 * 
+		 * @param list
+		 * @return
+		 */
+		public int serivceDetailedAdd(List<zyhServicedetailed_vo> list) {
+			return dao.serivceDetailedAdd(list);
+		}
+		
 		/**查看为维修单的状态
 		 * 
 		 * @return
 		 */
 		public PageInfo<zyhService_vo> queryStatucBy1Or2(String wcarid,String statdate,String enddate,
-															Integer n,Integer s,Integer statuc,Integer statuc2){
+														Integer n,Integer s,Integer statuc,Integer statuc2){
+		
 			PageHelper.startPage(n, s);
 			return new PageInfo<zyhService_vo>(dao.queryStatucBy1Or2(wcarid,statdate,enddate,statuc, statuc2)) ;
 		}
-	
+		
+		/**根据id修改维修状态
+		 * 
+		 * @param statuc
+		 * @param id
+		 * @return
+		 */
+		@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,readOnly = false)
+		public int updateByWidToStatuc(Integer statuc,String id) {
+			return dao.updateByWidToStatuc(statuc, id);
+		}
 }

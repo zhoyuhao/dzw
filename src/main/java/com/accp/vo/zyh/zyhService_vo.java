@@ -6,8 +6,13 @@ import com.accp.pojo.Service;
 import com.accp.pojo.Servicedetailed;
 
 public class zyhService_vo extends Service{
+			
+	
+			
 			private String statucname;
+			
 			private List<Servicedetailed> list;
+			
 			public String getStatucname() {
 				return statucname;
 			}

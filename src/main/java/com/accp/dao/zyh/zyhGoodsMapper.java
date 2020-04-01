@@ -1,17 +1,23 @@
 package com.accp.dao.zyh;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.Goods;
 
 public interface zyhGoodsMapper {
-    int deleteByPrimaryKey(Integer gid);
-
-    int insert(Goods record);
-
-    int insertSelective(Goods record);
-
-    Goods selectByPrimaryKey(Integer gid);
-
-    int updateByPrimaryKeySelective(Goods record);
-
-    int updateByPrimaryKey(Goods record);
+    
+	/**查看有几种车型的商品
+	 * 
+	 * @return
+	 */
+	List<Goods> queryByCarType();
+	
+	/***根据车类型分类商品
+	 * 
+	 * @param carname
+	 * @return
+	 */
+	List<Goods> queryByCarTypeName(@Param("carname")String carname);
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhGoodsMapper">
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Goods">
+  <resultMap id="BaseResultMap" type="com.accp.vo.zyh.zyhGoods_vo">
     <id column="gid" jdbcType="INTEGER" property="gid" />
     <result column="ghsId" jdbcType="INTEGER" property="ghsid" />
     <result column="gname" jdbcType="VARCHAR" property="gname" />
@@ -12,6 +12,14 @@
     <result column="gtype" jdbcType="VARCHAR" property="gtype" />
     <result column="gdescribe" jdbcType="VARCHAR" property="gdescribe" />
     <result column="gnumber" jdbcType="INTEGER" property="gnumber" />
+    <collection property="list" column="gsuitable" select="queryByCarTypeName"/>
   </resultMap>
+  <select id="queryByCarTypeName" resultType="com.accp.pojo.Goods">
+ 	SELECT * FROM `goods` WHERE `gsuitable`=#{gsuitable}
+ 	</select>
+  <select id="queryByCarType" resultMap="BaseResultMap">
+  SELECT * FROM `goods` GROUP BY gsuitable
+  </select>
   
+
 </mapper>
