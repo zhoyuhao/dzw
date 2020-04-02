@@ -63,4 +63,15 @@ public class zyhCustomerBiz {
 			throw new RuntimeException(e);
 		}
 	}
+	
+
+	/***根据车辆id批量删除
+	 * 
+	 * @param list
+	 * @return
+	 */
+	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,readOnly = false)
+	public int deleteByCarId(List<Integer> list) {
+		return dao.deleteByCarId(list);
+	}
 }

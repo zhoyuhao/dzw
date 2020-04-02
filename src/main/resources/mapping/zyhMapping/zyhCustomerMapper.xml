@@ -150,4 +150,10 @@ VALUES
 	DELETE FROM `customercar` WHERE `cidk`=#{id};
 	DELETE FROM `customer` WHERE `cidk`=#{id};
   </delete>
+  
+  <delete id="deleteByCarId">
+  DELETE	 FROM `customercar` WHERE `carid` in (
+  <foreach collection="list" separator="," item="temp">#{temp}</foreach>
+  )
+  </delete>
 </mapper>

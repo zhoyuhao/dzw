@@ -69,4 +69,14 @@ public class zyhCustomerBAction {
 		return 0;
 	}
 
+	/***根据车辆id批量删除
+	 * 
+	 * @param list
+	 * @return
+	 */
+	@DeleteMapping("deleteByCarId")
+	public int deleteByCarId(@RequestBody List<Integer> list) {
+		System.out.println(list.size());
+		return biz.deleteByCarId(list);
+	}
 }

@@ -36,4 +36,11 @@ public interface zyhCustomerMapper {
 	 * @return
 	 */
 	int deleteCar(@Param("id")String id);
+	
+	/***根据车辆id批量删除
+	 * 
+	 * @param list
+	 * @return
+	 */
+	int deleteByCarId(@Param("list")List<Integer> list);
 }

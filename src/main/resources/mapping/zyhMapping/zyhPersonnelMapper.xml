@@ -29,7 +29,7 @@ WHERE u.`pId`=#{pId}
 SELECT p.*, ro.`cname`,po.`gwname`  FROM `personnel` p 
 INNER JOIN `uersandrole` uz ON (uz.`pId`=p.`pId`)
 INNER JOIN `role` ro ON (ro.`cid`=uz.`cid`)
-INNER JOIN `post` po ON (po.`gwid`=p.`ppost`)
+INNER JOIN `post` po ON (po.`gwid`=p.`pId`)
 WHERE p.`pname`=#{name} AND p.`ppwd`=#{pwd}
  </select>
 </mapper>
