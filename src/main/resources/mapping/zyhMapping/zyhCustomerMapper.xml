@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhCustomerMapper">
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Customer">
+  <resultMap id="map1" type="com.accp.vo.zyh.zyhCustomer_vo">
     <id column="cidk" jdbcType="VARCHAR" property="cidk" />
     <result column="cnamek" jdbcType="VARCHAR" property="cnamek" />
     <result column="caddressk" jdbcType="VARCHAR" property="caddressk" />
@@ -13,6 +13,141 @@
     <result column="cdoublerk" jdbcType="INTEGER" property="cdoublerk" />
     <result column="cmoneyk" jdbcType="REAL" property="cmoneyk" />
     <result column="cgrade" jdbcType="INTEGER" property="cgrade" />
+    <collection property="list" column="cidk" select="getByCar"/>
   </resultMap>
   
+  <!--客户汽车维修记录  -->
+ <resultMap id="carxiangxi" type="com.accp.vo.zyh.zyhService_vo">
+    <id column="wId" jdbcType="VARCHAR" property="wid" />
+    <result column="wname" jdbcType="VARCHAR" property="wname" />
+    <result column="wtype" jdbcType="VARCHAR" property="wtype" />
+    <result column="wjname" jdbcType="VARCHAR" property="wjname" />
+    <result column="wcarid" jdbcType="VARCHAR" property="wcarid" />
+    <result column="wphone" jdbcType="VARCHAR" property="wphone" />
+    <result column="wvipid" jdbcType="VARCHAR" property="wvipid" />
+    <result column="wstatic" jdbcType="INTEGER" property="wstatic" />
+    <result column="wsumprice" jdbcType="INTEGER" property="wsumprice" />
+    <result column="wleixi" jdbcType="INTEGER" property="wleixi" />
+    <result column="wstatdate" jdbcType="DATE" property="wstatdate" />
+    <result column="wenddate" jdbcType="DATE" property="wenddate" />
+    <result column="wpayment" jdbcType="INTEGER" property="wpayment" />
+    <result column="paymenttirm" jdbcType="DATE" property="paymenttirm" />
+    <result column="decide" jdbcType="REAL" property="decide" />
+    <result column="deductionmoney" jdbcType="REAL" property="deductionmoney" />
+     <result column="statucname"  property="statucname" />
+     <collection property="list" column="wId" select="queryxiangxi"/>
+  </resultMap>
+    <select id="queryxiangxi" resultType="com.accp.vo.zyh.zyhServicedetailed_vo">
+  SELECT * FROM `servicedetailed` WHERE `wId`=#{wId}
+  </select>
+  
+   <resultMap id="carMap1" type="com.accp.vo.zyh.zyhCustomerCar_vo">
+    <id column="carid" jdbcType="INTEGER" property="carid" />
+    <result column="cidk" jdbcType="VARCHAR" property="cidk" />
+    <result column="carlicenceplate" jdbcType="VARCHAR" property="carlicenceplate" />
+    <result column="carbrand" jdbcType="VARCHAR" property="carbrand" />
+    <result column="carcolor" jdbcType="VARCHAR" property="carcolor" />
+    <result column="carconfigure" jdbcType="VARCHAR" property="carconfigure" />
+    <result column="carlocality" jdbcType="VARCHAR" property="carlocality" />
+    <result column="carmodel" jdbcType="VARCHAR" property="carmodel" />
+    <collection property="list" column="carlicenceplate" select="queryCarWieXiu"/>
+  </resultMap>
+  
+  <select id="queryCarWieXiu" resultMap="carxiangxi">
+  SELECT * FROM `service` WHERE `wcarid`=#{carlicenceplate}
+  </select>
+  
+
+  <select id="getByCar" resultMap="carMap1">
+  SELECT * FROM `customercar` WHERE cidk=#{cidk}
+  </select>
+  <select id="queryAllOrByName" resultMap="map1">
+  SELECT * FROM `customer`
+  where 1=1
+  <if test="name!=null"> and `cnamek` like '%${name}%'</if>
+  </select>
+  
+  <insert id="carAdd">
+  INSERT INTO `dzw`.`customercar` (
+  `cidk`,
+  `carlicenceplate`,
+  `carbrand`,
+  `carcolor`,
+  `carconfigure`,
+  `carlocality`,
+  `carmodel`
+) 
+VALUES
+<foreach collection="p" separator="," item="temp">  (
+    #{temp.cidk},
+    #{temp.carlicenceplate},
+    #{temp.carbrand},
+    #{temp.carcolor},
+    #{temp.carconfigure},
+    #{temp.carlocality},
+    #{temp.carmodel}
+  ) 
+  </foreach>
+
+  
+  </insert>
+  
+  
+  <insert id="khuAndCar">
+  
+  
+INSERT INTO `dzw`.`customer` (
+  `cidk`,
+  `cnamek`,
+  `caddressk`,
+  `csexk`,
+  `cphonek`,
+  `cidnumberk`,
+  `ctypek`,
+  `ckahaok`,
+  `cdoublerk`,
+  `cmoneyk`,
+  `cgrade`
+) 
+VALUES
+  (
+    #{p.cidk},
+    #{p.cnamek},
+    #{p.caddressk},
+   	#{p.csexk},
+    #{p.cphonek},
+    #{p.cidnumberk},
+    #{p.ctypek},
+    #{p.ckahaok},
+    #{p.cdoublerk},
+    #{p.cmoneyk},
+    #{p.cgrade}
+  ) ;
+  
+    INSERT INTO `dzw`.`customercar` (
+  `cidk`,
+  `carlicenceplate`,
+  `carbrand`,
+  `carcolor`,
+  `carconfigure`,
+  `carlocality`,
+  `carmodel`
+) 
+VALUES
+<foreach collection="p.list" separator="," item="temp">  (
+   #{p.cidk},
+    #{temp.carlicenceplate},
+    #{temp.carbrand},
+    #{temp.carcolor},
+    #{temp.carconfigure},
+    #{temp.carlocality},
+    #{temp.carmodel}
+  ) 
+  </foreach>
+  </insert>
+  
+  <delete id="deleteCar">
+	DELETE FROM `customercar` WHERE `cidk`=#{id};
+	DELETE FROM `customer` WHERE `cidk`=#{id};
+  </delete>
 </mapper>

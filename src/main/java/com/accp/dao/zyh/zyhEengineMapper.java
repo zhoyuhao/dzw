@@ -1,17 +1,8 @@
 package com.accp.dao.zyh;
 
 import com.accp.pojo.Eengine;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface zyhEengineMapper {
-    int deleteByPrimaryKey(Integer eid);
-
-    int insert(Eengine record);
-
-    int insertSelective(Eengine record);
-
-    Eengine selectByPrimaryKey(Integer eid);
-
-    int updateByPrimaryKeySelective(Eengine record);
-
-    int updateByPrimaryKey(Eengine record);
+public interface zyhEengineMapper extends BaseMapper<Eengine>{
+ 
 }

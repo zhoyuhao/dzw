@@ -2,164 +2,177 @@ package com.accp.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("Service")
 public class Service {
-    private String wid;
 
-    private String wname;
+	private String wid;// 维修id
 
-    private String wtype;
+	private String wname;// 客户姓名
 
-    private String wjname;
+	private String wtype;// 业务类型
 
-    private String wcarid;
+	private String wjname;// 接车人
 
-    private String wphone;
+	private String wcarid;// 车牌号
 
-    private String wvipid;
+	private String wphone;// 客户号码
 
-    private Integer wstatic;
+	private String wvipid;// 会员卡号
 
-    private Integer wsumprice;
+	private Integer wstatic;// 维修状态
 
-    private Integer wleixi;
+	private Integer wsumprice;// 维修总价
 
-    private Date wstatdate;
+	private Integer wleixi;// 维修类型
 
-    private Date wenddate;
+	private Date wstatdate;// 开始时间
 
-    private Integer wpayment;
+	private Date wenddate;// 结束时间
 
-    private Date paymenttirm;
+	private Integer wpayment;// 付款类型
 
-    private Float decide;
+	private Date paymenttirm;// 付款时间
 
-    private Float deductionmoney;
+	private Float decide;// 是否抵扣
 
-    public String getWid() {
-        return wid;
-    }
+	private Float deductionmoney;// 抵扣金额
 
-    public void setWid(String wid) {
-        this.wid = wid == null ? null : wid.trim();
-    }
+	@Override
+	public String toString() {
+		return "Service [wid=" + wid + ", wname=" + wname + ", wtype=" + wtype + ", wjname=" + wjname + ", wcarid="
+				+ wcarid + ", wphone=" + wphone + ", wvipid=" + wvipid + ", wstatic=" + wstatic + ", wsumprice="
+				+ wsumprice + ", wleixi=" + wleixi + ", wstatdate=" + wstatdate + ", wenddate=" + wenddate
+				+ ", wpayment=" + wpayment + ", paymenttirm=" + paymenttirm + ", decide=" + decide + ", deductionmoney="
+				+ deductionmoney + "]";
+	}
 
-    public String getWname() {
-        return wname;
-    }
+	public String getWid() {
+		return wid;
+	}
 
-    public void setWname(String wname) {
-        this.wname = wname == null ? null : wname.trim();
-    }
+	public void setWid(String wid) {
+		this.wid = wid == null ? null : wid.trim();
+	}
 
-    public String getWtype() {
-        return wtype;
-    }
+	public String getWname() {
+		return wname;
+	}
 
-    public void setWtype(String wtype) {
-        this.wtype = wtype == null ? null : wtype.trim();
-    }
+	public void setWname(String wname) {
+		this.wname = wname == null ? null : wname.trim();
+	}
 
-    public String getWjname() {
-        return wjname;
-    }
+	public String getWtype() {
+		return wtype;
+	}
 
-    public void setWjname(String wjname) {
-        this.wjname = wjname == null ? null : wjname.trim();
-    }
+	public void setWtype(String wtype) {
+		this.wtype = wtype == null ? null : wtype.trim();
+	}
 
-    public String getWcarid() {
-        return wcarid;
-    }
+	public String getWjname() {
+		return wjname;
+	}
 
-    public void setWcarid(String wcarid) {
-        this.wcarid = wcarid == null ? null : wcarid.trim();
-    }
+	public void setWjname(String wjname) {
+		this.wjname = wjname == null ? null : wjname.trim();
+	}
 
-    public String getWphone() {
-        return wphone;
-    }
+	public String getWcarid() {
+		return wcarid;
+	}
 
-    public void setWphone(String wphone) {
-        this.wphone = wphone == null ? null : wphone.trim();
-    }
+	public void setWcarid(String wcarid) {
+		this.wcarid = wcarid == null ? null : wcarid.trim();
+	}
 
-    public String getWvipid() {
-        return wvipid;
-    }
+	public String getWphone() {
+		return wphone;
+	}
 
-    public void setWvipid(String wvipid) {
-        this.wvipid = wvipid == null ? null : wvipid.trim();
-    }
+	public void setWphone(String wphone) {
+		this.wphone = wphone == null ? null : wphone.trim();
+	}
 
-    public Integer getWstatic() {
-        return wstatic;
-    }
+	public String getWvipid() {
+		return wvipid;
+	}
 
-    public void setWstatic(Integer wstatic) {
-        this.wstatic = wstatic;
-    }
+	public void setWvipid(String wvipid) {
+		this.wvipid = wvipid == null ? null : wvipid.trim();
+	}
 
-    public Integer getWsumprice() {
-        return wsumprice;
-    }
+	public Integer getWstatic() {
+		return wstatic;
+	}
 
-    public void setWsumprice(Integer wsumprice) {
-        this.wsumprice = wsumprice;
-    }
+	public void setWstatic(Integer wstatic) {
+		this.wstatic = wstatic;
+	}
 
-    public Integer getWleixi() {
-        return wleixi;
-    }
+	public Integer getWsumprice() {
+		return wsumprice;
+	}
 
-    public void setWleixi(Integer wleixi) {
-        this.wleixi = wleixi;
-    }
+	public void setWsumprice(Integer wsumprice) {
+		this.wsumprice = wsumprice;
+	}
 
-    public Date getWstatdate() {
-        return wstatdate;
-    }
+	public Integer getWleixi() {
+		return wleixi;
+	}
 
-    public void setWstatdate(Date wstatdate) {
-        this.wstatdate = wstatdate;
-    }
+	public void setWleixi(Integer wleixi) {
+		this.wleixi = wleixi;
+	}
 
-    public Date getWenddate() {
-        return wenddate;
-    }
+	public Date getWstatdate() {
+		return wstatdate;
+	}
 
-    public void setWenddate(Date wenddate) {
-        this.wenddate = wenddate;
-    }
+	public void setWstatdate(Date wstatdate) {
+		this.wstatdate = wstatdate;
+	}
 
-    public Integer getWpayment() {
-        return wpayment;
-    }
+	public Date getWenddate() {
+		return wenddate;
+	}
 
-    public void setWpayment(Integer wpayment) {
-        this.wpayment = wpayment;
-    }
+	public void setWenddate(Date wenddate) {
+		this.wenddate = wenddate;
+	}
 
-    public Date getPaymenttirm() {
-        return paymenttirm;
-    }
+	public Integer getWpayment() {
+		return wpayment;
+	}
 
-    public void setPaymenttirm(Date paymenttirm) {
-        this.paymenttirm = paymenttirm;
-    }
+	public void setWpayment(Integer wpayment) {
+		this.wpayment = wpayment;
+	}
 
-    public Float getDecide() {
-        return decide;
-    }
+	public Date getPaymenttirm() {
+		return paymenttirm;
+	}
 
-    public void setDecide(Float decide) {
-        this.decide = decide;
-    }
+	public void setPaymenttirm(Date paymenttirm) {
+		this.paymenttirm = paymenttirm;
+	}
 
-    public Float getDeductionmoney() {
-        return deductionmoney;
-    }
+	public Float getDecide() {
+		return decide;
+	}
 
-    public void setDeductionmoney(Float deductionmoney) {
-        this.deductionmoney = deductionmoney;
-    }
+	public void setDecide(Float decide) {
+		this.decide = decide;
+	}
+
+	public Float getDeductionmoney() {
+		return deductionmoney;
+	}
+
+	public void setDeductionmoney(Float deductionmoney) {
+		this.deductionmoney = deductionmoney;
+	}
 }
