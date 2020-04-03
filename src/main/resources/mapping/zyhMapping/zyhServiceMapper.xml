@@ -12,21 +12,28 @@
     <result column="wstatic" jdbcType="INTEGER" property="wstatic" />
     <result column="wsumprice" jdbcType="INTEGER" property="wsumprice" />
     <result column="wleixi" jdbcType="INTEGER" property="wleixi" />
-    <result column="wstatdate" jdbcType="DATE" property="wstatdate" />
-    <result column="wenddate" jdbcType="DATE" property="wenddate" />
+    <result column="wstatdate" property="wstatdate" />
+    <result column="wenddate"  property="wenddate" />
     <result column="wpayment" jdbcType="INTEGER" property="wpayment" />
     <result column="paymenttirm" jdbcType="DATE" property="paymenttirm" />
     <result column="decide" jdbcType="REAL" property="decide" />
     <result column="deductionmoney" jdbcType="REAL" property="deductionmoney" />
      <result column="statucname"  property="statucname" />
+     <result column="bzname"  property="bzname" />
+     <result column="type"  property="type" />
+     <result column="hmoney"  property="hmoney" />
      <collection property="list" column="wId" select="queryxiangxi"/>
   </resultMap>
   <select id="queryxiangxi" resultType="com.accp.vo.zyh.zyhServicedetailed_vo">
   SELECT * FROM `servicedetailed` WHERE `wId`=#{wId}
   </select>
   <select id="queryStatucBy1Or2" resultMap="map1">
-  SELECT * FROM `service` se
+<!--   SELECT * FROM `service` se
+INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`)  -->
+SELECT se.*,s.*,w.`bzname` ,w.`hmoney`,w.`type` FROM `service` se
 INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`) 
+INNER JOIN `personnel` p ON(p.`pname`=se.`wjname`)
+INNER JOIN `workergroup` w ON(w.`bzId`=p.`bzId`)
 <where>
 <if test="wcarid!=null">and se.`wcarid`=#{wcarid}</if>
 <if test="statdate!=null">and se.`wstatdate`&gt;=#{statdate} AND se.`wenddate` &lt;=#{enddate}</if>
