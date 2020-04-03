@@ -6,8 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.*;
 import com.accp.vo.zyh.*;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface zyhRoleMapper {
+public interface zyhRoleMapper extends BaseMapper<Role>{
  
 	/**查看所有 角色 的权限和 用角色的用户
 	 * 

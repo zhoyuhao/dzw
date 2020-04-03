@@ -46,7 +46,7 @@ WHERE u.`pId`=#{pId}
    SELECT p.*,po.`gwname` as gangwei,r.`cname` as juesename ,r.`cid` as jid FROM `personnel` p
  INNER JOIN `uersandrole` u ON(u.`pId`=p.`pId`)
  INNER JOIN `role` r ON(r.`cid`=u.`cid`)
- INNER JOIN `post` po ON(po.`gwid`=p.`pId`)
+ INNER JOIN `post` po ON(po.`pId`=p.`ppost`)
  WHERE r.`cid`=#{id}
  
   </select>

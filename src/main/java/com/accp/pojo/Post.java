@@ -1,9 +1,15 @@
 package com.accp.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("post")
 public class Post {
+	@TableId(type = IdType.AUTO,value = "pid")
     private String gwid;
 
-    private String pid;
+    private Integer pid;
 
     private String gwname;
 
@@ -15,12 +21,12 @@ public class Post {
         this.gwid = gwid;
     }
 
-    public String getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
+    public void setPid(Integer pid) {
+        this.pid =pid;
     }
 
     public String getGwname() {

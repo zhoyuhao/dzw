@@ -4,8 +4,29 @@ public class Workergroup {
     private Integer bzid;
 
     private String bzname;
+    
+    private Float hmoney;
+    
+    private Integer type;
 
-    public Integer getBzid() {
+    
+    public Float getHmoney() {
+		return hmoney;
+	}
+
+	public void setHmoney(Float hmoney) {
+		this.hmoney = hmoney;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public Integer getBzid() {
         return bzid;
     }
 

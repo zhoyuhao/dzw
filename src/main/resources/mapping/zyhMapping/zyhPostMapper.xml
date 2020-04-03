@@ -7,4 +7,11 @@
     <result column="gwname" jdbcType="VARCHAR" property="gwname" />
   </resultMap>
   
+  <select id="selectPersonnel" resultType="integer">
+  SELECT COUNT(*) FROM `personnel` WHERE `ppost`=#{postOrRole}
+  </select>
+  
+  <select id="selectUersandrole" resultType="integer">
+  SELECT COUNT(*) FROM `uersandrole` WHERE cid=#{id};
+  </select>
 </mapper>
