@@ -1,5 +1,7 @@
 package com.accp.biz.yld;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.yld.artisanDao;
 import com.accp.pojo.Personnel;
+import com.accp.pojo.Workergroup;
 import com.accp.vo.yld.artisanVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -23,37 +26,43 @@ public class artisanBiz {
      * 查询所有员工信息并分页
      * @param c	当前页
      * @param s	数据量
+     * @param bzid 
+     * @param name 
      * @return
      */
-    public PageInfo<artisanVo> queryAll(int c, int s){
+    public PageInfo<artisanVo> queryAll(int c, int s, Integer bzid, String name){
 	PageHelper.startPage(c,s);
-	return new PageInfo<artisanVo>(dao.queryAll());
+	return new PageInfo<artisanVo>(dao.queryAll(bzid, name));
     }
     
     /**
-     * 新增员工
-     * @param entity
+     * 
+     * @param id 编号
      * @return
      */
-    public int insertArtisan(Personnel entity) {
-	return dao.insert(entity);
-    }
-    
-    /**
-     * 修改员工信息
-     * @param entity 员工实体
-     * @return
-     */
-    public int modifyArtisan(Personnel entity) {
-	return dao.updateById(entity);
-    }
-    
-    /**
-     * 删除员工信息
-     * @param id 员工编号
-     * @return
-     */
+    @Transactional(isolation = Isolation.READ_COMMITTED,propagation = Propagation.REQUIRED,readOnly = false)
     public int removeArtisan(String id) {
 	return dao.deleteById(id);
+    }
+    
+    /**
+     *  查询最编号
+     * @return
+     */
+    public Long selectMaxId() {
+	return dao.queryMaxId();
+    }
+    
+    /**
+     * 查询所有班组信息
+     * @param c 
+     * @param s 
+     * @param name 
+     * @param name 
+     * @return
+     */
+    public PageInfo<Workergroup> queryAllWorkerGroup(int c, int s, String name){
+	PageHelper.startPage(c,s);
+	return new PageInfo<Workergroup>(dao.queryAllWorkerGroup(name));
     }
 }

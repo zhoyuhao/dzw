@@ -1,19 +1,25 @@
 package com.accp.action.yld;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accp.biz.yld.aritsanGroupBiz;
+import com.accp.biz.yld.artisanGroupBiz;
+import com.accp.biz.yld.workerBiz;
 import com.accp.biz.yld.artisanBiz;
 import com.accp.pojo.Personnel;
 import com.accp.pojo.Workergroup;
 import com.accp.vo.yld.artisanGroupVo;
 import com.accp.vo.yld.artisanVo;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -23,69 +29,37 @@ public class yldArtisanAction {
     @Autowired
     private artisanBiz abiz;
     @Autowired
-    private aritsanGroupBiz agbiz;
+    private artisanGroupBiz agbiz;
+    @Autowired
+    private workerBiz wbiz;
     
     //分页查询技工
     @GetMapping("/queryartisan")
-    public PageInfo<artisanVo> queryartisan() {
-	return abiz.queryAll(1, 4);
+    public PageInfo<artisanVo> queryartisan(Integer c, Integer bzid, String name) {
+	return abiz.queryAll(c, 4, bzid, name);
     }
     
     //分页查询技工班组
     @GetMapping("/queryartisangroup")
-    public PageInfo<artisanGroupVo> queryartisanGroup() {
-	return agbiz.queryAll(1, 4);
+    public PageInfo<artisanGroupVo> queryartisanGroup(Integer c) {
+	return agbiz.queryAll(c, 4);
+    }
+
+    //分页查询所有班组和技工星级
+    @GetMapping("/queryPageWork")
+    public PageInfo<Workergroup> queryAllWorkerGroupTogglePage(int page, String name){
+	return abiz.queryAllWorkerGroup(page, 4, name);
+    }
+    //查询所有班组和技工星级
+    @GetMapping("/queryWork")
+    public List<Workergroup> queryAllWorkerGroup(){
+	return wbiz.queryAll();
     }
     
-    //添加技工
-    @PostMapping("/addartisan")
-    public String insertArtisan(Personnel entity) {
-	if(abiz.insertArtisan(entity)>0) {
-	    return "ok";
-	}
-	return "no";
-    }
-    
-    //添加技工组
-    @PostMapping("/addartisangroup")
-    public String insertArtisanGroup(Workergroup entity) {
-	if (agbiz.insertAgroup(entity)>0) {
-	    return "ok";
-	}
-	return "no";
-    }
-    
-    //删除技工
-    @DeleteMapping("/removeartisan")
-    public String removeArtisan(String id) {
-	if (abiz.removeArtisan(id)>0) {
-	    return "ok";
-	}
-	return "no";
-    }
-    
-    //删除技工班组
-    @DeleteMapping("/removeartisangroup")
-    public String removeArtisanGroup(String id) {
-	if (agbiz.removeAgroup(id)>0) {
-	    return "ok";
-	}
-	return "no";
-    }
-    
-    //修改技工
-    @PutMapping("/updateartisan")
-    public String modifyArtisan(Personnel entity) {
-	if (abiz.modifyArtisan(entity)>0) {
-	    return "ok";
-	}
-	return "no";
-    }
-    
-    //修改技工
-    @PutMapping("/updateartisangroup")
-    public String modifyArtisanGroup(Workergroup entity) {
-	if (agbiz.modifyAgroup(entity)>0) {
+    //添加技工星级
+    @PostMapping("/insertewgroup")
+    public String insertEmpWorkerGroup(@RequestBody Workergroup entity) {
+	if(wbiz.insertWorkerGroup(entity) > 0) {
 	    return "ok";
 	}
 	return "no";

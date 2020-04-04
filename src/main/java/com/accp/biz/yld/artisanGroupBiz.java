@@ -14,7 +14,7 @@ import com.github.pagehelper.PageInfo;
 
 @Service
 @Transactional(isolation = Isolation.READ_COMMITTED,propagation = Propagation.SUPPORTS,readOnly = true)
-public class aritsanGroupBiz {
+public class artisanGroupBiz {
 
     @Autowired
     private artisanGroupDao dao;
