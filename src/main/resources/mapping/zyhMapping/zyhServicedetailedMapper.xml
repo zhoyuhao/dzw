@@ -6,7 +6,7 @@
     <result column="wId" jdbcType="VARCHAR" property="wid" />
     <result column="sdname" jdbcType="VARCHAR" property="sdname" />
     <result column="sdprice" jdbcType="REAL" property="sdprice" />
-    <result column="sdnumber" jdbcType="INTEGER" property="sdnumber" />
+    <result column="sdnumber" property="sdnumber" />
   </resultMap>
  
 </mapper>

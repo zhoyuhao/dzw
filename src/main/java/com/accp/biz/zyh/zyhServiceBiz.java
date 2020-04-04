@@ -63,7 +63,7 @@ public class zyhServiceBiz {
 		 * @return
 		 */
 		@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,readOnly = false)
-		public int updateByWidToStatuc(Integer statuc,String id) {
-			return dao.updateByWidToStatuc(statuc, id);
+		public int updateByWidToStatuc(Integer statuc,String id,String date,Float gs,Integer gsf) {
+			return dao.updateByWidToStatuc(statuc, id,date,gs,gsf);
 		}
 }
