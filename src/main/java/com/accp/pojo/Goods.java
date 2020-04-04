@@ -1,6 +1,7 @@
 package com.accp.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Goods {
     private Integer gid;
@@ -22,8 +23,10 @@ public class Goods {
     private String gdescribe;
 
     private Integer gnumber;
+    
+   
 
-    public Integer getGid() {
+	public Integer getGid() {
         return gid;
     }
 
@@ -102,4 +105,6 @@ public class Goods {
     public void setGnumber(Integer gnumber) {
         this.gnumber = gnumber;
     }
+    
+    
 }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.accp.biz.lc.lcGoodsBiz;
 import com.accp.biz.zyh.ceshibiz;
 
 @SpringBootTest
@@ -13,17 +14,17 @@ class DzwApplicationTests {
 	 * 
 	 */
 	
-	@Autowired 
+	@Autowired
+	private lcGoodsBiz biz;
 	
-	private ceshibiz biz;
+	
+	
 
 	@Test
 	void contextLoads() {
+		biz.querybyid(123);
 	}
 	
 	
-	@Test
-	public void ceshi() {
-		System.out.println(biz.ceshi());
-	}
+	
 }
