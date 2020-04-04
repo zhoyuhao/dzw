@@ -24,7 +24,8 @@ public interface zyhServiceMapper {
 	 * @param id
 	 * @return
 	 */
-	int updateByWidToStatuc(@Param("statuc")Integer statuc,@Param("wid")String wid);
+	int updateByWidToStatuc(@Param("statuc")Integer statuc,@Param("wid")String wid,
+											@Param("date")String date,@Param("gs")Float gs,@Param("gsf")Integer gsf);
 	
 	/**客户返工添加项目
 	 * 

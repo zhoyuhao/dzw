@@ -39,9 +39,10 @@ public class zyhServiceAction {
 	 * @param id
 	 * @return
 	 */
-	@PutMapping("updateByWidToStatuc/{statuc}/{id}")
-	public int updateByWidToStatuc(@PathVariable Integer statuc,@PathVariable String id) {
-		return biz.updateByWidToStatuc(statuc, id);
+	@PutMapping("updateByWidToStatuc/{statuc}/{id}/{date}/{gs}/{gsf}")
+	public int updateByWidToStatuc(@PathVariable Integer statuc,@PathVariable String id,
+													@PathVariable String date,@PathVariable Float gs,@PathVariable Integer gsf) {
+		return biz.updateByWidToStatuc(statuc, id,this.parseDate2(date),gs,gsf);
 	}
 	
 	/**客户返工添加项目
@@ -98,6 +99,21 @@ public class zyhServiceAction {
 		try {
 			dateTrans = format.parse(val);
 			return new SimpleDateFormat("yyyy-MM-dd").format(dateTrans); 
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+		}
+	
+	public  String parseDate2(String val){
+		val = val.replace("GMT", "").replaceAll("\\(.*\\)", ""); 
+		 //将字符串转化为date类型，格式2016-10-12 
+		 SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z",Locale.ENGLISH); 
+		 Date dateTrans;
+		try {
+			dateTrans = format.parse(val);
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(dateTrans); 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
