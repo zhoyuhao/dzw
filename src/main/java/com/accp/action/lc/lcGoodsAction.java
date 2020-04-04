@@ -35,7 +35,7 @@ public class lcGoodsAction {
 	 */
 	@GetMapping("{p}/{s}/{gname}")
 	public PageInfo<lcGoodsVo> queryall(@PathVariable Integer p,@PathVariable Integer s,@PathVariable String gname){
-		System.out.println(gname);
+		System.out.println(111);
 		if("null".equals(gname)) {
 			gname=null;
 		}
