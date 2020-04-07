@@ -1,5 +1,8 @@
 package com.accp.dao.cqq;
 
-public interface CqqServiceDao {
+import com.accp.pojo.Service;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+public interface CqqServiceDao  extends BaseMapper<Service>{
 
 }

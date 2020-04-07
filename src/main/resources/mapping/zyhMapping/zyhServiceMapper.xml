@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhServiceMapper">
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Service">
+  <resultMap id="map1" type="com.accp.vo.zyh.zyhService_vo">
     <id column="wId" jdbcType="VARCHAR" property="wid" />
     <result column="wname" jdbcType="VARCHAR" property="wname" />
     <result column="wtype" jdbcType="VARCHAR" property="wtype" />
@@ -12,12 +12,68 @@
     <result column="wstatic" jdbcType="INTEGER" property="wstatic" />
     <result column="wsumprice" jdbcType="INTEGER" property="wsumprice" />
     <result column="wleixi" jdbcType="INTEGER" property="wleixi" />
-    <result column="wstatdate" jdbcType="DATE" property="wstatdate" />
-    <result column="wenddate" jdbcType="DATE" property="wenddate" />
+    <result column="wstatdate" property="wstatdate" />
+    <result column="wenddate"  property="wenddate" />
     <result column="wpayment" jdbcType="INTEGER" property="wpayment" />
     <result column="paymenttirm" jdbcType="DATE" property="paymenttirm" />
     <result column="decide" jdbcType="REAL" property="decide" />
     <result column="deductionmoney" jdbcType="REAL" property="deductionmoney" />
+     <result column="statucname"  property="statucname" />
+     <result column="bzname"  property="bzname" />
+     <result column="type"  property="type" />
+     <result column="hmoney"  property="hmoney" />
+     <collection property="list" column="wId" select="queryxiangxi"/>
   </resultMap>
+  <select id="queryxiangxi" resultType="com.accp.vo.zyh.zyhServicedetailed_vo">
+  SELECT * FROM `servicedetailed` WHERE `wId`=#{wId}
+  </select>
+  <select id="queryStatucBy1Or2" resultMap="map1">
+<!--   SELECT * FROM `service` se
+INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`)  -->
+SELECT se.*,s.*,w.`bzname` ,w.`hmoney`,w.`type` FROM `service` se
+INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`) 
+INNER JOIN `personnel` p ON(p.`pname`=se.`wjname`)
+INNER JOIN `workergroup` w ON(w.`bzId`=p.`bzId`)
+<where>
+<if test="wcarid!=null">and se.`wcarid`=#{wcarid}</if>
+<if test="statdate!=null">and se.`wstatdate`&gt;=#{statdate} AND se.`wenddate` &lt;=#{enddate}</if>
+
+<if test="statuc!=null and statuc2!=0">and (se.`wstatic`=#{statuc} OR se.`wstatic`=#{statuc2} or se.`wstatic`=11 or se.`wstatic`=10) </if>
+<if test="statuc!=null and statuc2==0">and se.`wstatic`=#{statuc} </if>
+</where>
+
+  </select>
   
+  
+  <update id="updateByWidToStatuc">
+    <if test="statuc==3">
+	UPDATE `servicedetailed` SET `sdprice`=#{gsf} ,`sdnumber`=#{gs}  WHERE  `sdname` LIKE '工时费%' AND `wId`=#{wid};
+   </if>
+  
+  UPDATE  `service` s SET`wstatic`=#{statuc}
+  <if test="statuc==3">
+  ,wenddate=#{date} ,wsumprice =(SELECT SUM(`sdprice`) FROM `servicedetailed` WHERE `wId`=#{wid})
+  </if>
+   WHERE `wId`=#{wid};
+ 
+   
+  </update>
+  
+  <!-- 客户返工添加维修单 -->
+  <insert id="serivceDetailedAdd">
+  INSERT INTO `dzw`.`servicedetailed` (
+  `sdid`,
+  `wId`,
+  `sdname`,
+  `sdprice`,
+  `sdnumber`,
+  `dprice`
+) 
+VALUE
+<foreach collection="list" separator="," item="temp">
+(0, #{temp.wid},#{temp.sdname}, #{temp.sdprice},#{temp.sdnumber}, #{temp.dprice}) 
+</foreach>
+  
+  </insert>
+   
 </mapper>

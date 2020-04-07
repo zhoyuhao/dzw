@@ -2,6 +2,9 @@ package com.accp.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("Service")
 public class Service {
 
 	private String wid;// 维修id
@@ -35,6 +38,15 @@ public class Service {
 	private Float decide;// 是否抵扣
 
 	private Float deductionmoney;// 抵扣金额
+
+	@Override
+	public String toString() {
+		return "Service [wid=" + wid + ", wname=" + wname + ", wtype=" + wtype + ", wjname=" + wjname + ", wcarid="
+				+ wcarid + ", wphone=" + wphone + ", wvipid=" + wvipid + ", wstatic=" + wstatic + ", wsumprice="
+				+ wsumprice + ", wleixi=" + wleixi + ", wstatdate=" + wstatdate + ", wenddate=" + wenddate
+				+ ", wpayment=" + wpayment + ", paymenttirm=" + paymenttirm + ", decide=" + decide + ", deductionmoney="
+				+ deductionmoney + "]";
+	}
 
 	public String getWid() {
 		return wid;

@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhRoleMapper">
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Role">
+  <resultMap id="map1" type="com.accp.vo.zyh.zyhRole_vo">
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <collection property="list" column="cid" select="queryAll2"/>
+    <collection property="userlist" column="cid" select="queryAll3"/>
   </resultMap>
+  
+  <select id="queryAll2" resultType="integer">
+   SELECT f.fid FROM `roleandfunction` ro
+ INNER JOIN `function` f ON (f.`fid`=ro.`fid`)
+ WHERE ro.`cid`=#{cid}
+  </select>
+  
+  
+   <resultMap id="userMap1" type="com.accp.vo.zyh.zyhpersonnel_vo">
+    <id column="pId" jdbcType="VARCHAR" property="pid" />
+    <result column="bzId" jdbcType="INTEGER" property="bzid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="psex" jdbcType="CHAR" property="psex" />
+    <result column="peducational" jdbcType="VARCHAR" property="peducational" />
+    <result column="pentry" jdbcType="DATE" property="pentry" />
+    <result column="pphone" jdbcType="VARCHAR" property="pphone" />
+    <result column="paddress" jdbcType="VARCHAR" property="paddress" />
+    <result column="pidcard" jdbcType="VARCHAR" property="pidcard" />
+    <result column="pstatic" jdbcType="INTEGER" property="pstatic" />
+    <result column="ppwd" jdbcType="VARCHAR" property="ppwd" />
+    <result column="ppost"  property="ppost" />
+     <result column="gangwei"  property="gangwei" />
+     <result column="juesename"  property="juesename" />
+      <result column="jid"  property="jid" />
+    <collection property="qxListId" column="pId" select="queryByIdAndFuction"/>
+  </resultMap>
+  
+    <select id="queryByIdAndFuction" resultType="integer">
+ SELECT f.fid FROM `role` r
+INNER JOIN `uersandrole` u ON(r.`cid`=u.`cid`)
+INNER JOIN `roleandfunction` ro ON(ro.`cid`=r.`cid`)
+INNER  JOIN `function` f ON (ro.`fid`=f.`fid`)
+WHERE u.`pId`=#{pId}
+  </select>
+  <select id="queryAll3" resultMap="userMap1">
+  
+   SELECT p.*,po.`gwname` as gangwei,r.`cname` as juesename ,r.`cid` as jid FROM `personnel` p
+ INNER JOIN `uersandrole` u ON(u.`pId`=p.`pId`)
+ INNER JOIN `role` r ON(r.`cid`=u.`cid`)
+ INNER JOIN `post` po ON(po.`pId`=p.`ppost`)
+ WHERE r.`cid`=#{id}
+ 
+  </select>
+  
+  
+  <select id="queryAll" resultMap="map1">
+  SELECT * FROM `role` WHERE `cid`!=1
+  </select>
+  
+  
+  <resultMap id="qxMap1" type="com.accp.vo.zyh.zyhFunction_vo">
+    <id column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="fname" jdbcType="VARCHAR" property="fname" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="label" property="label" />
+    <collection property="children" column="fid" select="qxAll2"/>
+  </resultMap>
+  <select id="qxAll2" resultType="com.accp.vo.zyh.zyhFunction_vo">
+  SELECT *,fname as label FROM `function` WHERE `sid`=#{fid} 
+  </select>
+  <select id="qxAll" resultMap="qxMap1">
+ 	SELECT *,fname as label FROM `function` WHERE `sid`=0 AND fid!=11
+  </select>
+  
+  
+  <delete id="deteteByName">
+  DELETE FROM `roleandfunction` WHERE `cid`=#{id};
+  </delete>
+  <insert id="roleAdd">
+  DELETE FROM `roleandfunction` WHERE `cid`=#{list[0].cid};
+  <if test="list[0].fid!=0">
+ INSERT INTO `dzw`.`roleandfunction` (`cid`, `fid`) 
+VALUES
+  <foreach collection="list" separator="," item="temp">
+  	(#{temp.cid},#{temp.fid})
+  </foreach>
+  </if>
+  </insert>
   
 </mapper>

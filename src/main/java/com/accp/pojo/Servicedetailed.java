@@ -9,7 +9,7 @@ public class Servicedetailed {
 
     private Float sdprice;
 
-    private Integer sdnumber;
+    private Float sdnumber;
 
     public Integer getSdid() {
         return sdid;
@@ -43,11 +43,11 @@ public class Servicedetailed {
         this.sdprice = sdprice;
     }
 
-    public Integer getSdnumber() {
+    public Float getSdnumber() {
         return sdnumber;
     }
 
-    public void setSdnumber(Integer sdnumber) {
+    public void setSdnumber(Float sdnumber) {
         this.sdnumber = sdnumber;
     }
 }

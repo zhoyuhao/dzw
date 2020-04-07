@@ -1,17 +1,28 @@
 package com.accp.dao.zyh;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.Post;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface zyhPostMapper {
-    int deleteByPrimaryKey(Integer gwid);
+public interface zyhPostMapper extends BaseMapper<Post>{
+   
+	/**查看是否正在使用
+	 * 
+	 * @param id
+	 * @return
+	 */
+	int selectPersonnel(@Param("postOrRole") Integer id);
+	
+	
 
-    int insert(Post record);
+	/**查看是否正在使用
+	 * 
+	 * @param id
+	 * @return
+	 */
+	int selectUersandrole(@Param("id") Integer id);
+	
+	
 
-    int insertSelective(Post record);
-
-    Post selectByPrimaryKey(Integer gwid);
-
-    int updateByPrimaryKeySelective(Post record);
-
-    int updateByPrimaryKey(Post record);
 }

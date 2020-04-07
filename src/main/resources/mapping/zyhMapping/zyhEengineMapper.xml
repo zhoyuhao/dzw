@@ -3,7 +3,7 @@
 <mapper namespace="com.accp.dao.zyh.zyhEengineMapper">
   <resultMap id="BaseResultMap" type="com.accp.pojo.Eengine">
     <id column="eid" jdbcType="INTEGER" property="eid" />
-    <result column="ename" jdbcType="VARCHAR" property="ename" />
+    <result column="ename" property="ename" />
     <result column="eprice" jdbcType="REAL" property="eprice" />
   </resultMap>
   
