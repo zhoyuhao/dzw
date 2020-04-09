@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.yld.serviceDao">
+	<resultMap id="Map" type="com.accp.vo.yld.serviceVo">
+	    <id column="wId" jdbcType="VARCHAR" property="wid" />
+	    <result column="wname" jdbcType="VARCHAR" property="wname" />
+	    <result column="wtype" jdbcType="VARCHAR" property="wtype" />
+	    <result column="wjname" jdbcType="VARCHAR" property="wjname" />
+	    <result column="wcarid" jdbcType="VARCHAR" property="wcarid" />
+	    <result column="wphone" jdbcType="VARCHAR" property="wphone" />
+	    <result column="wvipid" jdbcType="VARCHAR" property="wvipid" />
+	    <result column="wstatic" jdbcType="INTEGER" property="wstatic" />
+	    <result column="wsumprice" jdbcType="INTEGER" property="wsumprice" />
+	    <result column="wleixi" jdbcType="INTEGER" property="wleixi" />
+	    <result column="wstatdate" property="wstatdate" />
+	    <result column="wenddate"  property="wenddate" />
+	    <result column="wpayment" jdbcType="INTEGER" property="wpayment" />
+	    <result column="paymenttirm" jdbcType="DATE" property="paymenttirm" />
+	    <result column="decide" jdbcType="REAL" property="decide" />
+	    <result column="deductionmoney" jdbcType="REAL" property="deductionmoney" />
+	    <result column="statucname"  property="statucname" />
+	    <result column="bzname"  property="bzname" />
+	    <result column="type"  property="type" />
+	    <result column="hmoney"  property="hmoney" />
+	    <collection property="serviceinfo" column="wId" select="queryServiceInfo"/>
+	</resultMap>
+	<select id="queryServiceInfo" resultType="com.accp.pojo.Servicedetailed">
+		select * from servicedetailed where wId = #{0}
+	</select>
+	<select id="queryAllServicePage" resultMap="Map">
+		SELECT * FROM service AS s
+		<where>
+			<if test="true">
+				AND s.`wstatic` = 1
+			</if>
+			<if test="wcarid != '' and wcarid != null">
+				AND s.`wcarid` LIKE '%${wcarid}%'
+			</if>
+			<if test="wstatic != '' and wstatic != null">
+				AND s.`wstatic` = #{wstatic}
+			</if>
+		</where>
+	</select>
+	<select id="queryMaxId" resultType="java.lang.Long">
+		SELECT MAX(s.`wId`) FROM service AS s
+	</select>
+</mapper>

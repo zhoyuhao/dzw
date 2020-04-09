@@ -23,6 +23,7 @@
   	 		AND p.`pname` LIKE '%${name}%'
   	 	</if>
   	 </where>
+  	 ORDER BY p.`pId` DESC
   </select>
   
   <select id="queryById" resultMap="artisanVo">
@@ -44,6 +45,7 @@
   			AND bzname LIKE '%${name}%'
   		</if>
   	</where>
+  	ORDER BY bzid DESC
   </select>
 
 </mapper>

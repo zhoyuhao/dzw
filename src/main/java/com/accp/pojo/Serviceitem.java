@@ -1,6 +1,13 @@
 package com.accp.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("serviceitem")
 public class Serviceitem {
+    
+    @TableId(type = IdType.AUTO,value = "xmid")
     private Integer xmid;
 
     private String xnames;

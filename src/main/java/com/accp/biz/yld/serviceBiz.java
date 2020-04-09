@@ -6,32 +6,28 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.yld.artisanGroupDao;
-import com.accp.pojo.Personnel;
-import com.accp.pojo.Workergroup;
-import com.accp.vo.yld.artisanGroupVo;
+import com.accp.dao.yld.serviceDao;
+import com.accp.vo.yld.serviceVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
 @Transactional(isolation = Isolation.READ_COMMITTED,propagation = Propagation.SUPPORTS,readOnly = true)
-public class artisanGroupBiz {
+public class serviceBiz {
 
     @Autowired
-    private artisanGroupDao dao;
-    
-    /**
-     * 查询所有的技工班组并分页
-     * @param c
-     * @param s
-     * @return
-     */
-    public PageInfo<artisanGroupVo> queryAll(int c, int s,String name){
-	PageHelper.startPage(c,s);
-	return new PageInfo<artisanGroupVo>(dao.queryAll(name));
+    private serviceDao dao;
+
+    public PageInfo<serviceVo> queryServiceInfo(int c, int s, String wcarid, Integer wstatic) {
+	PageHelper.startPage(c, s);
+	return new PageInfo<serviceVo>(dao.queryAllServicePage(wcarid, wstatic));
     }
     
-    public int updatePreson(Personnel entity) {
-	return dao.updateById(entity);
+    public Long queryMaxId() {
+	return dao.queryMaxId();
+    }
+    
+    public int insertService(com.accp.pojo.Service entity) {
+	return dao.insert(entity);
     }
 }

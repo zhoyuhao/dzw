@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.yld.artisanGroupDao">
-  <resultMap id="artisanGroupVo" type="com.accp.vo.yld.artisanGroupVo">
-    <id column="agid" jdbcType="VARCHAR" property="agid" />
-    <result column="agname" jdbcType="VARCHAR" property="agname" />
-    <result column="agnumber" jdbcType="INTEGER" property="agnumber" />
-  </resultMap>
-  <select id="queryAll" resultMap="artisanGroupVo">
-  	SELECT COUNT(p.`bzId`) AS agnumber,w.`bzname` AS agname,w.`bzId` AS agid FROM 
-  	workergroup AS w,personnel AS p 
-  	WHERE w.`bzId` = p.`bzId` GROUP BY p.`bzId`
-  </select>
+	<resultMap id="artisanGroupVo"
+		type="com.accp.vo.yld.artisanGroupVo">
+		<id column="agid" jdbcType="VARCHAR" property="agid" />
+		<result column="agname" jdbcType="VARCHAR" property="agname" />
+		<result column="agnumber" jdbcType="INTEGER"
+			property="agnumber" />
+	</resultMap>
+	<select id="queryAll" resultMap="artisanGroupVo">
+		SELECT w.`bzId` agid,w.`bzname` agname,(SELECT COUNT(*) FROM personnel AS p
+		WHERE p.bzid IN (w.`bzId`)) AS agnumber FROM workergroup AS w
+		WHERE w.`type` = 1 AND w.`bzname` LIKE '%${name}%' ORDER BY w.`bzId` DESC
+	</select>
 </mapper>

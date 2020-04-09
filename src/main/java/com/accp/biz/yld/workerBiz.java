@@ -27,4 +27,13 @@ public class workerBiz {
 	return dao.insert(entity);
     }
     
+    @Transactional(isolation = Isolation.READ_COMMITTED,propagation = Propagation.REQUIRED,readOnly = false)
+    public int deleteWorkerGroup(Integer id) {
+	return dao.deleteById(id);
+    }
+    
+    @Transactional(isolation = Isolation.READ_COMMITTED,propagation = Propagation.REQUIRED,readOnly = false)
+    public int updateWorkerGroup(Workergroup entity) {
+	return dao.updateById(entity);
+    }
 }
