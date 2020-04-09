@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.ljn.ljnUserphoneDao">
+
+<select id="query" resultType="com.accp.vo.ljn.voUserphone">
+select * from userphone u LEFT join personnel p on(u.`pId`=p.`pId`) where u.txlname like '%${pname}%'
+</select>
+
+<insert id="add">
+INSERT INTO userphone VALUES(0,#{pid},#{pname},#{pphone}) ;
+</insert>
+
+<delete id="remove">
+delete from userphone where txlid =#{id}
+</delete>
+
+<update id="update" parameterType="com.accp.pojo.Userphone">
+UPDATE userphone SET
+  pId =#{us.pid},
+  txlname = #{us.txlname},
+  txlphone = #{us.txlphone}
+  WHERE txlId =#{us.txlid} ;
+  </update>
+
+<select id="queryid" resultType="com.accp.pojo.Userphone">
+select * from userphone where txlid=#{txlid}
+</select>
+</mapper>

@@ -1,6 +1,7 @@
 package com.accp.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -29,8 +30,10 @@ public class Goods {
     private String gdescribe;
 
     private Integer gnumber;
+    
+   
 
-    public Integer getGid() {
+	public Integer getGid() {
         return gid;
     }
 
@@ -109,4 +112,6 @@ public class Goods {
     public void setGnumber(Integer gnumber) {
         this.gnumber = gnumber;
     }
+    
+    
 }
