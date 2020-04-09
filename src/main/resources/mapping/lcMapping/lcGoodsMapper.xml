@@ -31,8 +31,7 @@
 		gid=#{gid}
 	</select>
 
-	<select id="queryByghsid"
-		resultType="com.accp.vo.lc.lcSupplierVo">
+	<select id="queryByghsid" resultType="com.accp.vo.lc.lcSupplierVo">
 		SELECT * FROM `supplier` where ghsId=#{ghsid}
 	</select>
 

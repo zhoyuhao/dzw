@@ -3,7 +3,7 @@ package com.accp.vo.lc;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("supplier")
-public class lcSupplierVo {
+public class lcSupplierVo{
 	
 	private Integer ghsid;
 

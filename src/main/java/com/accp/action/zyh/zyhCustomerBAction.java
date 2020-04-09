@@ -24,52 +24,57 @@ public class zyhCustomerBAction {
 
 	@Autowired
 	private zyhCustomerBiz biz;
-	
-	/**查看所有客户 或 名称查看
+
+	/**
+	 * 查看所有客户 或 名称查看
 	 * 
 	 * @param name
 	 * @return
 	 */
 	@GetMapping("queryAllOrByName/{name}")
-	public List<zyhCustomer_vo> queryAllOrByName(@PathVariable String name){
-		name="null".equals(name)?"":name;
+	public List<zyhCustomer_vo> queryAllOrByName(@PathVariable String name) {
+		name = "null".equals(name) ? "" : name;
 		return biz.queryAllOrByName(name);
 	}
-	
-	/***给用户添加车辆
+
+	/***
+	 * 给用户添加车辆
 	 * 
 	 * @param p
 	 * @return
 	 */
 	@PostMapping("carAdd")
-	public int carAdd(@RequestBody List<zyhCustomerCar_vo> p ) {
+	public int carAdd(@RequestBody List<zyhCustomerCar_vo> p) {
 		return biz.carAdd(p);
 	}
-	
-	/**客户和车辆添加
+
+	/**
+	 * 客户和车辆添加
 	 * 
 	 * @param p
 	 * @return
 	 */
 	@PostMapping("khuAndCar")
-	public int khuAndCar(@RequestBody zyhCustomer_vo p ) {
+	public int khuAndCar(@RequestBody zyhCustomer_vo p) {
 		return biz.khuAndCar(p);
 	}
-	
-	/**根据客户id删除 此客户所有车辆
+
+	/**
+	 * 根据客户id删除 此客户所有车辆
 	 * 
 	 * @param id
 	 * @return
 	 */
 	@PostMapping("deleteCar")
-	public int deleteCar(@RequestBody zyhCustomer_vo p ) {
-		if(biz.deleteCar(p.getCidk())!=0) {
+	public int deleteCar(@RequestBody zyhCustomer_vo p) {
+		if (biz.deleteCar(p.getCidk()) != 0) {
 			return this.khuAndCar(p);
 		}
 		return 0;
 	}
 
-	/***根据车辆id批量删除
+	/***
+	 * 根据车辆id批量删除
 	 * 
 	 * @param list
 	 * @return

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.lc.lcserviceMapper">
+	<select id="querybycount" resultType="com.accp.vo.lc.lcserviceVo">
+			SELECT COUNT(*) AS aa FROM `service` WHERE paymenttirm=#{paymenttirm}
+	</select>
+	<select id="queryxianjin" resultType="com.accp.vo.lc.lcserviceVo">
+			SELECT SUM(wsumprice) AS bb FROM `service` WHERE  paymenttirm=#{paymenttirm} and wleixi=0
+	</select>
+	<select id="queryzaixiutaici" resultType="com.accp.vo.lc.lcserviceVo">
+			SELECT COUNT(*) AS cc FROM `service` WHERE `wstatdate`=#{wstatdate} AND `wstatic`=0
+	</select>
+</mapper>
