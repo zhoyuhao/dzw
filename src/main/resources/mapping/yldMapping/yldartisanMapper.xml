@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.yld.artisanDao">
+
   <resultMap id="artisanVo" type="com.accp.vo.yld.artisanVo">
     <id column="aid" jdbcType="VARCHAR" property="aid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="postName" jdbcType="VARCHAR" property="postName" />
     <result column="groupName" jdbcType="VARCHAR" property="groupName" />
   </resultMap>
+  
   <select id="queryAll" resultMap="artisanVo">
-  	SELECT p.`pname` AS `name`,p.`pId` AS aid,p.`ppost` AS postName,w.`bzname` AS groupName
-	FROM personnel AS p,workergroup AS w WHERE p.`bzId` = w.`bzId`
+	SELECT p.`pname` AS `name`,p.`pId` AS aid,(SELECT a.`gwname` FROM post AS a WHERE a.`pId` IN (p.`ppost`)) AS postName,w.`bzname` AS groupName FROM
+  	 personnel AS p LEFT OUTER JOIN workergroup AS w ON p.`bzId` = w.`bzId`
+  	 <where>
+  	 	<if test="true">
+  	 		AND p.`ppost` = 2
+  	 	</if>
+  	 	<if test="bzid != '' and bzid != null">
+  	 		AND p.`bzId` = #{bzid}
+  	 	</if>
+  	 	<if test="name != '' and name != null">
+  	 		AND p.`pname` LIKE '%${name}%'
+  	 	</if>
+  	 </where>
+  	 ORDER BY p.`pId` DESC
   </select>
+  
   <select id="queryById" resultMap="artisanVo">
   	SELECT p.`pname` AS `name`,p.`pId` AS aid,p.`ppost` AS postName,w.`bzname` AS groupName
 	FROM personnel AS p,workergroup AS w WHERE p.`bzId` = w.`bzId` AND p.`pId` = #{pid}
   </select>
+  
+  <select id="queryMaxId" resultType="java.lang.Long">
+  	SELECT MAX(p.`pid`) FROM personnel AS p
+  </select>
+  
+  <select id="queryAllWorkerGroup" resultType="com.accp.pojo.Workergroup">
+  	SELECT * FROM workergroup
+  	<where>
+  		<if test="true">
+  			AND type = 2
+  		</if>
+  		<if test="name != '' and name != null">
+  			AND bzname LIKE '%${name}%'
+  		</if>
+  	</where>
+  	ORDER BY bzid DESC
+  </select>
+
 </mapper>

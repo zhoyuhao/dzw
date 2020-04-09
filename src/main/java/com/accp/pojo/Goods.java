@@ -3,7 +3,14 @@ package com.accp.pojo;
 import java.util.Date;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("goods")
 public class Goods {
+    
+    @TableId(type = IdType.AUTO,value = "gid")
     private Integer gid;
 
     private Integer ghsid;

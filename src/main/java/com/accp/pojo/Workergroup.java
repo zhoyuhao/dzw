@@ -1,6 +1,12 @@
 package com.accp.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("workergroup")
 public class Workergroup {
+    @TableId(type = IdType.AUTO,value = "bzid")
     private Integer bzid;
 
     private String bzname;

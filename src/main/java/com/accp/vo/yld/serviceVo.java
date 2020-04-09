@@ -1,16 +1,13 @@
-package com.accp.pojo;
+package com.accp.vo.yld;
 
 import java.util.Date;
+import java.util.List;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.accp.pojo.Servicedetailed;
 
-@TableName("service")
-public class Service {
+public class serviceVo {
 
-    @TableId(type = IdType.INPUT, value = "wid")
-    private Long wid;// 维修id
+    private String wid;// 维修id
 
     private String wname;// 客户姓名
 
@@ -42,22 +39,13 @@ public class Service {
 
     private Float deductionmoney;// 抵扣金额
 
-    @Override
-    public String toString() {
-	return "Service [wid=" + wid + ", wname=" + wname + ", wtype=" + wtype + ", wjname=" + wjname + ", wcarid="
-		+ wcarid + ", wphone=" + wphone + ", wvipid=" + wvipid + ", wstatic=" + wstatic + ", wsumprice="
-		+ wsumprice + ", wleixi=" + wleixi + ", wstatdate=" + wstatdate + ", wenddate=" + wenddate
-		+ ", wpayment=" + wpayment + ", paymenttirm=" + paymenttirm + ", decide=" + decide + ", deductionmoney="
-		+ deductionmoney + "]";
-    }
+    private List<Servicedetailed> serviceinfo;// 维修详表
 
-
-    public Long getWid() {
+    public String getWid() {
 	return wid;
     }
 
-
-    public void setWid(Long wid) {
+    public void setWid(String wid) {
 	this.wid = wid;
     }
 
@@ -179,6 +167,14 @@ public class Service {
 
     public void setDeductionmoney(Float deductionmoney) {
 	this.deductionmoney = deductionmoney;
+    }
+
+    public List<Servicedetailed> getServiceinfo() {
+	return serviceinfo;
+    }
+
+    public void setServiceinfo(List<Servicedetailed> serviceinfo) {
+	this.serviceinfo = serviceinfo;
     }
 
 }

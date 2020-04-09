@@ -47,12 +47,12 @@ INNER JOIN `workergroup` w ON(w.`bzId`=p.`bzId`)
   
   <update id="updateByWidToStatuc">
     <if test="statuc==3">
-	UPDATE `servicedetailed` SET `sdprice`=#{gsf} ,`sdnumber`=#{gs}  WHERE  `sdname` LIKE '工时费%' AND `wId`=#{wid};
+	UPDATE `servicedetailed` SET `sdprice`=#{gsf} ,`sdnumber`=#{gs}  WHERE  `sdname` LIKE '工时费%' AND `wId`=wid;
    </if>
   
   UPDATE  `service` s SET`wstatic`=#{statuc}
   <if test="statuc==3">
-  ,wenddate=#{date} ,wsumprice =(SELECT SUM(`sdprice`) FROM `servicedetailed` WHERE `wId`=#{wid})
+  ,wenddate=#{date} ,wsumprice =(SELECT SUM(`sdprice`) FROM `servicedetailed` WHERE `wId`=wid)
   </if>
    WHERE `wId`=#{wid};
  

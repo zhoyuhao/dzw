@@ -29,6 +29,7 @@ public class CqqPersonnelBiz {
 	public PageInfo<Personnel> selectCustomerList(Integer n, Integer s, Integer pstatic, String name) {
 		PageHelper.startPage(n, s);
 		QueryWrapper<Personnel> qw = Wrappers.query();
+		qw.notIn("pname", "admin");
 		qw.eq("pstatic", pstatic).like("pname", "null".equals(name) ? "" : name);// 0就职， 1代表离职
 		return new PageInfo<Personnel>(cqqPersonnelDao.selectList(qw));
 	}
