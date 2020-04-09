@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zyh.zyhServiceMapper">
   <resultMap id="map1" type="com.accp.vo.zyh.zyhService_vo">
-    <id column="wId" jdbcType="VARCHAR" property="wid" />
+    <id column="wId"  property="wid" />
     <result column="wname" jdbcType="VARCHAR" property="wname" />
     <result column="wtype" jdbcType="VARCHAR" property="wtype" />
     <result column="wjname" jdbcType="VARCHAR" property="wjname" />

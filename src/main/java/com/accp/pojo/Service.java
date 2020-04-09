@@ -2,12 +2,13 @@ package com.accp.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("Service")
 public class Service {
-
-	private String wid;// 维修id
+	@TableId(value = "wid")
+	private Long wid;// 维修id
 
 	private String wname;// 客户姓名
 
@@ -48,12 +49,12 @@ public class Service {
 				+ deductionmoney + "]";
 	}
 
-	public String getWid() {
+	public Long getWid() {
 		return wid;
 	}
 
-	public void setWid(String wid) {
-		this.wid = wid == null ? null : wid.trim();
+	public void setWid(Long wid) {
+		this.wid = wid;
 	}
 
 	public String getWname() {

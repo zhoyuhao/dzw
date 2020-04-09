@@ -27,9 +27,10 @@ public class CqqSupplierBiz {
 	 * @param s
 	 * @return
 	 */
-	public PageInfo<Supplier> selectSupplierList(Integer n, Integer s) {
+	public PageInfo<Supplier> selectSupplierList(Integer n, Integer s, String name) {
 		PageHelper.startPage(n, s);
 		QueryWrapper<Supplier> qw = Wrappers.query();
+		qw.like("ghsname", "null".equals(name) ? "" : name);
 		return new PageInfo<Supplier>(cqqSupplierDao.selectList(qw));
 	}
 

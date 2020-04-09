@@ -16,14 +16,16 @@ import com.github.pagehelper.PageInfo;
 @RestController
 @RequestMapping("CqqSupplierAction/api")
 public class CqqSupplierAction {
-
+	
+	///
 	@Autowired
 	private CqqSupplierBiz cqqSupplierBiz;
 
-	@GetMapping("{n}/{s}")
-	public PageInfo<Supplier> selectSupplierList(@PathVariable Integer n, @PathVariable Integer s) {
+	@GetMapping("{n}/{s}/{name}")
+	public PageInfo<Supplier> selectSupplierList(@PathVariable Integer n, @PathVariable Integer s,
+			@PathVariable String name) {
 		System.out.println("供货单位管理");
-		return cqqSupplierBiz.selectSupplierList(n, s);
+		return cqqSupplierBiz.selectSupplierList(n, s, name);
 	}
 
 	@DeleteMapping("{id}")
