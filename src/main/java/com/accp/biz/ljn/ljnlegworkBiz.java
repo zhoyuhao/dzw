@@ -20,10 +20,10 @@ public class ljnlegworkBiz {
 	@Resource ljnlegworkDao dao;
 	
 	//查询外勤信息
-	public PageInfo<Legwork> query(int pageNum,String state) {
+	public PageInfo<Legwork> query(int pageNum,int pageSize,String state) {
 		QueryWrapper<Legwork> qw=new QueryWrapper<>();
 		qw.eq("state",state);
-		PageHelper.startPage(pageNum, 3);
+		PageHelper.startPage(pageNum, pageSize);
 		return new PageInfo<Legwork>(dao.selectList(qw)); 
 	}
 	//编辑外勤信息

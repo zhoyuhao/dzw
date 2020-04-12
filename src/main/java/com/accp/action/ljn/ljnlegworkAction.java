@@ -20,10 +20,10 @@ import com.github.pagehelper.PageInfo;
 public class ljnlegworkAction {
 
 	@Resource ljnlegworkBiz biz;
-	@GetMapping("query/{pageNum}/{state}")
+	@GetMapping("query/{pageNum}/{pageSize}/{state}")
 	//查询外勤车辆信息
-	public PageInfo<Legwork> query(@PathVariable int pageNum,@PathVariable String state) {
-		return biz.query(pageNum,state);
+	public PageInfo<Legwork> query(@PathVariable int pageNum,@PathVariable int pageSize,@PathVariable String state) {
+		return biz.query(pageNum,pageSize,state);
 	}
 	@GetMapping("delete/{legworkid}")
 	//删除外勤车辆信息

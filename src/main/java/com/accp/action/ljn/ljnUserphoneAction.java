@@ -22,12 +22,12 @@ public class ljnUserphoneAction {
 
 	@Resource ljnUserphoneBiz biz;
 	//查询通讯录信息
-	@GetMapping("query/{pageNum}/{pname}")
-	public PageInfo<voUserphone> query(@PathVariable int pageNum,@PathVariable String pname) {
+	@GetMapping("query/{pageNum}/{pageSize}/{pname}")
+	public PageInfo<voUserphone> query(@PathVariable int pageNum,@PathVariable int pageSize,@PathVariable String pname) {
 		if(pname.equals("null")||pname.equals(null)) {
 			pname="";
 		}
-		return biz.query(pageNum,pname);
+		return biz.query(pageNum,pageSize,pname);
 	}
 	//新增通讯录信息
 	@GetMapping("add/{pid}/{pname}/{pphone}")
@@ -48,5 +48,10 @@ public class ljnUserphoneAction {
 	@GetMapping("queryid/{txlid}")
 	public Userphone queryid(@PathVariable int txlid) {
 		return biz.queryid(txlid);
+	}
+	//查询编号是否已存在
+	@GetMapping("count/{pid}")
+	public int count(@PathVariable int pid) {
+		return biz.count(pid);
 	}
 }

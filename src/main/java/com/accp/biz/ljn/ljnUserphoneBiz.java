@@ -20,8 +20,8 @@ public class ljnUserphoneBiz {
 
 	@Resource ljnUserphoneDao dao;
 	//分页查询出通讯录信息
-	public PageInfo<voUserphone> query(int pageNum,String pname) {
-		PageHelper.startPage(pageNum, 4);
+	public PageInfo<voUserphone> query(int pageNum,int pageSize,String pname) {
+		PageHelper.startPage(pageNum, pageSize);
 		return new PageInfo<voUserphone>(dao.query(pname));
 	}
 	//新增通讯录信息
@@ -39,5 +39,9 @@ public class ljnUserphoneBiz {
 	//根据编号查询通讯录信息
 	public Userphone queryid(int txlid) {
 		return dao.queryid(txlid);
+	}
+	//查询编号是否已存在
+	public int count(int pid) {
+		return dao.count(pid);
 	}
 }
