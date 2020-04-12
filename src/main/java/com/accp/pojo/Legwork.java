@@ -34,4 +34,11 @@ public class Legwork {
 	private String platenumber;
 	private String brand;
 	private String state;
+	private String artisan;
+	public String getArtisan() {
+		return artisan;
+	}
+	public void setArtisan(String artisan) {
+		this.artisan = artisan;
+	}
 }
