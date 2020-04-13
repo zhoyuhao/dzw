@@ -1,5 +1,7 @@
 package com.accp.pojo;
 
+import java.util.Date;
+
 public class Customer {
     private String cidk;
 
@@ -22,8 +24,20 @@ public class Customer {
     private Float cmoneyk;
 
     private Integer cgrade;
+    
+    private Date time;
+    
+    
 
-    public String getCidk() {
+    public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public String getCidk() {
         return cidk;
     }
 

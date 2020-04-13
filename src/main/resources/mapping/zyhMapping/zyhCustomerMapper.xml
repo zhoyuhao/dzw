@@ -107,7 +107,8 @@ INSERT INTO `dzw`.`customer` (
   `ckahaok`,
   `cdoublerk`,
   `cmoneyk`,
-  `cgrade`
+  `cgrade`,
+  `time`
 ) 
 VALUES
   (
@@ -121,7 +122,8 @@ VALUES
     #{p.ckahaok},
     #{p.cdoublerk},
     #{p.cmoneyk},
-    #{p.cgrade}
+    #{p.cgrade},
+    now()
   ) ;
   
     INSERT INTO `dzw`.`customercar` (
