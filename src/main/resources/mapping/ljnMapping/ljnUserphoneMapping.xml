@@ -25,4 +25,8 @@ UPDATE userphone SET
 <select id="queryid" resultType="com.accp.pojo.Userphone">
 select * from userphone where txlid=#{txlid}
 </select>
+
+<select id="count" resultType="int">
+SELECT count(*) FROM userphone where pid=#{pid} 
+</select>
 </mapper>

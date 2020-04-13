@@ -12,7 +12,12 @@ import com.accp.dao.ljn.ljnServiceDao;
 public class ljnServiceBiz {
 
 	@Resource ljnServiceDao dao;
+	//查询接单信息
 	public List<com.accp.pojo.Service> query() {
 		return dao.query();
+	}
+	//更改维修状态
+	public int update(int wid) {
+		return dao.update(wid);
 	}
 }

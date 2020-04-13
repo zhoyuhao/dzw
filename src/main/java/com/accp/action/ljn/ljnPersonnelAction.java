@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.accp.biz.ljn.ljnPersonnelBiz;
 import com.accp.biz.ljn.ljnServiceBiz;
-import com.accp.pojo.Service;
+import com.accp.pojo.Personnel;
 
 @RestController
-@RequestMapping("ljn/api/ljnServiceAction")
-public class ljnServiceAction {
+@RequestMapping("ljn/api/ljnPersonnelAction")
+public class ljnPersonnelAction {
 
-	@Resource ljnServiceBiz biz;
-	//查询需要接车信息
+	//查询员工编号
+	@Resource ljnPersonnelBiz biz;
 	@GetMapping("query")
-	public List<Service> query() {
+	public List<Personnel> query() {
 		return biz.query();
 	}
-	//更改维修状态
-	@GetMapping("update/{wid}")
-	public int update(@PathVariable int wid) {
-		return biz.update(wid);
+	@GetMapping("queryid/{pid}")
+	public int queryid(@PathVariable int pid) {
+		return biz.queryid(pid);
 	}
 }

@@ -34,4 +34,27 @@ public class Legwork {
 	private String platenumber;
 	private String brand;
 	private String state;
+	private String artisan;
+	private Integer momey;
+	public Integer getMomey() {
+		return momey;
+	}
+	public void setMomey(Integer momey) {
+		this.momey = momey;
+	}
+	public int getWid() {
+		return wid;
+	}
+	public void setWid(Integer wid) {
+		this.wid = wid;
+	}
+	private int wid;
+	
+	
+	public String getArtisan() {
+		return artisan;
+	}
+	public void setArtisan(String artisan) {
+		this.artisan = artisan;
+	}
 }

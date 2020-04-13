@@ -24,4 +24,7 @@ public interface ljnUserphoneDao extends BaseMapper<voUserphone>{
 	
 	//根据编号查询通讯录信息
 	Userphone queryid(@Param("txlid") int txlid);
+	
+	//查询编号是否已存在
+	int count(@Param("pid") int pid);
 }
