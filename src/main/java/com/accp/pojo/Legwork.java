@@ -35,17 +35,17 @@ public class Legwork {
 	private String brand;
 	private String state;
 	private String artisan;
-	private int momey;
-	public int getMomey() {
+	private Integer momey;
+	public Integer getMomey() {
 		return momey;
 	}
-	public void setMomey(int momey) {
+	public void setMomey(Integer momey) {
 		this.momey = momey;
 	}
 	public int getWid() {
 		return wid;
 	}
-	public void setWid(int wid) {
+	public void setWid(Integer wid) {
 		this.wid = wid;
 	}
 	private int wid;

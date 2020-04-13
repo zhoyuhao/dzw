@@ -5,4 +5,8 @@
 <select id="query" resultType="com.accp.pojo.Service">
 SELECT wId,wcarid FROM service WHERE wstatic=0 
 </select>
+
+<update id="update">
+UPDATE service SET wstatic = 2 WHERE wid =#{wid}
+</update>
 </mapper>

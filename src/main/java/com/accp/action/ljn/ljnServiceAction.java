@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +22,9 @@ public class ljnServiceAction {
 	public List<Service> query() {
 		return biz.query();
 	}
-	
+	//更改维修状态
+	@GetMapping("update/{wid}")
+	public int update(@PathVariable int wid) {
+		return biz.update(wid);
+	}
 }
