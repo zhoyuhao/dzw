@@ -35,6 +35,22 @@ public class Legwork {
 	private String brand;
 	private String state;
 	private String artisan;
+	private int momey;
+	public int getMomey() {
+		return momey;
+	}
+	public void setMomey(int momey) {
+		this.momey = momey;
+	}
+	public int getWid() {
+		return wid;
+	}
+	public void setWid(int wid) {
+		this.wid = wid;
+	}
+	private int wid;
+	
+	
 	public String getArtisan() {
 		return artisan;
 	}
