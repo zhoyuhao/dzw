@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @TableName("goods")
 public class lcGoodsVo {
 	@TableId(value = "gid")
-	 private Integer gid;
+	 private String gid;
 
 	    private Integer ghsid;
 
@@ -35,11 +35,11 @@ public class lcGoodsVo {
 	    
 	    private lcSupplierVo lcSupplier;
 
-		public Integer getGid() {
+		public String getGid() {
 			return gid;
 		}
 
-		public void setGid(Integer gid) {
+		public void setGid(String gid) {
 			this.gid = gid;
 		}
 
@@ -130,7 +130,7 @@ public class lcGoodsVo {
 					+ gdescribe + ", gnumber=" + gnumber + "]";
 		}
 
-		public lcGoodsVo(Integer gid, Integer ghsid, String gname, Date gtime, Float gprice, String gbrand,
+		public lcGoodsVo(String gid, Integer ghsid, String gname, Date gtime, Float gprice, String gbrand,
 				String gsuitable, String gtype, String gdescribe, Integer gnumber, lcSupplierVo lcSupplier) {
 			super();
 			this.gid = gid;

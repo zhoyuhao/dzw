@@ -19,5 +19,6 @@ public interface lcPersonnelMapper extends BaseMapper<lcpersonnelsVo> {
 	
 	
 	public lcpersonnelVo queryByid(@Param("pid")String pid);
-
+	
+	int inserss(@Param("a")lcpersonnelVo a);
 }

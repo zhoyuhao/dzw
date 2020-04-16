@@ -21,9 +21,9 @@ public class lcserviceBiz {
 	@Autowired
 	private lcserviceMapper dao;
 	
-	//首页统计维修台数
-	public lcserviceVo queryall(String paymenttirm){
-		return dao.querybycount(paymenttirm);
+	//站内维修
+	public List<lcserviceVo> queryzn(String wtype,String wstatdate){
+		return dao.queryallzn(wtype,wstatdate);
 	}
 	public lcserviceVo queryallbyxianjin(String paymenttirm){
 		return dao.queryxianjin(paymenttirm);
@@ -32,6 +32,10 @@ public class lcserviceBiz {
 	public lcserviceVo queryallzaixiu(String wstatdate){
 		return dao.queryzaixiutaici(wstatdate);
 	}
+	
+	 public Long queryMaxId() {
+			return dao.queryMaxId();
+		    }
 	
 	
 }
