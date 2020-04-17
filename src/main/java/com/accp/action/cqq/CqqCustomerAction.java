@@ -20,9 +20,11 @@ public class CqqCustomerAction {
 	@Autowired
 	private CqqCustomerBiz cqqCustomerBiz;
 
-	@GetMapping("{n}/{s}")
-	public PageInfo<Customer> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s) {
-		return cqqCustomerBiz.selectCustomerList(n, s);
+	@GetMapping("{n}/{s}/{val}")
+	public PageInfo<Customer> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s,
+																@PathVariable String val) {
+		val="null".equals(val)?"":val;
+		return cqqCustomerBiz.selectCustomerList(n, s,val);
 	}
 
 	@PostMapping("update")

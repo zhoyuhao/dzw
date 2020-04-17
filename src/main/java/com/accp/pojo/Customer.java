@@ -2,7 +2,13 @@ package com.accp.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("customer")
 public class Customer {
+	
+	@TableId(value = "cidk")
     private String cidk;
 
     private String cnamek;
