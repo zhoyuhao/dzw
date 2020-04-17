@@ -44,8 +44,8 @@ public class lcPersonnelBiz {
 	
 	//增加
 		@Transactional(propagation = Propagation.SUPPORTS,isolation = Isolation.READ_COMMITTED,readOnly = false)
-		public int saveaa(lcpersonnelsVo lcss) {
-			return dao.insert(lcss);
+		public int saveaa(lcpersonnelVo a) {
+			return dao.inserss(a);
 		}
 	
 

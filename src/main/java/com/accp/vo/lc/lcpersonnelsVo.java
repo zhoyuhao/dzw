@@ -1,5 +1,7 @@
 package com.accp.vo.lc;
 
+import java.util.Date;
+
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -12,7 +14,7 @@ public class lcpersonnelsVo {
 	private String pname;
 	private String psex;
 	private String peducational;
-	private String pentry;
+	private Date pentry;
 	private String pphone;
 	private String paddress;
 	private String pidcard;
@@ -49,10 +51,10 @@ public class lcpersonnelsVo {
 	public void setPeducational(String peducational) {
 		this.peducational = peducational;
 	}
-	public String getPentry() {
+	public Date getPentry() {
 		return pentry;
 	}
-	public void setPentry(String pentry) {
+	public void setPentry(Date pentry) {
 		this.pentry = pentry;
 	}
 	public String getPphone() {
@@ -98,7 +100,7 @@ public class lcpersonnelsVo {
 				+ paddress + ", pidcard=" + pidcard + ", pstatic=" + pstatic + ", ppwd=" + ppwd + ", ppost=" + ppost
 				+ "]";
 	}
-	public lcpersonnelsVo(String pId, Integer bzId, String pname, String psex, String peducational, String pentry,
+	public lcpersonnelsVo(String pId, Integer bzId, String pname, String psex, String peducational, Date pentry,
 			String pphone, String paddress, String pidcard, Integer pstatic, String ppwd, Integer ppost) {
 		super();
 		this.pId = pId;

@@ -25,6 +25,7 @@
 		 <where>
 			<if test="gname!=null">and gname like '%${gname}%'</if>
 		</where> 
+		ORDER BY gid DESC
 	</select>
 	<select id="queryByid" resultType="com.accp.vo.lc.lcGoodsVo">
 		SELECT * FROM `goods` where

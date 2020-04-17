@@ -3,32 +3,42 @@
 <mapper namespace="com.accp.dao.lc.lcPersonnelMapper">
 	<select id="queryalOrName"
 		resultType="com.accp.vo.lc.lcpersonnelVo">
-		SELECT p.*,po.`gwname` AS gangwei,r.`cname` AS juesename ,r.`cid` AS
-		jid FROM `personnel` p
-		INNER JOIN `uersandrole` u ON(u.`pId`=p.`pId`)
-		INNER JOIN `role` r ON(r.`cid`=u.`cid`)
-		INNER JOIN `post` po ON(po.`pId`=p.`ppost`)
+		SELECT * FROM personnel a INNER JOIN role b ON a.`ppost`=b.`cid` INNER JOIN `post` c ON a.`pId`=c.`pId`
 		<where>
 			<if test="pname!=null">
-				and p.pname like '%${pname}%'
-
-
+				and a.pname like '%${pname}%'
 			</if>
 		</where>
+		ORDER BY a.`pId` DESC
 	</select>
 	<!-- 删除 -->
 	<delete id="romoveyg">
+	    delete from post where pId=#{pid};
 		delete from personnel where pId=#{pid};
 		delete from uersandrole where pId=#{pid};
-		delete from userphone where pId=#{pid};
-		delete from post where pId=#{pid};
+		
 	</delete>
 
+	<insert id="inserss" parameterType="com.accp.vo.lc.lcpersonnelVo">
+	  INSERT INTO `dzw`.`uersandrole` (pId,cid) VALUES(#{a.pId},#{a.cid});
+		INSERT INTO `dzw`.`personnel` (
+		`pId`,`pname`,`psex`,`peducational`,`pentry`,`pphone`,`paddress`,`pidcard`,`pstatic`,`ppwd`,`ppost`
+
+		)
+		VALUES
+		(
+		#{a.pId},#{a.pname},#{a.psex},#{a.peducational},#{a.pentry},#{a.pphone},#{a.paddress},#{a.pidcard},#{a.pstatic},#{a.ppwd},#{a.ppost}
+		) ;
+		INSERT INTO dzw.`post`(gwid,pId,gwname) VALUES
+		(
+		#{a.gwid},#{a.pId},#{a.gwname}
+		);
+		
+	</insert>
+
 	<select id="queryByid" resultType="com.accp.vo.lc.lcpersonnelVo">
-		SELECT p.*,po.`gwname` AS gangwei,r.`cname` AS juesename ,r.`cid` AS jid
-		FROM `personnel` p
-		INNER JOIN `uersandrole` u ON(u.`pId`=p.`pId`)
-		INNER JOIN `role` r ON(r.`cid`=u.`cid`)
-		INNER JOIN `post` po ON(po.`pId`=p.`ppost`) where p.pId=#{pid}
+		SELECT * FROM personnel a INNER JOIN role b ON a.`ppost`=b.`cid` INNER JOIN `post` c ON a.`pId`=c.`pId` where
+		a.pId=#{pid} 
+		
 	</select>
 </mapper>
