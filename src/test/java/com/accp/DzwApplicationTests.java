@@ -1,36 +1,34 @@
 package com.accp;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.accp.biz.lc.lcGoodsBiz;
-import com.accp.biz.lc.lcPersonnelBiz;
+import com.accp.biz.cqq.CqqServiceBiz;
 import com.accp.biz.lc.lcserviceBiz;
-import com.accp.biz.lc.lcworkergroupBiz;
-import com.accp.vo.lc.lcserviceVo;
-
 
 
 @SpringBootTest
 class DzwApplicationTests {
 
-	/***环境测试成功
+	/***
+	 * 环境测试成功
 	 * 
 	 */
-	@Autowired
-	private lcserviceBiz biz;
-
-	
-	
+	/*
+	 * @Autowired private lcserviceBiz biz;
+	 * 
+	 * @Autowired private CqqServiceBiz cqqServiceBiz;
+	 */
 
 	@Test
 	public void ceshi() {
-		//cqqServiceBiz.sss();
-		biz.queryall("2020-4-9");
-		
+		int j=0;
+		for (int i = 0; i < 10; i++) {
+			j=(j++);
+			System.out.println("j="+j);
+		}
+		System.out.println(j);
 	}
 
 }

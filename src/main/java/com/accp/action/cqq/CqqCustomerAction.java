@@ -31,4 +31,10 @@ public class CqqCustomerAction {
 		return cqqCustomerBiz.customerUpdate(customer);
 	}
 
+	@GetMapping("{id}")
+	public Customer selectCustomer(@PathVariable String id) {
+		System.out.println("id:/"+id);
+		return cqqCustomerBiz.selectCustomer(id);
+	}
+
 }
