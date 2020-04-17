@@ -9,7 +9,18 @@ public class Servicedetailed {
 
     private Float sdprice;
 
+    private Float dprice;
+    
     private Float sdnumber;
+
+    
+    public Float getDprice() {
+        return dprice;
+    }
+
+    public void setDprice(Float dprice) {
+        this.dprice = dprice;
+    }
 
     public Integer getSdid() {
         return sdid;
