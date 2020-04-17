@@ -41,12 +41,16 @@ public class CqqServiceBiz {
 	 * @return
 	 */
 	public int updateService(String ckahaok,Service service) {
-		System.out.println("ckahaok"+ckahaok);
+		System.out.println("ckahaok:"+ckahaok);
 		service.setPaymenttirm(new Date());
+		if(!"undefined".equals(ckahaok)) {
+			System.out.println("123");
 		Customer cus=cqqCustomerDao.selectById(ckahaok);
-		//int i=(int)service.getDeductionmoney();
-		//cus.setCdoublerk(i);
+		float a=service.getDeductionmoney();
+		//System.out.println((int)a);
+		cus.setCdoublerk(cus.getCdoublerk()-(int)a);
 		cqqCustomerDao.updateById(cus);
+		}
 		return cqqServiceDao.updateById(service);
 	}
 

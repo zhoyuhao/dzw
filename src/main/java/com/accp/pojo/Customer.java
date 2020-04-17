@@ -1,6 +1,11 @@
 package com.accp.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 public class Customer {
+	
+    @TableId(value = "cidk")
     private String cidk;
 
     private String cnamek;
