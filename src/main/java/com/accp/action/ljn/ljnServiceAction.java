@@ -23,8 +23,8 @@ public class ljnServiceAction {
 		return biz.query();
 	}
 	//更改维修状态
-	@GetMapping("update/{wid}")
-	public int update(@PathVariable int wid) {
-		return biz.update(wid);
+	@GetMapping("update/{wstatic}/{wid}")
+	public int update(@PathVariable int wstatic,@PathVariable int wid) {
+		return biz.update(wstatic,wid);
 	}
 }

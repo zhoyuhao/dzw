@@ -11,5 +11,5 @@ public interface ljnServiceDao{
 
 	List<Service> query();
 	
-	int update(@Param("wid") int wid);
+	int update(@Param("wstatic") int wstatic,@Param("wid") int wid);
 }

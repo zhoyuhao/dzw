@@ -3,10 +3,10 @@
 <mapper namespace="com.accp.dao.ljn.ljnServiceDao">
 
 <select id="query" resultType="com.accp.pojo.Service">
-SELECT wId,wcarid FROM service WHERE wstatic=0 
+SELECT wid,wcarid FROM service WHERE wstatic=1
 </select>
 
 <update id="update">
-UPDATE service SET wstatic = 2 WHERE wid =#{wid}
+UPDATE service SET wstatic = #{wstatic} WHERE wid =#{wid}
 </update>
 </mapper>

@@ -17,7 +17,7 @@ public class ljnServiceBiz {
 		return dao.query();
 	}
 	//更改维修状态
-	public int update(int wid) {
-		return dao.update(wid);
+	public int update(int wstatic,int wid) {
+		return dao.update(wstatic,wid);
 	}
 }
