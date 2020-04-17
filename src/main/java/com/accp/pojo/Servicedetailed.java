@@ -9,7 +9,11 @@ public class Servicedetailed {
 
 	private Float sdprice;
 
+
 	private Float sdnumber;
+
+    private Float dprice;
+    
 
 	@Override
 	public String toString() {
@@ -17,9 +21,20 @@ public class Servicedetailed {
 				+ ", sdnumber=" + sdnumber + "]";
 	}
 
-	public Integer getSdid() {
-		return sdid;
-	}
+    
+    public Float getDprice() {
+        return dprice;
+    }
+
+    public void setDprice(Float dprice) {
+        this.dprice = dprice;
+    }
+
+    public Integer getSdid() {
+        return sdid;
+    }
+
+
 
 	public void setSdid(Integer sdid) {
 		this.sdid = sdid;

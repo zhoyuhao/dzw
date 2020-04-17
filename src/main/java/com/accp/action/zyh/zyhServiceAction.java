@@ -110,7 +110,7 @@ public class zyhServiceAction {
 	public  String parseDate2(String val){
 		val = val.replace("GMT", "").replaceAll("\\(.*\\)", ""); 
 		 //将字符串转化为date类型，格式2016-10-12 
-		 SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z",Locale.ENGLISH); 
+		 SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss z",Locale.ENGLISH); 
 		 Date dateTrans;
 		try {
 			dateTrans = format.parse(val);

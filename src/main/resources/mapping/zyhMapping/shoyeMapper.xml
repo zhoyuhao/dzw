@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zyh.shoyeMapper">
+
+<!--今日接单数量  -->
+<select id="queryJieDan" resultType="com.accp.vo.zyh.shoye_vo">
+SELECT (SELECT COUNT(*) FROM `service` 
+WHERE DATE_FORMAT(wstatdate, '%Y-%m-%d') =CURDATE() AND wleixi=2)jrwjiedan,
+(SELECT COUNT(*) FROM `service` 
+WHERE DATE_FORMAT(wstatdate, '%Y-%m-%d') =CURDATE() AND wleixi=1)jrzjiedan
+</select>
+
+<select id="queryJieSuan" resultType="integer">
+SELECT COUNT(*) FROM `service` 
+WHERE DATE_FORMAT(`wenddate`, '%Y-%m-%d') =CURDATE() AND `wstatic`=4;
+</select>
+
+<select id="queryKeHu" resultType="com.accp.vo.zyh.shoye_vo">
+SELECT (SELECT COUNT(*) FROM `customer` WHERE `time`=CURDATE() AND ctypek='会员'
+) kehuhnumber,(SELECT COUNT(*) FROM `customer` WHERE `time`=CURDATE() AND ctypek!='会员') kehupnumber
+;
+
+</select>
+
+<resultMap id="mqp2" type="com.accp.vo.zyh.shoye_vo">
+   
+    <result column="jrsummoney" property="jrsummoney"/>
+    <result column="jrshimoney" property="jrshimoney" />
+  </resultMap>
+<select id="queryMoney" resultMap="mqp2">
+SELECT SUM(wsumprice) jrsummoney , (SUM(wsumprice)-SUM(deductionmoney)) jrshimoney 
+FROM `service` WHERE `wstatic`=4 AND DATE_FORMAT(`wenddate`, '%Y-%m-%d') =CURDATE();
+
+</select>
+
+
+ <resultMap id="mqp1" type="com.accp.vo.zyh.shoye_vo">
+   
+    <result column="jrsummoney" property="jrsummoney" />
+    <result column="xq" property="xq" />
+  </resultMap>
+<select id="queryZQMoney" resultMap="mqp1">
+SELECT SUM(`wsumprice`) jrsummoney ,DATE_FORMAT(wenddate,'%w') xq FROM `service`
+WHERE `wstatic`=4 AND DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE()) DAY)&lt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
+AND DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE())-6 DAY)&gt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
+GROUP BY DATE_FORMAT(`wenddate`, '%Y-%m-%d');
+</select>
+
+
+<select id="queryZQMoneyS" resultMap="mqp1">
+SELECT SUM(`wsumprice`) jrsummoney ,DATE_FORMAT(wenddate,'%w') xq FROM `service`
+WHERE `wstatic`=4 AND DATE(DATE_SUB(NOW(),INTERVAL (DAYOFWEEK(DATE_SUB(NOW(),INTERVAL 1 DAY))) DAY))&gt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
+AND DATE_FORMAT(DATE_SUB(DATE_SUB(NOW(), INTERVAL WEEKDAY(NOW()) DAY), INTERVAL 1 WEEK), '%Y-%m-%d')&lt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
+GROUP BY DATE_FORMAT(`wenddate`, '%Y-%m-%d');
+
+
+</select>
+</mapper>
