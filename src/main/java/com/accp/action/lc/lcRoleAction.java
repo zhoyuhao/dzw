@@ -19,6 +19,7 @@ public class lcRoleAction {
 	//查询所有角色
 	@GetMapping("/ssb")
 	public List<lcrolevo> queryall(){
+		///提交
 		return bizs.queryall();
 	}
 }
