@@ -125,7 +125,7 @@ VALUES
     #{p.cgrade},
     now()
   ) ;
-  
+  <if test="p.list.size()!=0">
     INSERT INTO `dzw`.`customercar` (
   `cidk`,
   `carlicenceplate`,
@@ -145,7 +145,7 @@ VALUES
     #{temp.carlocality},
     #{temp.carmodel}
   ) 
-  </foreach>
+  </foreach></if>
   </insert>
   
   <delete id="deleteCar">

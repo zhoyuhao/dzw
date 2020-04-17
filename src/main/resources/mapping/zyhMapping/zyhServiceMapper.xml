@@ -32,8 +32,13 @@
 INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`)  -->
 SELECT se.*,s.*,w.`bzname` ,w.`hmoney`,w.`type` FROM `service` se
 INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`) 
-INNER JOIN `personnel` p ON(p.`pname`=se.`wjname`)
-INNER JOIN `workergroup` w ON(w.`bzId`=p.`bzId`)
+INNER JOIN `workergroup` w 
+INNER JOIN `personnel` p ON ( p.`bzId`=
+(SELECT `bzId` FROM `workergroup` WHERE `bzname`=se.`wjname`)
+OR 
+p.`bzId`=p.`bzId`
+ )
+
 <where>
 <if test="wcarid!=null">and se.`wcarid`=#{wcarid}</if>
 <if test="statdate!=null">and se.`wstatdate`&gt;=#{statdate} AND se.`wenddate` &lt;=#{enddate}</if>
@@ -41,13 +46,13 @@ INNER JOIN `workergroup` w ON(w.`bzId`=p.`bzId`)
 <if test="statuc!=null and statuc2!=0">and (se.`wstatic`=#{statuc} OR se.`wstatic`=#{statuc2} or se.`wstatic`=11 or se.`wstatic`=10) </if>
 <if test="statuc!=null and statuc2==0">and se.`wstatic`=#{statuc} </if>
 </where>
-
+ GROUP BY se.`wId`
   </select>
   
   
   <update id="updateByWidToStatuc">
     <if test="statuc==3">
-	UPDATE `servicedetailed` SET `sdprice`=#{gsf} ,`sdnumber`=#{gs}  WHERE  `sdname` LIKE '工时费%' AND `wId`=wid;
+	UPDATE `servicedetailed` SET `sdprice`=#{gsf} ,`sdnumber`=#{gs} WHERE  `sdname` LIKE '工时费%' AND `wId`=wid;
    </if>
   
   UPDATE  `service` s SET`wstatic`=#{statuc}
