@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.yld.artisanGroupBiz;
 import com.accp.biz.yld.goodsBiz;
 import com.accp.biz.yld.goodsItemBiz;
+import com.accp.biz.yld.legworkBiz;
 import com.accp.biz.yld.serviceBiz;
 import com.accp.biz.yld.serviceInfoBiz;
 import com.accp.biz.yld.serviceStatusBiz;
 import com.accp.biz.yld.workerBiz;
 import com.accp.biz.yld.artisanBiz;
 import com.accp.pojo.Goods;
+import com.accp.pojo.Legwork;
 import com.accp.pojo.Personnel;
 import com.accp.pojo.Service;
 import com.accp.pojo.Servicedetailed;
@@ -30,6 +32,7 @@ import com.accp.pojo.Workergroup;
 import com.accp.vo.yld.artisanGroupVo;
 import com.accp.vo.yld.artisanVo;
 import com.accp.vo.yld.serviceVo;
+import com.accp.vo.yld.workerVo;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 
@@ -53,7 +56,9 @@ public class yldArtisanAction {
     private serviceStatusBiz stbiz;
     @Autowired
     private serviceInfoBiz sibiz;
-
+    @Autowired
+    private legworkBiz lbiz;
+    
     // 分页查询技工
     @GetMapping("/queryartisan")
     public PageInfo<artisanVo> queryartisan(Integer c, Integer bzid, String name) {
@@ -76,6 +81,18 @@ public class yldArtisanAction {
     @GetMapping("/queryWork")
     public List<Workergroup> queryAllWorkerGroup() {
 	return wbiz.queryAll();
+    }
+    
+    //查询所有技工信息VO
+    @GetMapping("/queryAllPreson")
+    public List<workerVo> queryAllPreson() {
+	return agbiz.queryPreson();
+    }
+    
+    //查询所有班组信息
+    @GetMapping("/queryALlPrsGroup")
+    public List<Workergroup> queryALlPrsGroup() {
+	return wbiz.queryAllPrsGroup();
     }
 
     // 查询所有商品并分页
@@ -119,6 +136,12 @@ public class yldArtisanAction {
     @GetMapping("/queryMaxWid")
     public Long queryMaxWid() {
 	return sbiz.queryMaxId() + 1;
+    }
+    
+    //查询所以未出车的车辆
+    @GetMapping("/queryAllNotOutCar")
+    public List<Legwork> queryAllNotOutCar() {
+	return lbiz.queryAllNotOut();
     }
 
     // 添加技工星级
@@ -165,7 +188,7 @@ public class yldArtisanAction {
 	return "no";
     }
 
-    // 删除技工星级
+    // 删除技工/班组星级
     @DeleteMapping("/deleteewgroup")
     public String deleteEmpWorkerGroup(Integer id) {
 	if (wbiz.deleteWorkerGroup(id) > 0) {
@@ -224,6 +247,15 @@ public class yldArtisanAction {
 	return "no";
     }
 
+    //修改车辆状态
+    @PostMapping("/updateCarState")
+    public String updateCarState(@RequestBody Legwork entity) {
+	if(lbiz.updateCarState(entity) > 0) {
+	    return "ok";
+	}
+	return "no";
+    }
+    
     // 添加工作组
     @PostMapping("/addworker")
     public String insertWorker(@RequestBody Workergroup entity) {

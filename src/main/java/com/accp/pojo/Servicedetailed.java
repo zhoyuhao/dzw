@@ -9,13 +9,34 @@ public class Servicedetailed {
 
 	private Float sdprice;
 
+<<<<<<< HEAD
 	private Float sdnumber;
+=======
+    private Float dprice;
+    
+    private Float sdnumber;
+>>>>>>> branch 'master' of https://github.com/zhoyuhao/dzw.git
 
+<<<<<<< HEAD
 	@Override
 	public String toString() {
 		return "Servicedetailed [sdid=" + sdid + ", wid=" + wid + ", sdname=" + sdname + ", sdprice=" + sdprice
 				+ ", sdnumber=" + sdnumber + "]";
 	}
+=======
+    
+    public Float getDprice() {
+        return dprice;
+    }
+
+    public void setDprice(Float dprice) {
+        this.dprice = dprice;
+    }
+
+    public Integer getSdid() {
+        return sdid;
+    }
+>>>>>>> branch 'master' of https://github.com/zhoyuhao/dzw.git
 
 	public Integer getSdid() {
 		return sdid;

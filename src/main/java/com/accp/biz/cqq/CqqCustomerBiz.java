@@ -21,7 +21,7 @@ public class CqqCustomerBiz {
 
 	/**
 	 * 会员查询
-	 *  
+	 *  //
 	 * @param n
 	 * @param s
 	 * @return
