@@ -13,21 +13,21 @@ public class CqqServiceVo {
 
 	private Service service;// 维修开单表、竣工检验
 
-	private List<Servicedetailed> list;// 维修详细
+	private List<Servicedetailed> serdetalist;// 维修详细
+
+	@Override
+	public String toString() {
+		return "CqqServiceVo [service=" + service + ", serdetalist=" + serdetalist + "]";
+	}
 
 	public CqqServiceVo() {
 		super();
 	}
 
-	public CqqServiceVo(Service service, List<Servicedetailed> list) {
+	public CqqServiceVo(Service service, List<Servicedetailed> serdetalist) {
 		super();
 		this.service = service;
-		this.list = list;
-	}
-
-	@Override
-	public String toString() {
-		return "CqqServiceVo [service=" + service + ", list=" + list + "]";
+		this.serdetalist = serdetalist;
 	}
 
 	public Service getService() {
@@ -38,12 +38,12 @@ public class CqqServiceVo {
 		this.service = service;
 	}
 
-	public List<Servicedetailed> getList() {
-		return list;
+	public List<Servicedetailed> getSerdetalist() {
+		return serdetalist;
 	}
 
-	public void setList(List<Servicedetailed> list) {
-		this.list = list;
+	public void setSerdetalist(List<Servicedetailed> serdetalist) {
+		this.serdetalist = serdetalist;
 	}
 
 }

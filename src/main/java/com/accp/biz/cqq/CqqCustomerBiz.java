@@ -33,6 +33,23 @@ public class CqqCustomerBiz {
 	}
 
 	/**
+	 * 查询单个会员
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Customer selectCustomer(String id) {
+		QueryWrapper<Customer> qw = Wrappers.query();
+		qw.eq("ckahaok", id);
+		Customer cus = cqqCustomerDao.selectOne(qw);
+		System.out.println("[////"+cus);
+		if (cus != null) {
+			return cus;
+		}
+		return null;
+	}
+
+	/**
 	 * 会员充值
 	 * 
 	 * @param customer
