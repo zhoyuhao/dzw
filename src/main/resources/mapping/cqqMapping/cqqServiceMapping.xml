@@ -3,6 +3,8 @@
 <mapper namespace="com.accp.dao.cqq.CqqServiceDao">
 
 	<resultMap id="ServiceVo" type="com.accp.vo.cqq.CqqServiceVo">
+		<association property="sum" select="sum"
+			column="wId"></association>
 		<association property="service" select="queryallssss"
 			column="wId"></association>
 		<collection property="serdetalist" column="wId"
@@ -16,6 +18,12 @@
 			<if test="name!=null">and wname =#{name}</if>
 		</where>
 	</select>
+
+	<select id="sum" resultType="int">
+		SELECT SUM(`sdprice`*`sdnumber`) AS `sum` FROM
+		`servicedetailed` WHERE `wId`=#{0}
+	</select>
+
 
 	<select id="queryallssss" resultType="com.accp.pojo.Service">
 		SELECT * FROM `service`
