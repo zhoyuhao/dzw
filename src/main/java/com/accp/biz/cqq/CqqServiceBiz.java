@@ -33,22 +33,30 @@ public class CqqServiceBiz {
 
 	@Autowired
 	private CqqCustomerDao cqqCustomerDao;
-	
+
 	/**
 	 * 收银
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public int updateService(String ckahaok,Service service) {
-		System.out.println("ckahaok:"+ckahaok);
-		System.out.println("service:"+service);
+	public int updateService(String ckahaok, Service service) {
+		System.out.println("ckahaok:" + ckahaok);
+		System.out.println("service:" + service);
 		service.setPaymenttirm(new Date());
-		if(!"undefined".equals(ckahaok)) {
+		if (!"undefined".equals(ckahaok)) {
 			System.out.println("123");
-			Customer cus=cqqCustomerDao.selectById(ckahaok);
-			float a=service.getDeductionmoney();
-			cus.setCdoublerk(cus.getCdoublerk()-(int)a);
+			Customer cus = cqqCustomerDao.selectById(ckahaok);
+			float a = service.getDeductionmoney();
+			System.out.println("a:" + a);
+			if (a < 0) {
+				a = a - a - a;
+				service.setDeductionmoney(a);
+				cus.setCdoublerk(cus.getCdoublerk() - (int) a);
+			} else {
+				cus.setCdoublerk(cus.getCdoublerk() + (int) a);
+
+			}
 			cqqCustomerDao.updateById(cus);
 		}
 		return cqqServiceDao.updateById(service);
@@ -60,9 +68,9 @@ public class CqqServiceBiz {
 		System.out.println(list);
 		return new PageInfo<CqqServiceVo>(list);
 	}
-	
+
 	public List<CqqServiceVo> queryallList() {
-		return cqqServiceDao.queryall(null,null);
+		return cqqServiceDao.queryall(null, null);
 	}
 
 	/**
