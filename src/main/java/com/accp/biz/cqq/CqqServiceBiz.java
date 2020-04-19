@@ -42,14 +42,14 @@ public class CqqServiceBiz {
 	 */
 	public int updateService(String ckahaok,Service service) {
 		System.out.println("ckahaok:"+ckahaok);
+		System.out.println("service:"+service);
 		service.setPaymenttirm(new Date());
 		if(!"undefined".equals(ckahaok)) {
 			System.out.println("123");
-		Customer cus=cqqCustomerDao.selectById(ckahaok);
-		float a=service.getDeductionmoney();
-		//System.out.println((int)a);
-		cus.setCdoublerk(cus.getCdoublerk()-(int)a);
-		cqqCustomerDao.updateById(cus);
+			Customer cus=cqqCustomerDao.selectById(ckahaok);
+			float a=service.getDeductionmoney();
+			cus.setCdoublerk(cus.getCdoublerk()-(int)a);
+			cqqCustomerDao.updateById(cus);
 		}
 		return cqqServiceDao.updateById(service);
 	}
@@ -57,6 +57,7 @@ public class CqqServiceBiz {
 	public PageInfo<CqqServiceVo> queryall(Integer n, Integer s, Integer wid, String name) {
 		PageHelper.startPage(n, s);
 		List<CqqServiceVo> list = cqqServiceDao.queryall(wid == 0 ? null : wid, "null".equals(name) ? null : name);
+		System.out.println(list);
 		return new PageInfo<CqqServiceVo>(list);
 	}
 	
@@ -81,24 +82,5 @@ public class CqqServiceBiz {
 		}
 		qw.like("wname", "null".equals(name) ? "" : name);
 		return new PageInfo<Service>(cqqServiceDao.selectList(qw));
-	}
-
-	/**
-	 * 结算中心查询vo
-	 * 
-	 * @return
-	 */
-	public PageInfo<CqqServiceVo> selectServiceVoList(Integer n, Integer s, Integer wid, String name) {
-		PageHelper.startPage(n, s);
-		QueryWrapper<Service> qw = Wrappers.query();// 主表
-		QueryWrapper<Servicedetailed> qw2 = Wrappers.query();// 详表
-		List<Service> serList = cqqServiceDao.selectList(qw);
-		List<CqqServiceVo> serVoList = new ArrayList<CqqServiceVo>();
-		for (Service service : serList) {
-			System.out.println("循环");
-			qw2.eq("wId", service.getWid());
-			serVoList.add(new CqqServiceVo(service, cqqServicedetailedDao.selectList(qw2)));
-		}
-		return new PageInfo<CqqServiceVo>(serVoList);
 	}
 }

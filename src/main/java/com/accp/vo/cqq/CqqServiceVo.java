@@ -15,20 +15,7 @@ public class CqqServiceVo {
 
 	private List<Servicedetailed> serdetalist;// 维修详细
 
-	@Override
-	public String toString() {
-		return "CqqServiceVo [service=" + service + ", serdetalist=" + serdetalist + "]";
-	}
-
-	public CqqServiceVo() {
-		super();
-	}
-
-	public CqqServiceVo(Service service, List<Servicedetailed> serdetalist) {
-		super();
-		this.service = service;
-		this.serdetalist = serdetalist;
-	}
+	private Integer sum;
 
 	public Service getService() {
 		return service;
@@ -44,6 +31,30 @@ public class CqqServiceVo {
 
 	public void setSerdetalist(List<Servicedetailed> serdetalist) {
 		this.serdetalist = serdetalist;
+	}
+
+	public Integer getSum() {
+		return sum;
+	}
+
+	public void setSum(Integer sum) {
+		this.sum = sum;
+	}
+
+	public CqqServiceVo(Service service, List<Servicedetailed> serdetalist, Integer sum) {
+		super();
+		this.service = service;
+		this.serdetalist = serdetalist;
+		this.sum = sum;
+	}
+
+	public CqqServiceVo() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "CqqServiceVo [service=" + service + ", serdetalist=" + serdetalist + ", sum=" + sum + "]";
 	}
 
 }
