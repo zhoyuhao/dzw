@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yld.artisanGroupBiz;
+import com.accp.biz.yld.customerBiz;
+import com.accp.biz.yld.customerCarBiz;
 import com.accp.biz.yld.goodsBiz;
 import com.accp.biz.yld.goodsItemBiz;
 import com.accp.biz.yld.legworkBiz;
@@ -21,6 +23,8 @@ import com.accp.biz.yld.serviceInfoBiz;
 import com.accp.biz.yld.serviceStatusBiz;
 import com.accp.biz.yld.workerBiz;
 import com.accp.biz.yld.artisanBiz;
+import com.accp.pojo.Customer;
+import com.accp.pojo.Customercar;
 import com.accp.pojo.Goods;
 import com.accp.pojo.Legwork;
 import com.accp.pojo.Personnel;
@@ -31,6 +35,7 @@ import com.accp.pojo.Statucs;
 import com.accp.pojo.Workergroup;
 import com.accp.vo.yld.artisanGroupVo;
 import com.accp.vo.yld.artisanVo;
+import com.accp.vo.yld.customerVo;
 import com.accp.vo.yld.serviceVo;
 import com.accp.vo.yld.workerVo;
 import com.alibaba.fastjson.JSON;
@@ -58,6 +63,10 @@ public class yldArtisanAction {
     private serviceInfoBiz sibiz;
     @Autowired
     private legworkBiz lbiz;
+    @Autowired
+    private customerBiz cbiz;
+    @Autowired
+    private customerCarBiz ccbiz;
     
     // 分页查询技工
     @GetMapping("/queryartisan")
@@ -144,6 +153,18 @@ public class yldArtisanAction {
 	return lbiz.queryAllNotOut();
     }
 
+    //查询所有客户信息
+    @GetMapping("/queryAllprs")
+    public List<Customer> queryAllprs() {
+	return cbiz.queryAll();
+    }
+    
+    //根据客户编号查询客户所有车辆信息
+    @GetMapping("/queryAllByPrsId")
+    public List<Customercar> queryAllByPrsId(String id) {
+	return ccbiz.queryByPrsId(id);
+    }
+    
     // 添加技工星级
     @PostMapping("/insertewgroup")
     public String insertEmpWorkerGroup(@RequestBody Workergroup entity) {
@@ -188,6 +209,27 @@ public class yldArtisanAction {
 	return "no";
     }
 
+    //添加顾客信息及车辆
+    @PostMapping("/insertCustomerAndCar")
+    public String insertCustomerAndCar(@RequestBody customerVo temp) {
+	if (cbiz.InsertCustomerAndCar(temp)>0) {
+	    return "ok";
+	}
+	return "no";
+    }
+    
+    //添加顾客车辆
+    @PostMapping("/insertCustomerCar")
+    public String insertCustomerCar(@RequestBody Customercar[] entity) {
+	String msg = "ok";
+	for (Customercar temp : entity) {
+	    if(ccbiz.insertCustomerCar(temp)<0) {
+		msg = "no";
+	    }
+	}
+	return msg;
+    }
+    
     // 删除技工/班组星级
     @DeleteMapping("/deleteewgroup")
     public String deleteEmpWorkerGroup(Integer id) {
