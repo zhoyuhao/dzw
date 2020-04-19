@@ -2,9 +2,13 @@ package com.accp.pojo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @TableName("service")
 public class Service {
@@ -31,7 +35,7 @@ public class Service {
     private Integer wleixi;// 维修类型
 
     private Date wstatdate;// 开始时间
-
+    
     private Date wenddate;// 结束时间
 
     private Integer wpayment;// 付款类型

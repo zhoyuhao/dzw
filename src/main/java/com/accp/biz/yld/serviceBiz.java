@@ -1,5 +1,8 @@
 package com.accp.biz.yld;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -24,7 +27,13 @@ public class serviceBiz {
     }
     
     public Long queryMaxId() {
-	return dao.queryMaxId();
+	Long id = dao.queryMaxId();
+	if(id == null) {
+	    Calendar time = Calendar.getInstance();
+	    time.setTime(new Date());
+	    id = Long.parseLong(time.get(Calendar.YEAR)+""+(time.get(Calendar.MONTH)+1)+""+time.get(Calendar.DAY_OF_MONTH)+"0");
+	}
+	return id;
     }
     
     public int insertService(com.accp.pojo.Service entity) {
