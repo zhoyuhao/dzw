@@ -9,7 +9,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.lc.lcroleMapper;
+import com.accp.vo.lc.lcpostVo;
 import com.accp.vo.lc.lcrolevo;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS,isolation = Isolation.READ_COMMITTED,readOnly = true)
@@ -19,7 +22,9 @@ public class lcRoleBiz {
 	private lcroleMapper dao;
 	
 	public List<lcrolevo> queryall(){
-		return dao.selectList(null);
+		QueryWrapper<lcrolevo> qw=Wrappers.query();
+		qw.notIn("cid", 1);
+		return dao.selectList(qw);
 	}
 
 }

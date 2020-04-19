@@ -3,16 +3,24 @@
 <mapper namespace="com.accp.dao.lc.lcPersonnelMapper">
 	<select id="queryalOrName"
 		resultType="com.accp.vo.lc.lcpersonnelVo">
-			SELECT * FROM personnel a
+		<!-- 	SELECT * FROM personnel a
 		INNER JOIN role b ON a.`ppost`=b.`cid` INNER JOIN `post` c ON
-		a.`ppost`=c.`pId`
+		a.`ppost`=c.`pId` -->
+				SELECT a.*,b.`cname`,c.`gwname`,b.`cid` ,c.`pId` AS postid  FROM personnel a
+		
+		INNER JOIN `uersandrole`  up ON (up.`pId`=a.`pId`)
+		INNER JOIN role b ON (b.`cid`=up.`cid`)
+		 INNER JOIN `post` c ON a.`ppost`=c.`pId`
 		<where>
+		a.`pId`!='admin' and  a.pstatic=0
 			<if test="pname!=null">
 				and  a.pname like '%${pname}%'
 			</if>
-			and  a.pstatic=0
+			
+		
+			
 		</where>
-		ORDER BY  a.`pId` DESC
+		ORDER BY  a.`pentry` DESC
 	</select>
 	<!-- 删除 -->
 	<delete id="romoveyg">
@@ -40,10 +48,18 @@
 	</insert>
 
 	<select id="queryByid" resultType="com.accp.vo.lc.lcpersonnelVo">
-		SELECT * FROM personnel a
+	
+		SELECT a.*,b.`cname`,c.`gwname` ,b.`cid`,c.`pId` AS postid   FROM personnel a
+		
+		INNER JOIN `uersandrole`  up ON (up.`pId`=a.`pId`)
+		INNER JOIN role b ON (b.`cid`=up.`cid`)
+		 INNER JOIN `post` c ON a.`ppost`=c.`pId`
+		 where
+		a.pId=#{pid}
+		<!-- SELECT * FROM personnel a
 		INNER JOIN role b ON a.`ppost`=b.`cid` INNER JOIN `post` c ON
 		a.`ppost`=c.`pId` where
-		a.pId=#{pid}
+		a.pId=#{pid} -->
 
 	</select>
 </mapper>

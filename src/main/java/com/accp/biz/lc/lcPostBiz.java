@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.lc.lcPostMapper;
 import com.accp.vo.lc.lcpostVo;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS,isolation = Isolation.READ_COMMITTED,readOnly = true)
@@ -19,6 +22,8 @@ public class lcPostBiz {
 	private lcPostMapper dao;
 	
 	public List<lcpostVo> queryall(){
-		return dao.selectList(null);
+		QueryWrapper<lcpostVo> qw=Wrappers.query();
+		qw.notIn("pId", 1);
+		return dao.selectList(qw);
 	}
 }

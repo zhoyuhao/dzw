@@ -19,6 +19,14 @@ public class lcpersonnelVo {
 	private String gwname;
 	private Integer cid;
 	private String cname;
+	private Integer postid;
+	
+	public Integer getPostid() {
+		return postid;
+	}
+	public void setPostid(Integer postid) {
+		this.postid = postid;
+	}
 	public String getpId() {
 		return pId;
 	}

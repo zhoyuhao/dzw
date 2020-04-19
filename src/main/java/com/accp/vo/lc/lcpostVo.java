@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class lcpostVo {
 	@TableId(value = "pid",type = IdType.AUTO)//自动增长列
 	private String gwid;
-	private String pid;
+	private Integer pid;
 	private String gwname;
 	public String getGwid() {
 		return gwid;
@@ -16,11 +16,10 @@ public class lcpostVo {
 	public void setGwid(String gwid) {
 		this.gwid = gwid;
 	}
-	
-	public String getPid() {
+	public Integer getPid() {
 		return pid;
 	}
-	public void setPid(String pid) {
+	public void setPid(Integer pid) {
 		this.pid = pid;
 	}
 	public String getGwname() {
@@ -29,22 +28,6 @@ public class lcpostVo {
 	public void setGwname(String gwname) {
 		this.gwname = gwname;
 	}
-	@Override
-	public String toString() {
-		return "lcpostVo [gwid=" + gwid + ", pid=" + pid + ", gwname=" + gwname + "]";
-	}
-	
-	public lcpostVo(String gwid, String pid, String gwname) {
-		super();
-		this.gwid = gwid;
-		this.pid = pid;
-		this.gwname = gwname;
-	}
-	public lcpostVo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 
 }
