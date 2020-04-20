@@ -57,7 +57,7 @@ p.`bzId`=p.`bzId`
   
   UPDATE  `service` s SET`wstatic`=#{statuc}
   <if test="statuc==3">
-  ,wenddate=#{date} ,wsumprice =(SELECT SUM(`sdprice`) FROM `servicedetailed` WHERE `wId`=wid)
+  ,wenddate=#{date} ,wsumprice =(SELECT SUM(`sdprice`) FROM `servicedetailed` WHERE `wId`=#{wid})
   </if>
    WHERE `wId`=#{wid};
  

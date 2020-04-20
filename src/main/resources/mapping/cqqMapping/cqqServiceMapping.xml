@@ -14,9 +14,11 @@
 	<select id="queryall" resultMap="ServiceVo">
 		SELECT * FROM `service`
 		<where>
+		
 			<if test="wid!=null">and wstatic =#{wid}</if>
 			<if test="name!=null">and wname =#{name}</if>
 		</where>
+		ORDER BY paymenttirm desc
 	</select>
 
 	<select id="sum" resultType="int">

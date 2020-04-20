@@ -45,18 +45,22 @@ public class CqqServiceBiz {
 		System.out.println("service:" + service);
 		service.setPaymenttirm(new Date());
 		if (!"undefined".equals(ckahaok)) {
-			System.out.println("123");
+			//System.out.println("123");
 			Customer cus = cqqCustomerDao.selectById(ckahaok);
-			float a = service.getDeductionmoney();
-			System.out.println("a:" + a);
-			if (a < 0) {
-				a = a - a - a;
-				service.setDeductionmoney(a);
-				cus.setCdoublerk(cus.getCdoublerk() - (int) a);
-			} else {
-				cus.setCdoublerk(cus.getCdoublerk() + (int) a);
-
+			if(service.getWpayment()==3) {
+				cus.setCdoublerk((int) (cus.getCdoublerk()-service.getDeductionmoney()));	
+			}else {
+				cus.setCdoublerk((int) (cus.getCdoublerk()+(service.getWsumprice()-service.getDeductionmoney())));
 			}
+			
+			//System.out.println("a:" + a);
+			/*
+			 * if (a < 0) { a = a - a - a; //service.setDeductionmoney(a);
+			 * cus.setCdoublerk(cus.getCdoublerk() - (int) a); } else {
+			 * cus.setCdoublerk(cus.getCdoublerk() + (int) a);
+			 * 
+			 * }
+			 */
 			cqqCustomerDao.updateById(cus);
 		}
 		return cqqServiceDao.updateById(service);
@@ -89,6 +93,7 @@ public class CqqServiceBiz {
 			qw.eq("wstatic", 3);
 		}
 		qw.like("wname", "null".equals(name) ? "" : name);
+		qw.orderByDesc("paymenttirm");
 		return new PageInfo<Service>(cqqServiceDao.selectList(qw));
 	}
 }
