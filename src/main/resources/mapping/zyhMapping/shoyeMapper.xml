@@ -28,7 +28,7 @@ SELECT (SELECT COUNT(*) FROM `customer` WHERE `time`=CURDATE() AND ctypek='ä¼šå‘
     <result column="jrshimoney" property="jrshimoney" />
   </resultMap>
 <select id="queryMoney" resultMap="mqp2">
-SELECT SUM(wsumprice) jrsummoney , (SUM(wsumprice)-SUM(deductionmoney)) jrshimoney 
+SELECT SUM(wsumprice) jrsummoney , SUM(deductionmoney) jrshimoney 
 FROM `service` WHERE `wstatic`=4 AND DATE_FORMAT(`wenddate`, '%Y-%m-%d') =CURDATE();
 
 </select>

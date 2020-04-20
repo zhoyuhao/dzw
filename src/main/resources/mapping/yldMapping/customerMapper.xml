@@ -3,9 +3,9 @@
 <mapper namespace="com.accp.dao.yld.customerDao">
 	<insert id="InsertCustomerAndCar">
 		INSERT INTO `customer` (`cidk`,`cnamek`,`caddressk`,`csexk`,`cphonek`
-		,`cidnumberk`,`ctypek`,`ckahaok`,`cdoublerk`,`cmoneyk`,`cgrade`)VALUES
+		,`cidnumberk`,`ctypek`,`ckahaok`,`cdoublerk`,`cmoneyk`,`cgrade`,time)VALUES
 		(#{temp.cidk},#{temp.cnamek},#{temp.caddressk},#{temp.csexk},#{temp.cphonek},
-		#{temp.cidnumberk},#{temp.ctypek},#{temp.ckahaok},#{temp.cdoublerk},#{temp.cmoneyk},#{temp.cgrade});
+		#{temp.cidnumberk},#{temp.ctypek},#{temp.ckahaok},#{temp.cdoublerk},#{temp.cmoneyk},#{temp.cgrade},#{temp.time});
 
 		INSERT INTO `dzw`.`customercar` (`cidk`,`carlicenceplate`,
 		`carbrand`,`carcolor`,`carconfigure`,`carlocality`,`carmodel`)VALUES

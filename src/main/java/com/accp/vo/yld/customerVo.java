@@ -1,5 +1,7 @@
 package com.accp.vo.yld;
 
+
+import java.util.Date;
 import java.util.List;
 
 import com.accp.pojo.Customercar;
@@ -28,7 +30,17 @@ public class customerVo {
 
     private Integer cgrade;
     
-    private List<Customercar> prsCar;
+    private Date time;
+    
+    public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	private List<Customercar> prsCar;
 
     public String getCidk() {
         return cidk;

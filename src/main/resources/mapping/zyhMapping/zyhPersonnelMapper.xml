@@ -30,6 +30,6 @@ SELECT p.*, ro.`cname`,po.`gwname`  FROM `personnel` p
 INNER JOIN `uersandrole` uz ON (uz.`pId`=p.`pId`)
 INNER JOIN `role` ro ON (ro.`cid`=uz.`cid`)
 INNER JOIN `post` po ON (po.`pId`=p.`ppost`)
-WHERE p.`pname`=#{name} AND p.`ppwd`=#{pwd} and p.pstatic=0
+WHERE p.`pname`=#{name} AND p.`ppwd`=#{pwd} 
  </select>
 </mapper>

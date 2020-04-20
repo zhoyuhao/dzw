@@ -1,5 +1,7 @@
 package com.accp.action.yld;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -212,6 +214,7 @@ public class yldArtisanAction {
     //添加顾客信息及车辆
     @PostMapping("/insertCustomerAndCar")
     public String insertCustomerAndCar(@RequestBody customerVo temp) {
+    	temp.setTime(new Date());
 	if (cbiz.InsertCustomerAndCar(temp)>0) {
 	    return "ok";
 	}
