@@ -69,7 +69,6 @@ public class CqqServiceBiz {
 	public PageInfo<CqqServiceVo> queryall(Integer n, Integer s, Integer wid, String name) {
 		PageHelper.startPage(n, s);
 		List<CqqServiceVo> list = cqqServiceDao.queryall(wid == 0 ? null : wid, "null".equals(name) ? null : name);
-		System.out.println(list);
 		return new PageInfo<CqqServiceVo>(list);
 	}
 
