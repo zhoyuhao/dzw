@@ -47,11 +47,15 @@ public class CqqServiceBiz {
 		if (!"undefined".equals(ckahaok)) {
 			//System.out.println("123");
 			Customer cus = cqqCustomerDao.selectById(ckahaok);
-			if(service.getWpayment()==3) {
-				cus.setCdoublerk((int) (cus.getCdoublerk()-service.getDeductionmoney()));	
-			}else {
-				cus.setCdoublerk((int) (cus.getCdoublerk()+(service.getWsumprice()-service.getDeductionmoney())));
+			if(cus!=null) {
+				if(service.getWpayment()==3) {
+					cus.setCdoublerk((int) (cus.getCdoublerk()-service.getDeductionmoney()));	
+				}else {
+					cus.setCdoublerk((int) (cus.getCdoublerk()+(service.getWsumprice()-service.getDeductionmoney())));
+				}
+				cqqCustomerDao.updateById(cus);
 			}
+			
 			
 			//System.out.println("a:" + a);
 			/*
@@ -61,7 +65,7 @@ public class CqqServiceBiz {
 			 * 
 			 * }
 			 */
-			cqqCustomerDao.updateById(cus);
+			
 		}
 		return cqqServiceDao.updateById(service);
 	}

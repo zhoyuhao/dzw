@@ -40,7 +40,7 @@ public class CqqServiceAction {
 	@GetMapping("{n}/{s}/{wid}/{name}")
 	public PageInfo<CqqServiceVo> selectServiceList(@PathVariable Integer n, @PathVariable Integer s,
 			@PathVariable Integer wid, @PathVariable String name) {
-		System.out.println("进入结算中心/wid:" + wid + "/name:" + name + "/n:" + n + "/s:" + s);
+		//System.out.println("进入结算中心/wid:" + wid + "/name:" + name + "/n:" + n + "/s:" + s);
 		return cqqServiceBiz.queryall(n, s, wid, name);
 	}
 
