@@ -40,18 +40,18 @@ FROM `service` WHERE `wstatic`=4 AND DATE_FORMAT(`wenddate`, '%Y-%m-%d') =CURDAT
     <result column="xq" property="xq" />
   </resultMap>
 <select id="queryZQMoney" resultMap="mqp1">
-SELECT SUM(`wsumprice`) jrsummoney ,DATE_FORMAT(wenddate,'%w') xq FROM `service`
-WHERE `wstatic`=4 AND DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE()) DAY)&lt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
-AND DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE())-6 DAY)&gt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
-GROUP BY DATE_FORMAT(`wenddate`, '%Y-%m-%d');
+SELECT SUM(`wsumprice`) jrsummoney ,DATE_FORMAT(paymenttirm,'%w') xq FROM `service`
+WHERE `wstatic`=4 AND DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE()) DAY)&lt;=DATE_FORMAT(`paymenttirm`, '%Y-%m-%d')
+AND DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE())-6 DAY)&gt;=DATE_FORMAT(`paymenttirm`, '%Y-%m-%d')
+GROUP BY DATE_FORMAT(`paymenttirm`, '%Y-%m-%d');
 </select>
 
 
 <select id="queryZQMoneyS" resultMap="mqp1">
-SELECT SUM(`wsumprice`) jrsummoney ,DATE_FORMAT(wenddate,'%w') xq FROM `service`
-WHERE `wstatic`=4 AND DATE(DATE_SUB(NOW(),INTERVAL (DAYOFWEEK(DATE_SUB(NOW(),INTERVAL 1 DAY))) DAY))&gt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
-AND DATE_FORMAT(DATE_SUB(DATE_SUB(NOW(), INTERVAL WEEKDAY(NOW()) DAY), INTERVAL 1 WEEK), '%Y-%m-%d')&lt;=DATE_FORMAT(`wenddate`, '%Y-%m-%d')
-GROUP BY DATE_FORMAT(`wenddate`, '%Y-%m-%d');
+SELECT SUM(`wsumprice`) jrsummoney ,DATE_FORMAT(paymenttirm,'%w') xq FROM `service`
+WHERE `wstatic`=4 AND DATE(DATE_SUB(NOW(),INTERVAL (DAYOFWEEK(DATE_SUB(NOW(),INTERVAL 1 DAY))) DAY))&gt;=DATE_FORMAT(`paymenttirm`, '%Y-%m-%d')
+AND DATE_FORMAT(DATE_SUB(DATE_SUB(NOW(), INTERVAL WEEKDAY(NOW()) DAY), INTERVAL 1 WEEK), '%Y-%m-%d')&lt;=DATE_FORMAT(`paymenttirm`, '%Y-%m-%d')
+GROUP BY DATE_FORMAT(`paymenttirm`, '%Y-%m-%d');
 
 
 </select>
