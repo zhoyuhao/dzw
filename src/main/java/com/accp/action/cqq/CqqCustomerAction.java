@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.cqq.CqqCustomerBiz;
 import com.accp.pojo.Customer;
 import com.accp.pojo.Supplier;
+import com.accp.vo.cqq.ChongZhiList;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -21,16 +23,16 @@ public class CqqCustomerAction {
 	private CqqCustomerBiz cqqCustomerBiz;
 
 	@GetMapping("{n}/{s}/{val}")
-	public PageInfo<Customer> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s,
+	public PageInfo<ChongZhiList> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s,
 																@PathVariable String val) {
 		val="null".equals(val)?"":val;
 		return cqqCustomerBiz.selectCustomerList(n, s,val);
 	}
 
-	@PostMapping("update")
-	public int customerUpdate(@RequestBody Customer customer) {
+	@PutMapping("update/{money}")
+	public int customerUpdate(@PathVariable String money,@RequestBody Customer customer) {
 		System.out.println("会员充值");
-		return cqqCustomerBiz.customerUpdate(customer);
+		return cqqCustomerBiz.customerUpdate(customer,"+"+money);
 	}
 
 	@GetMapping("{id}")

@@ -18,95 +18,26 @@
 		</javaTypeResolver>
 		<!--pojo生成位置 -->
 		<javaModelGenerator
-			targetPackage="com.accp.vo.yld" targetProject="src/main/java">
+			targetPackage="com.accp.vo.cqq" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!--映射文件生成位置 -->
-		<sqlMapGenerator targetPackage="yldMapping"
+		<sqlMapGenerator targetPackage="cqqMapping"
 			targetProject="src/main/resources/mapping">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		<!--dao生成位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.accp.dao.yld" targetProject="src/main/java">
+			targetPackage="com.accp.dao.cqq" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
 		<!-- tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
-		<table tableName="address" domainObjectName="yldAddress"
+		<table tableName="huiyuanjilu" domainObjectName="Huiyuanjilu"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false"></table>
-		<table tableName="customer" domainObjectName="yldCustomer"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-
-		<table tableName="customercar" domainObjectName="yldCustomercar"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="engine" domainObjectName="yldEengine"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="function" domainObjectName="yldFunction"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-
-
-		<table tableName="goods" domainObjectName="yldGoods"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="personnel" domainObjectName="yldPersonnel"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="post" domainObjectName="yldPost"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-
-		<table tableName="role" domainObjectName="yldRole"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="roleandfunction"
-			domainObjectName="yldRoleandfunction" enableCountByExample="false"
-			enableUpdateByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" selectByExampleQueryId="false"></table>
-		<table tableName="service" domainObjectName="yldService"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-
-		<table tableName="servicedetailed"
-			domainObjectName="yldServicedetailed" enableCountByExample="false"
-			enableUpdateByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" selectByExampleQueryId="false"></table>
-		<table tableName="serviceitem" domainObjectName="yldServiceitem"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="supplier" domainObjectName="yldSupplier"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-
-		<table tableName="uersandrole" domainObjectName="yldUersandrole"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="userphone" domainObjectName="yldUserphone"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
-		<table tableName="workergroup" domainObjectName="yldWorkergroup"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false"></table>
+	
 	</context>
 </generatorConfiguration>  

@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.cqq.CqqGoodsDao;
+import com.accp.dao.cqq.*;
 import com.accp.dao.cqq.CqqSupplierDao;
 import com.accp.pojo.Supplier;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -15,7 +15,6 @@ import com.github.pagehelper.PageInfo;
 
 @org.springframework.stereotype.Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-
 public class CqqSupplierBiz {
 
 	@Autowired
@@ -24,6 +23,9 @@ public class CqqSupplierBiz {
 	@Autowired
 	private CqqGoodsDao cqqGoodsDao;// 商品
 
+	
+	@Autowired
+	private CqqServiceDao dao;
 	/**
 	 * 供货单位查询
 	 * 
@@ -44,8 +46,12 @@ public class CqqSupplierBiz {
 	 * @param id
 	 * @return
 	 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int supplierDelete(Integer id) {
-		cqqGoodsDao.deleteById(id);
+		System.out.println(dao.selectGoods(id));
+		if(dao.selectGoods(id)!=0) {
+			return 0;
+		}
 		return cqqSupplierDao.deleteById(id);
 	}
 

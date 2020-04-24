@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.cqq.CqqPersonnelBiz;
 import com.accp.pojo.Personnel;
+import com.accp.vo.zyh.zyhpersonnel_vo;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -19,9 +20,8 @@ public class CqqPersonnelAction {
 	private CqqPersonnelBiz cqqPersonnelBiz;
 	//
 	@GetMapping("{n}/{s}/{pstatic}/{name}")
-	public PageInfo<Personnel> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s,
+	public PageInfo<zyhpersonnel_vo> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s,
 			@PathVariable Integer pstatic, @PathVariable String name) {
-		System.out.println("离职管理");
 		return cqqPersonnelBiz.selectCustomerList(n, s, pstatic, name);
 	}
 

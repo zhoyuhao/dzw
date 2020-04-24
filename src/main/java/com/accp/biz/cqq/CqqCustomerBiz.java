@@ -6,7 +6,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.cqq.CqqCustomerDao;
+import com.accp.dao.cqq.CqqServiceDao;
 import com.accp.pojo.Customer;
+import com.accp.vo.cqq.ChongZhiList;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
@@ -18,7 +20,9 @@ public class CqqCustomerBiz {
 
 	@Autowired
 	private CqqCustomerDao cqqCustomerDao;
-
+	
+	@Autowired
+	private CqqServiceDao dao;
 	/**
 	 * 会员查询
 	 *  //
@@ -26,12 +30,12 @@ public class CqqCustomerBiz {
 	 * @param s
 	 * @return
 	 */
-	public PageInfo<Customer> selectCustomerList(Integer n, Integer s,String val) {
+	public PageInfo<ChongZhiList> selectCustomerList(Integer n, Integer s,String val) {
 		PageHelper.startPage(n, s);
 		QueryWrapper<Customer> qw = Wrappers.query();
 		qw.like("cidk", val);
 		qw.eq("ctypek", "会员");
-		return new PageInfo<Customer>(cqqCustomerDao.selectList(qw));
+		return new PageInfo<ChongZhiList>(dao.queryChongZhi(val));
 	}
 
 	/**
@@ -57,7 +61,11 @@ public class CqqCustomerBiz {
 	 * @param customer
 	 * @return
 	 */
-	public int customerUpdate(Customer customer) {
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public int customerUpdate(Customer customer,String money) {
+		if(dao.huiyuanMoneyAddJiLu(money, customer.getCidk())==0) {
+			return 0;
+		}
 		return cqqCustomerDao.updateById(customer);
 	}
 

@@ -38,5 +38,61 @@
 		`servicedetailed` WHERE `wId`=#{0}
 	</select>
 
-
+	<select id="selectGoods"
+		 resultType="integer">
+		SELECT COUNT(*) FROM `goods` WHERE `ghsId`=#{id}
+	</select>
+	
+	<resultMap type="com.accp.vo.cqq.ChongZhiList" id="map1">
+    <id column="cidk" property="cidk" />
+    <result column="cdoublerk"  property="cdoublerk" />
+    <result column="cmoneyk" property="cmoneyk" />
+    <result column="cgrade" property="cgrade" />
+    <result column="time" property="time" />
+        <result column="ckahaok"  property="ckahaok" />
+    <result column="ctypek" property="ctypek" />
+    <result column="cidnumberk" property="cidnumberk" />
+    <result column="cphonek" property="cphonek" />
+    
+    <result column="csexk"  property="csexk" />
+    <result column="caddressk" property="caddressk" />
+    <result column="cnamek" property="cnamek" />
+    <collection property="list" column="cidk" select="qqq"/>
+	</resultMap>
+	<select id="qqq" resultType="com.accp.vo.cqq.Huiyuanjilu">
+SELECT * FROM `huiyuanjilu` WHERE `cusid`=#{0}
+ORDER BY `time` DESC
+	</select>
+	<select id="queryChongZhi" resultMap="map1">
+	SELECT * FROM `customer` WHERE  ctypek='会员'  AND  cidk LIKE '%${val}%'
+	</select>
+	<insert id="huiyuanMoneyAddJiLu" >
+	INSERT  INTO `huiyuanjilu` VALUES(0,NOW(),#{val},#{id})
+	</insert>
+	
+	
+	
+	 <resultMap id="map2" type="com.accp.vo.zyh.zyhpersonnel_vo">
+    <id column="pId" jdbcType="VARCHAR" property="pid" />
+    <result column="bzId" jdbcType="INTEGER" property="bzid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="psex" jdbcType="CHAR" property="psex" />
+    <result column="peducational" jdbcType="VARCHAR" property="peducational" />
+    <result column="pentry" jdbcType="DATE" property="pentry" />
+    <result column="pphone" jdbcType="VARCHAR" property="pphone" />
+    <result column="paddress" jdbcType="VARCHAR" property="paddress" />
+    <result column="pidcard" jdbcType="VARCHAR" property="pidcard" />
+    <result column="pstatic" jdbcType="INTEGER" property="pstatic" />
+    <result column="ppwd" jdbcType="VARCHAR" property="ppwd" />
+    <result column="ppost"  property="ppost" />
+     <result column="gwname"  property="gangwei" />
+     <result column="cname"  property="juesename" />
+  </resultMap>
+	<select id="queryLiZhi" resultMap="map2">
+	SELECT p.*, ro.`cname`,po.`gwname`  FROM `personnel` p 
+INNER JOIN `uersandrole` uz ON (uz.`pId`=p.`pId`)
+INNER JOIN `role` ro ON (ro.`cid`=uz.`cid`)
+INNER JOIN `post` po ON (po.`pId`=p.`ppost`)
+WHERE p.`pname`!='admin' and p.`pstatic`=#{pstatic} and pname like '%${pname}%'
+	</select>
 </mapper>

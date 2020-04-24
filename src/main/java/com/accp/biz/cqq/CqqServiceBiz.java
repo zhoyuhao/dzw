@@ -34,12 +34,15 @@ public class CqqServiceBiz {
 	@Autowired
 	private CqqCustomerDao cqqCustomerDao;
 
+	@Autowired
+	private CqqServiceDao dao;
 	/**
 	 * 收银
 	 * 
 	 * @param id
 	 * @return
 	 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int updateService(String ckahaok, Service service) {
 		System.out.println("ckahaok:" + ckahaok);
 		System.out.println("service:" + service);
@@ -48,7 +51,11 @@ public class CqqServiceBiz {
 			//System.out.println("123");
 			Customer cus = cqqCustomerDao.selectById(ckahaok);
 			if(cus!=null) {
-				if(service.getWpayment()==3) {
+				if(service.getWpayment()==6) {
+					cus.setCdoublerk((int) (cus.getCdoublerk()+(service.getWsumprice()-service.getDeductionmoney())));
+					cus.setCmoneyk(cus.getCmoneyk()-(service.getWsumprice()-service.getDeductionmoney()));
+					dao.huiyuanMoneyAddJiLu("-"+(service.getWsumprice()-service.getDeductionmoney()),ckahaok);
+				}else if(service.getWpayment()==3) {
 					cus.setCdoublerk((int) (cus.getCdoublerk()-service.getDeductionmoney()));	
 				}else {
 					cus.setCdoublerk((int) (cus.getCdoublerk()+(service.getWsumprice()-service.getDeductionmoney())));

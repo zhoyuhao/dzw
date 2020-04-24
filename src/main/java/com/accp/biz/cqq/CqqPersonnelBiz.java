@@ -6,7 +6,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.cqq.CqqPersonnelDao;
+import com.accp.dao.cqq.CqqServiceDao;
 import com.accp.pojo.Personnel;
+import com.accp.vo.zyh.zyhpersonnel_vo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
@@ -19,6 +21,8 @@ public class CqqPersonnelBiz {
 	@Autowired
 	private CqqPersonnelDao cqqPersonnelDao;
 
+	@Autowired
+	private CqqServiceDao dao;
 	/**
 	 * 查询离职员工
 	 * 
@@ -26,12 +30,9 @@ public class CqqPersonnelBiz {
 	 * @param s
 	 * @return
 	 */
-	public PageInfo<Personnel> selectCustomerList(Integer n, Integer s, Integer pstatic, String name) {
+	public PageInfo<zyhpersonnel_vo> selectCustomerList(Integer n, Integer s, Integer pstatic, String name) {
 		PageHelper.startPage(n, s);
-		QueryWrapper<Personnel> qw = Wrappers.query();
-		qw.notIn("pname", "admin");
-		qw.eq("pstatic", pstatic).like("pname", "null".equals(name) ? "" : name);// 0就职， 1代表离职
-		return new PageInfo<Personnel>(cqqPersonnelDao.selectList(qw));
+		return new PageInfo<zyhpersonnel_vo>(dao.queryLiZhi(pstatic, "null".equals(name)?"": name));
 	}
 
 	/**
