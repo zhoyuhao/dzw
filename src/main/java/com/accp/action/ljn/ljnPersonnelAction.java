@@ -23,8 +23,8 @@ public class ljnPersonnelAction {
 	public List<Personnel> query() {
 		return biz.query();
 	}
-	@GetMapping("queryid/{pid}")
-	public int queryid(@PathVariable int pid) {
-		return biz.queryid(pid);
+	@GetMapping("queryid/{pname}")
+	public Personnel queryid(@PathVariable String pname) {
+		return biz.queryid(pname);
 	}
 }
