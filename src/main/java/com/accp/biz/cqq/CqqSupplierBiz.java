@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.accp.dao.cqq.CqqGoodsDao;
 import com.accp.dao.cqq.CqqSupplierDao;
 import com.accp.pojo.Supplier;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -18,7 +19,10 @@ import com.github.pagehelper.PageInfo;
 public class CqqSupplierBiz {
 
 	@Autowired
-	private CqqSupplierDao cqqSupplierDao;
+	private CqqSupplierDao cqqSupplierDao;// 供货商
+
+	@Autowired
+	private CqqGoodsDao cqqGoodsDao;// 商品
 
 	/**
 	 * 供货单位查询
@@ -41,6 +45,7 @@ public class CqqSupplierBiz {
 	 * @return
 	 */
 	public int supplierDelete(Integer id) {
+		cqqGoodsDao.deleteById(id);
 		return cqqSupplierDao.deleteById(id);
 	}
 

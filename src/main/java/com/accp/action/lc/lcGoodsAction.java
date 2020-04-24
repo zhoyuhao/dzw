@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.lc.lcGoodsBiz;
 import com.accp.biz.lc.lcSupplierBiz;
+import com.accp.biz.lc.lcengineBiz;
 import com.accp.vo.lc.lcGoodsVo;
 import com.accp.vo.lc.lcSupplierVo;
+import com.accp.vo.lc.lcengineVo;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -29,6 +31,19 @@ public class lcGoodsAction {
 	
 	@Autowired
 	private lcSupplierBiz lcBizs;
+	
+	
+	@Autowired
+	private lcengineBiz biz;
+	
+	
+	/*
+	 * 所有发动机
+	 */
+	@GetMapping("sss")
+	public List<lcengineVo> queryallengine(){
+		return biz.queryall();
+	}
 	
 	/*
 	 * 商品资料管理查询

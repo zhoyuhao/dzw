@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 
 public class lcserviceVo {
-	private Integer aa;
-	private Integer bb;
+	private Integer aa;//站内
+	private Integer bb;//站外
 	
 	private Integer cc;
 

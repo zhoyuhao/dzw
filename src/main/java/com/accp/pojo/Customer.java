@@ -1,6 +1,17 @@
 package com.accp.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("customer")
 public class Customer {
+	
+    @TableId(value = "cidk")
     private String cidk;
 
     private String cnamek;
@@ -22,8 +33,20 @@ public class Customer {
     private Float cmoneyk;
 
     private Integer cgrade;
+    
+    private Date time;
+    
+    
 
-    public String getCidk() {
+    public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public String getCidk() {
         return cidk;
     }
 

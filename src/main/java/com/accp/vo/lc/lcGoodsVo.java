@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("goods")
 public class lcGoodsVo {
-	@TableId(value = "gid")
+	@TableId(value = "gid",type = IdType.AUTO)
 	 private Integer gid;
 
 	    private Integer ghsid;
@@ -123,36 +123,10 @@ public class lcGoodsVo {
 			this.lcSupplier = lcSupplier;
 		}
 
-		@Override
-		public String toString() {
-			return "lcGoodsVo [gid=" + gid + ", ghsid=" + ghsid + ", gname=" + gname + ", gtime=" + gtime + ", gprice="
-					+ gprice + ", gbrand=" + gbrand + ", gsuitable=" + gsuitable + ", gtype=" + gtype + ", gdescribe="
-					+ gdescribe + ", gnumber=" + gnumber + "]";
-		}
-
-		public lcGoodsVo(Integer gid, Integer ghsid, String gname, Date gtime, Float gprice, String gbrand,
-				String gsuitable, String gtype, String gdescribe, Integer gnumber, lcSupplierVo lcSupplier) {
-			super();
-			this.gid = gid;
-			this.ghsid = ghsid;
-			this.gname = gname;
-			this.gtime = gtime;
-			this.gprice = gprice;
-			this.gbrand = gbrand;
-			this.gsuitable = gsuitable;
-			this.gtype = gtype;
-			this.gdescribe = gdescribe;
-			this.gnumber = gnumber;
-			this.lcSupplier = lcSupplier;
-		}
-		
 
 		
 
-		public lcGoodsVo() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+	
 	    
 	    
 		

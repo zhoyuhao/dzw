@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.cqq.CqqServiceDao">
+
+	<resultMap id="ServiceVo" type="com.accp.vo.cqq.CqqServiceVo">
+		<association property="sum" select="sum"
+			column="wId"></association>
+		<association property="service" select="queryallssss"
+			column="wId"></association>
+		<collection property="serdetalist" column="wId"
+			select="selectsss"></collection>
+	</resultMap>
+
+	<select id="queryall" resultMap="ServiceVo">
+		SELECT * FROM `service`
+		<where>
+		
+			<if test="wid!=null">and wstatic =#{wid}</if>
+			<if test="name!=null">and wname =#{name}</if>
+		</where>
+		ORDER BY paymenttirm desc
+	</select>
+
+	<select id="sum" resultType="int">
+		SELECT SUM(`sdprice`*`sdnumber`) AS `sum` FROM
+		`servicedetailed` WHERE `wId`=#{0}
+	</select>
+
+
+	<select id="queryallssss" resultType="com.accp.pojo.Service">
+		SELECT * FROM `service`
+		WHERE `wId`=#{0};
+	</select>
+
+	<select id="selectsss"
+		resultType="com.accp.pojo.Servicedetailed">
+		SELECT * FROM
+		`servicedetailed` WHERE `wId`=#{0}
+	</select>
+
+
+</mapper>

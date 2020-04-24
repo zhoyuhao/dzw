@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.yld.customerDao">
+	<insert id="InsertCustomerAndCar">
+		INSERT INTO `customer` (`cidk`,`cnamek`,`caddressk`,`csexk`,`cphonek`
+		,`cidnumberk`,`ctypek`,`ckahaok`,`cdoublerk`,`cmoneyk`,`cgrade`,time)VALUES
+		(#{temp.cidk},#{temp.cnamek},#{temp.caddressk},#{temp.csexk},#{temp.cphonek},
+		#{temp.cidnumberk},#{temp.ctypek},#{temp.ckahaok},#{temp.cdoublerk},#{temp.cmoneyk},#{temp.cgrade},#{temp.time});
+
+		INSERT INTO `dzw`.`customercar` (`cidk`,`carlicenceplate`,
+		`carbrand`,`carcolor`,`carconfigure`,`carlocality`,`carmodel`)VALUES
+		<foreach collection="temp.prsCar" item="item" index="i" open="(" separator="," close=")">
+			#{item.cidk},#{item.carlicenceplate},#{item.carbrand},#{item.carcolor},#{item.carconfigure},#{item.carlocality},#{item.carmodel}
+		</foreach>;
+	</insert>
+</mapper>

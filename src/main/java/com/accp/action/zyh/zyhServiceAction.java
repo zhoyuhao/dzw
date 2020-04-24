@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.ibatis.annotations.Param;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.zyh.*;
 import com.accp.pojo.Goods;
-import com.accp.pojo.Servicedetailed;
 import com.accp.vo.zyh.zyhService_vo;
 import com.accp.vo.zyh.zyhServicedetailed_vo;
 import com.github.pagehelper.PageInfo;
@@ -110,7 +109,7 @@ public class zyhServiceAction {
 	public  String parseDate2(String val){
 		val = val.replace("GMT", "").replaceAll("\\(.*\\)", ""); 
 		 //将字符串转化为date类型，格式2016-10-12 
-		 SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z",Locale.ENGLISH); 
+		 SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss z",Locale.ENGLISH); 
 		 Date dateTrans;
 		try {
 			dateTrans = format.parse(val);

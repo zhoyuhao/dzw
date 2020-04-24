@@ -21,15 +21,34 @@ public class CqqCustomerBiz {
 
 	/**
 	 * 会员查询
-	 * 
+	 *  //
 	 * @param n
 	 * @param s
 	 * @return
 	 */
-	public PageInfo<Customer> selectCustomerList(Integer n, Integer s) {
+	public PageInfo<Customer> selectCustomerList(Integer n, Integer s,String val) {
 		PageHelper.startPage(n, s);
 		QueryWrapper<Customer> qw = Wrappers.query();
+		qw.like("cidk", val);
+		qw.eq("ctypek", "会员");
 		return new PageInfo<Customer>(cqqCustomerDao.selectList(qw));
+	}
+
+	/**
+	 * 查询单个会员
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Customer selectCustomer(String id) {
+		QueryWrapper<Customer> qw = Wrappers.query();
+		qw.eq("ckahaok", id);
+		Customer cus = cqqCustomerDao.selectOne(qw);
+		System.out.println("[////"+cus);
+		if (cus != null) {
+			return cus;
+		}
+		return null;
 	}
 
 	/**

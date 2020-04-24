@@ -4,7 +4,41 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 public class Legwork {
+    
+    @TableId(value = "legworkid", type = IdType.AUTO)
+    private int legworkid;
+    
+    private String platenumber;
+    
+    private String brand;
+    
+    private String artisan;
+    
+    private Integer momey;
+    
+    private Integer wid;
+    
+    private String state;
 
+
+	public String getArtisan() {
+		return artisan;
+	}
+	public void setArtisan(String artisan) {
+		this.artisan = artisan;
+	}
+	public Integer getMomey() {
+		return momey;
+	}
+	public void setMomey(Integer momey) {
+		this.momey = momey;
+	}
+	public Integer getWid() {
+		return wid;
+	}
+	public void setWid(Integer wid) {
+		this.wid = wid;
+	}
 	public int getLegworkid() {
 		return legworkid;
 	}
@@ -29,32 +63,5 @@ public class Legwork {
 	public void setState(String state) {
 		this.state = state;
 	}
-	@TableId(value = "legworkid",type = IdType.AUTO)
-	private int legworkid;
-	private String platenumber;
-	private String brand;
-	private String state;
-	private String artisan;
-	private Integer momey;
-	public Integer getMomey() {
-		return momey;
-	}
-	public void setMomey(Integer momey) {
-		this.momey = momey;
-	}
-	public int getWid() {
-		return wid;
-	}
-	public void setWid(Integer wid) {
-		this.wid = wid;
-	}
-	private int wid;
 	
-	
-	public String getArtisan() {
-		return artisan;
-	}
-	public void setArtisan(String artisan) {
-		this.artisan = artisan;
-	}
 }

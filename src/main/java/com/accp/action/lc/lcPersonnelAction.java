@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.lc.lcPersonnelBiz;
+import com.accp.biz.lc.lcRoleBiz;
 import com.accp.biz.lc.lcworkergroupBiz;
 import com.accp.vo.lc.lcGoodsVo;
 import com.accp.vo.lc.lcpersonnelVo;
 import com.accp.vo.lc.lcpersonnelsVo;
+import com.accp.vo.lc.lcrolevo;
 import com.accp.vo.lc.lcworkergroupVo;
 import com.github.pagehelper.PageInfo;
 
@@ -28,15 +30,9 @@ public class lcPersonnelAction {
 
 	@Autowired
 	private lcPersonnelBiz biz;
+	
+	
 
-	// workergroup表
-	@Autowired
-	private lcworkergroupBiz bizs;
-
-	@GetMapping("sss/ssh")
-	public List<lcworkergroupVo> queryall() {
-		return bizs.querall();
-	}
 
 	@GetMapping("/{n}/{s}/{pname}")
 	public PageInfo<lcpersonnelVo> queryallOrname(@PathVariable Integer n, @PathVariable Integer s,
@@ -70,6 +66,7 @@ public class lcPersonnelAction {
 	//修改商品信息
 		@PutMapping("modeil")
 		public Map<String, Object> modeilGoods(@RequestBody lcpersonnelsVo lcss) {
+			System.out.println(lcss.toString());
 			int count=biz.modeilid(lcss);
 			Map<String, Object> map=new HashMap<String, Object>();
 			if(count!=0) {
@@ -83,7 +80,9 @@ public class lcPersonnelAction {
 		}
 		//新增商品信息
 		@PostMapping("addGoods")
-		public Map<String, Object> saveGoods(@RequestBody lcpersonnelsVo lcss) {
+		public Map<String, Object> saveGoods(@RequestBody lcpersonnelVo lcss) {
+			System.out.println(lcss.toString());
+			System.out.println(lcss.getPentry());
 			int count=biz.saveaa(lcss);
 			Map<String, Object> map=new HashMap<String, Object>();
 			if(count!=0) {

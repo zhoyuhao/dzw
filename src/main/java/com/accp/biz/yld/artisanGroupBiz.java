@@ -1,5 +1,7 @@
 package com.accp.biz.yld;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -10,6 +12,7 @@ import com.accp.dao.yld.artisanGroupDao;
 import com.accp.pojo.Personnel;
 import com.accp.pojo.Workergroup;
 import com.accp.vo.yld.artisanGroupVo;
+import com.accp.vo.yld.workerVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -33,5 +36,9 @@ public class artisanGroupBiz {
     
     public int updatePreson(Personnel entity) {
 	return dao.updateById(entity);
+    }
+    
+    public List<workerVo> queryPreson(){
+	return dao.queryPreson();
     }
 }

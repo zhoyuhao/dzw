@@ -20,15 +20,23 @@ public class CqqCustomerAction {
 	@Autowired
 	private CqqCustomerBiz cqqCustomerBiz;
 
-	@GetMapping("{n}/{s}")
-	public PageInfo<Customer> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s) {
-		return cqqCustomerBiz.selectCustomerList(n, s);
+	@GetMapping("{n}/{s}/{val}")
+	public PageInfo<Customer> selectCustomerList(@PathVariable Integer n, @PathVariable Integer s,
+																@PathVariable String val) {
+		val="null".equals(val)?"":val;
+		return cqqCustomerBiz.selectCustomerList(n, s,val);
 	}
 
 	@PostMapping("update")
 	public int customerUpdate(@RequestBody Customer customer) {
 		System.out.println("会员充值");
 		return cqqCustomerBiz.customerUpdate(customer);
+	}
+
+	@GetMapping("{id}")
+	public Customer selectCustomer(@PathVariable String id) {
+		System.out.println("id:/"+id);
+		return cqqCustomerBiz.selectCustomer(id);
 	}
 
 }

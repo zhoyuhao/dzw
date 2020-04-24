@@ -1,21 +1,32 @@
 package com.accp.vo.lc;
 
+import java.util.Date;
+
 public class lcpersonnelVo {
 	private String pId;
 	private Integer bzId;
 	private String pname;
 	private String psex;
 	private String peducational;
-	private String pentry;
+	private Date pentry;
 	private String pphone;
 	private String paddress;
 	private String pidcard;
 	private Integer pstatic;
 	private String ppwd;
 	private Integer ppost;
-	private String gangwei;
-	private String juesename;
-	private Integer jid;
+	private Integer gwid;
+	private String gwname;
+	private Integer cid;
+	private String cname;
+	private Integer postid;
+	
+	public Integer getPostid() {
+		return postid;
+	}
+	public void setPostid(Integer postid) {
+		this.postid = postid;
+	}
 	public String getpId() {
 		return pId;
 	}
@@ -46,10 +57,10 @@ public class lcpersonnelVo {
 	public void setPeducational(String peducational) {
 		this.peducational = peducational;
 	}
-	public String getPentry() {
+	public Date getPentry() {
 		return pentry;
 	}
-	public void setPentry(String pentry) {
+	public void setPentry(Date pentry) {
 		this.pentry = pentry;
 	}
 	public String getPphone() {
@@ -88,27 +99,40 @@ public class lcpersonnelVo {
 	public void setPpost(Integer ppost) {
 		this.ppost = ppost;
 	}
-	public String getGangwei() {
-		return gangwei;
+	public Integer getGwid() {
+		return gwid;
 	}
-	public void setGangwei(String gangwei) {
-		this.gangwei = gangwei;
+	public void setGwid(Integer gwid) {
+		this.gwid = gwid;
 	}
-	public String getJuesename() {
-		return juesename;
+	public String getGwname() {
+		return gwname;
 	}
-	public void setJuesename(String juesename) {
-		this.juesename = juesename;
+	public void setGwname(String gwname) {
+		this.gwname = gwname;
 	}
-	public Integer getJid() {
-		return jid;
+	public Integer getCid() {
+		return cid;
 	}
-	public void setJid(Integer jid) {
-		this.jid = jid;
+	public void setCid(Integer cid) {
+		this.cid = cid;
 	}
-	public lcpersonnelVo(String pId, Integer bzId, String pname, String psex, String peducational, String pentry,
-			String pphone, String paddress, String pidcard, Integer pstatic, String ppwd, Integer ppost, String gangwei,
-			String juesename, Integer jid) {
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	@Override
+	public String toString() {
+		return "lcpersonnelVo [pId=" + pId + ", bzId=" + bzId + ", pname=" + pname + ", psex=" + psex
+				+ ", peducational=" + peducational + ", pentry=" + pentry + ", pphone=" + pphone + ", paddress="
+				+ paddress + ", pidcard=" + pidcard + ", pstatic=" + pstatic + ", ppwd=" + ppwd + ", ppost=" + ppost
+				+ ", gwid=" + gwid + ", gwname=" + gwname + ", cid=" + cid + ", cname=" + cname + "]";
+	}
+	public lcpersonnelVo(String pId, Integer bzId, String pname, String psex, String peducational, Date pentry,
+			String pphone, String paddress, String pidcard, Integer pstatic, String ppwd, Integer ppost, Integer gwid,
+			String gwname, Integer cid, String cname) {
 		super();
 		this.pId = pId;
 		this.bzId = bzId;
@@ -122,21 +146,16 @@ public class lcpersonnelVo {
 		this.pstatic = pstatic;
 		this.ppwd = ppwd;
 		this.ppost = ppost;
-		this.gangwei = gangwei;
-		this.juesename = juesename;
-		this.jid = jid;
+		this.gwid = gwid;
+		this.gwname = gwname;
+		this.cid = cid;
+		this.cname = cname;
 	}
 	public lcpersonnelVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "lcpersonnelVo [pId=" + pId + ", bzId=" + bzId + ", pname=" + pname + ", psex=" + psex
-				+ ", peducational=" + peducational + ", pentry=" + pentry + ", pphone=" + pphone + ", paddress="
-				+ paddress + ", pidcard=" + pidcard + ", pstatic=" + pstatic + ", ppwd=" + ppwd + ", ppost=" + ppost
-				+ ", gangwei=" + gangwei + ", juesename=" + juesename + ", jid=" + jid + "]";
-	}
+	 
 	
 	
 

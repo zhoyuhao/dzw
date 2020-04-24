@@ -8,9 +8,18 @@
 		<result column="agnumber" jdbcType="INTEGER"
 			property="agnumber" />
 	</resultMap>
+	<resultMap id="workerVo" type="com.accp.vo.yld.workerVo">
+		<id column = "pid" jdbcType="VARCHAR" property="pid"/>
+		<result column="pname" jdbcType="VARCHAR" property="pname" />
+		<result column="hmoney" jdbcType="REAL" property="hmoney" />
+	</resultMap>
 	<select id="queryAll" resultMap="artisanGroupVo">
 		SELECT w.`bzId` agid,w.`bzname` agname,(SELECT COUNT(*) FROM personnel AS p
-		WHERE p.bzid IN (w.`bzId`)) AS agnumber FROM workergroup AS w
+		WHERE p.bzid IN (w.`bzId`)) AS agnumber,w.`hmoney` FROM workergroup AS w
 		WHERE w.`type` = 1 AND w.`bzname` LIKE '%${name}%' ORDER BY w.`bzId` DESC
+	</select>
+	<select id="queryPreson" resultMap="workerVo">
+		SELECT p.`pId` pid,p.`pname`,w.`hmoney` FROM personnel p,workergroup w 
+		WHERE p.`bzId` = w.`bzId` AND w.`type` = 2
 	</select>
 </mapper>

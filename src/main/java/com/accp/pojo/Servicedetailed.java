@@ -1,53 +1,74 @@
 package com.accp.pojo;
 
 public class Servicedetailed {
-    private Integer sdid;
+	private Integer sdid;
 
-    private String wid;
+	private String wid;
 
-    private String sdname;
+	private String sdname;
 
-    private Float sdprice;
+	private Float sdprice;
 
-    private Float sdnumber;
+
+	private Float sdnumber;
+
+    private Float dprice;
+    
+
+	@Override
+	public String toString() {
+		return "Servicedetailed [sdid=" + sdid + ", wid=" + wid + ", sdname=" + sdname + ", sdprice=" + sdprice
+				+ ", sdnumber=" + sdnumber + "]";
+	}
+
+    
+    public Float getDprice() {
+        return dprice;
+    }
+
+    public void setDprice(Float dprice) {
+        this.dprice = dprice;
+    }
 
     public Integer getSdid() {
         return sdid;
     }
 
-    public void setSdid(Integer sdid) {
-        this.sdid = sdid;
-    }
 
-    public String getWid() {
-        return wid;
-    }
 
-    public void setWid(String wid) {
-        this.wid = wid == null ? null : wid.trim();
-    }
+	public void setSdid(Integer sdid) {
+		this.sdid = sdid;
+	}
 
-    public String getSdname() {
-        return sdname;
-    }
+	public String getWid() {
+		return wid;
+	}
 
-    public void setSdname(String sdname) {
-        this.sdname = sdname == null ? null : sdname.trim();
-    }
+	public void setWid(String wid) {
+		this.wid = wid == null ? null : wid.trim();
+	}
 
-    public Float getSdprice() {
-        return sdprice;
-    }
+	public String getSdname() {
+		return sdname;
+	}
 
-    public void setSdprice(Float sdprice) {
-        this.sdprice = sdprice;
-    }
+	public void setSdname(String sdname) {
+		this.sdname = sdname == null ? null : sdname.trim();
+	}
 
-    public Float getSdnumber() {
-        return sdnumber;
-    }
+	public Float getSdprice() {
+		return sdprice;
+	}
 
-    public void setSdnumber(Float sdnumber) {
-        this.sdnumber = sdnumber;
-    }
+	public void setSdprice(Float sdprice) {
+		this.sdprice = sdprice;
+	}
+
+	public Float getSdnumber() {
+		return sdnumber;
+	}
+
+	public void setSdnumber(Float sdnumber) {
+		this.sdnumber = sdnumber;
+	}
 }

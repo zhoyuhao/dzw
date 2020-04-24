@@ -8,6 +8,16 @@ public class artisanGroupVo {
     private String agname;
     // 技工班组人数
     private Integer agnumber;
+    // 技工班组人数
+    private Integer hmoney;
+
+    public Integer getHmoney() {
+	return hmoney;
+    }
+
+    public void setHmoney(Integer hmoney) {
+	this.hmoney = hmoney;
+    }
 
     public String getAgid() {
 	return agid;
@@ -30,17 +40,6 @@ public class artisanGroupVo {
     }
 
     public void setAgnumber(Integer agnumber) {
-	this.agnumber = agnumber;
-    }
-
-    public artisanGroupVo() {
-	// TODO Auto-generated constructor stub
-    }
-
-    public artisanGroupVo(String agid, String agname, Integer agnumber) {
-	super();
-	this.agid = agid;
-	this.agname = agname;
 	this.agnumber = agnumber;
     }
 
