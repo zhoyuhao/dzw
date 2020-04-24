@@ -34,7 +34,7 @@ public class CqqPersonnelBiz {
 		PageHelper.startPage(n, s);
 		return new PageInfo<zyhpersonnel_vo>(dao.queryLiZhi(pstatic, "null".equals(name)?"": name));
 	}
-
+//
 	/**
 	 * 复职与离职
 	 * 
