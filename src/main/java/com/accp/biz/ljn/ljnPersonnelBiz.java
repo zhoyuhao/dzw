@@ -18,8 +18,8 @@ public class ljnPersonnelBiz {
 	public List<Personnel> query() {
 		return dao.query();
 	}
-	//查询编号是否已存在
-	public int queryid(int pid) {
-		return dao.queryid(pid);
+	//查询编号信息
+	public Personnel queryid(String pname) {
+		return dao.queryid(pname);
 	}
 }
