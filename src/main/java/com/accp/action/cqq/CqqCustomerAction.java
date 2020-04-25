@@ -18,7 +18,7 @@ import com.github.pagehelper.PageInfo;
 @RestController
 @RequestMapping("CqqCustomerAction/api")
 public class CqqCustomerAction {
-//
+//、、、
 	@Autowired
 	private CqqCustomerBiz cqqCustomerBiz;
 
