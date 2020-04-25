@@ -20,7 +20,7 @@
 		
 			
 		</where>
-		ORDER BY  a.`pentry` DESC
+		ORDER BY  a.`pid` DESC
 	</select>
 	<!-- 删除 -->
 	<delete id="romoveyg">

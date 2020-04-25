@@ -31,7 +31,17 @@ public class Goods {
 
     private Integer gnumber;
     
+    private Integer type;
+    
    
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
 
 	public Integer getGid() {
         return gid;

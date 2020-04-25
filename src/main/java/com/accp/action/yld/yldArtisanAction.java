@@ -109,7 +109,7 @@ public class yldArtisanAction {
     // 查询所有商品并分页
     @GetMapping("/queryAllGoods")
     public PageInfo<Goods> queryAllGoods(int page, String name, String type) {
-	return gbiz.queryAll(page, 4, name, type);
+	return gbiz.queryAll(page, 10, name, type);
     }
 
     // 查询所有的商品类型
@@ -121,7 +121,7 @@ public class yldArtisanAction {
     // 查询所有的商品类型并分页
     @GetMapping("/queryAllGoodsItemPage")
     public PageInfo<Serviceitem> queryAllGoodsItemPage(int page, String name) {
-	return gibiz.queryAllByPage(page, 4, name);
+	return gibiz.queryAllByPage(page, 10, name);
     }
 
     // 根据商品类型查询商品

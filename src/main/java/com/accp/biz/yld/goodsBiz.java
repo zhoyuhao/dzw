@@ -29,13 +29,13 @@ public class goodsBiz {
 	}
 	PageHelper.startPage(c,s);
 	QueryWrapper<Goods> qw = Wrappers.query();
-	qw.like("gname", name).eq(iftrue, "gtype", type);
+	qw.like("gname", name).eq(iftrue, "type", type);
 	return new PageInfo<Goods>(dao.selectList(qw));
     }
     
     public List<Goods> queryByTypeId(String typeid){
 	QueryWrapper<Goods> qw = Wrappers.query();
-	qw.eq("gtype", typeid);
+	qw.eq("type", typeid);
 	return dao.selectList(qw);
     }
     
