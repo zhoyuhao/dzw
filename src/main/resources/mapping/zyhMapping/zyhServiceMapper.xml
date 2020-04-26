@@ -30,14 +30,18 @@
   <select id="queryStatucBy1Or2" resultMap="map1">
 <!--   SELECT * FROM `service` se
 INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`)  -->
-SELECT se.*,s.*,w.`bzname` ,w.`hmoney`,w.`type` FROM `service` se
+<!-- SELECT se.*,s.*,w.`bzname` ,w.`hmoney`,w.`type` FROM `service` se
 INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`) 
 INNER JOIN `workergroup` w 
 INNER JOIN `personnel` p ON ( p.`bzId`=
 (SELECT `bzId` FROM `workergroup` WHERE `bzname`=se.`wjname`)
 OR 
 p.`bzId`=p.`bzId`
- )
+ ) -->
+SELECT se.*,s.*,w.`bzname` ,w.`hmoney`,w.`type` FROM `service` se
+INNER JOIN `statucs` s ON(se.`wstatic`=s.`id`) 
+INNER JOIN `personnel` p
+INNER JOIN `workergroup` w ON(se.`wjname`=w.`bzname` OR w.`bzId`=(SELECT p2.`bzId` FROM personnel p2 WHERE  p2.`pname`=se.`wjname`) )
 
 <where>
 <if test="wcarid!=null">and se.`wcarid`=#{wcarid}</if>

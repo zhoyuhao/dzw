@@ -16,6 +16,7 @@ public interface zyhCustomerMapper {
 	 */
 	List<zyhCustomer_vo> queryAllOrByName(@Param("name")String name);
 	
+	List<zyhCustomer_vo> queryAllOrByName2(@Param("name2")String name2);
 	/***给用户添加车辆
 	 * 
 	 * @param p

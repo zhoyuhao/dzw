@@ -13,6 +13,7 @@
 	SELECT p.`pname` AS `name`,p.`pId` AS aid,(SELECT a.`gwname` FROM post AS a WHERE a.`pId` IN (p.`ppost`)) AS postName,w.`bzname` AS groupName FROM
   	 personnel AS p LEFT OUTER JOIN workergroup AS w ON p.`bzId` = w.`bzId`
   	 <where>
+  	 p.`pstatic`=0
   	 	<if test="true">
   	 		AND p.`ppost` = 2
   	 	</if>

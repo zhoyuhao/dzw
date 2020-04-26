@@ -29,7 +29,9 @@ public class zyhCustomerBiz {
 		return dao.queryAllOrByName(name);
 	}
 	
-
+	public List<zyhCustomer_vo> queryAllOrByName2(String name){
+		return dao.queryAllOrByName2(name);
+	}
 	/***给用户添加车辆
 	 * 
 	 * @param p

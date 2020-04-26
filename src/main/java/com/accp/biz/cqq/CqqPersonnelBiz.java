@@ -31,7 +31,7 @@ public class CqqPersonnelBiz {
 	 * @return
 	 */
 	public PageInfo<zyhpersonnel_vo> selectCustomerList(Integer n, Integer s, Integer pstatic, String name) {
-		PageHelper.startPage(n, s);
+		/* PageHelper.startPage(n, s); */
 		return new PageInfo<zyhpersonnel_vo>(dao.queryLiZhi(pstatic, "null".equals(name)?"": name));
 	}
 //

@@ -37,6 +37,11 @@ public class zyhCustomerBAction {
 		return biz.queryAllOrByName(name);
 	}
 
+	@GetMapping("queryAllOrByName2/{name}")
+	public List<zyhCustomer_vo> queryAllOrByName2(@PathVariable String name) {
+		name = "null".equals(name) ? "" : name;
+		return biz.queryAllOrByName2(name);
+	}
 	/***
 	 * 给用户添加车辆
 	 * 
@@ -67,7 +72,7 @@ public class zyhCustomerBAction {
 	 */
 	@PostMapping("deleteCar")
 	public int deleteCar(@RequestBody zyhCustomer_vo p) {
-		if (biz.deleteCar(p.getCidk()) != 0) {
+		if (biz.deleteCar(p.getCidk()) >= 0) {
 			return this.khuAndCar(p);
 		}
 		return 0;

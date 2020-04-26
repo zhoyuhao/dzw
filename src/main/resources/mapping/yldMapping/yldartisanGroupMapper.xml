@@ -15,7 +15,7 @@
 	</resultMap>
 	<select id="queryAll" resultMap="artisanGroupVo">
 		SELECT w.`bzId` agid,w.`bzname` agname,(SELECT COUNT(*) FROM personnel AS p
-		WHERE p.bzid IN (w.`bzId`)) AS agnumber,w.`hmoney` FROM workergroup AS w
+		WHERE p.bzid IN (w.`bzId`) AND p.`pstatic`=0 ) AS agnumber,w.`hmoney` FROM workergroup AS w
 		WHERE w.`type` = 1 AND w.`bzname` LIKE '%${name}%' ORDER BY w.`bzId` DESC
 	</select>
 	<select id="queryPreson" resultMap="workerVo">
